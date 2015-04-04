@@ -12,26 +12,12 @@ function set_lang(userLang) {
     if (userLang == "pt-br" || userLang == "pt") {
         for (var i = 0; i < en_p.length; i++) {
             en_p[i].style.display = 'none';
-            pt_p[i].style.display = 'initial';
+            pt_p[i].style.display = 'block';
         }
     } else {
         for (var i = 0; i < en_p.length; i++) {
             pt_p[i].style.display = 'none';
-            en_p[i].style.display = 'initial';
+            en_p[i].style.display = 'block';
         }
     }
 }
-// pt
-
-// enEnglish
-// en-usEnglish (United States)
-// en-gbEnglish (United Kingdom)
-// en-auEnglish (Australia)
-// en-caEnglish (Canada)
-// en-nzEnglish (New Zealand)
-// en-ieEnglish (Ireland)
-// en-zaEnglish (South Africa)
-// en-jmEnglish (Jamaica)
-// enEnglish (Caribbean)
-// en-bzEnglish (Belize)
-// en-tt
