@@ -17,6 +17,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script src="js/bilingual.js"></script>
 		<noscript>
 			<!-- <link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -27,7 +28,7 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
-	<body>
+	<body onload="set_initial_lang()">
 		<div id="wrapper">
 
 			<!-- Header -->
@@ -35,8 +36,10 @@
 					<header>
 						<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
 						<h1 id="logo">Vinicius Prado da Fonseca</h1>
-						<p>PhD Student<br />
+						<p class="en">PhD Student<br />
 						University of Ottawa</p>
+						<p class="pt">Estudante de PhD<br />
+						Universidade de Ottawa</p>
 					</header>
 					<nav id="nav">
 						<ul>
@@ -64,17 +67,23 @@
 						<section id="one">
 							<div class="container">
 								<header class="major">
+									<!--<a onclick="set_lang('pt')">Teste</a>-->
 									<h3>Vinícius Prado da Fonseca</h3>
 									<ul class="actions">
 										<li><a href="data/cv-eng.pdf" class="button special icon fa-download" target="_blank">EN Resume</a></li>
 										<li><a href="data/cv-pt.pdf" class="button special icon fa-download" target="_blank">PT Resume</a></li>
+										<li><a class="button special icon fa-language" onclick="set_lang('pt')">PT</a></li>
+										<li><a class="button special icon fa-language" onclick="set_lang('en')">EN</a></li>
 									</ul>
 									<!-- <p>Just an incredibly simple responsive site<br />
 									template freebie by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
 								</header>
-								<p>Sou formado em Ciência da Computação pela Universidade Federal do Tocantins, posteriormente alcançando título de Mestre em Sistemas e Computação pelo Instituto Militar de Engenharia. Atualmente sou estudante de PhD em Engenharia Elétrica e Ciência da Computação Universidade de Ottawa.</p>
-								<p>Desevolvi estudos focados em redes neurais e redes de sensores para posicionamento. Domino tecnologias atuais de desenvolvimento e tenho conhecimento avançado em linguagens de programação, já tendo atuado em desenvolvimento de softwares comerciais e científicos.</p>
-								<p>Exeriência com equipes multidisciplinares, sempre com objetivos claros, ideias construtivas e comunicação clara. </p> 
+								<p class="pt">Sou formado em Ciência da Computação pela Universidade Federal do Tocantins, posteriormente alcançando título de Mestre em Sistemas e Computação pelo Instituto Militar de Engenharia. Atualmente sou estudante de PhD em Engenharia Elétrica e Ciência da Computação Universidade de Ottawa.</p>
+								<p class="en">I graduated in Computer Science from the Federal University of Tocantins, later reaching Master's degree in Computer Systems from the Military Institute of Engineering. I am currently a PhD student in Electrical Engineering and Computer Science at University of Ottawa.</p>
+								<p class="pt">Desenvolvi estudos focados em redes neurais e redes de sensores para posicionamento. Domino tecnologias atuais de desenvolvimento e tenho conhecimento avançado em linguagens de programação, já tendo atuado em desenvolvimento de softwares comerciais e científicos.</p>
+								<p class="en">I've developed studies focused on neural networks and sensor networks for positioning. I have a know how in current development technologies and have advanced knowledge of programming languages, having worked in development of commercial and scientific software.</p>
+								<p class="pt">Experiência com equipes multidisciplinares, sempre com objetivos claros, ideias construtivas e comunicação clara.</p> 
+								<p class="en">Experience with multidisciplinary teams, always with clear objectives, constructive ideas and clear communication.</p>
 							</div>
 						</section>
 						
@@ -98,7 +107,7 @@
 									</article>
 									<article>
 										<!-- <a href="http://www.des.ime.eb.br/" class="image"><img src="images/ime.jpg" alt="ime logo" /></a> -->
-										<div class="row">
+										<div>
 											<h5>MSc,Systems and Computing, Jun 2013</h5>
 											<h5>IME - Military Institute of Engineering, Rio de Janeiro, RJ BRA</h5>
 											<ul>
@@ -110,7 +119,7 @@
 									</article>
 									<article>
 										<!-- <a href="http://www.uft.edu.br/" class="image"><img src="images/uft.jpg" alt="uft logo" /></a> -->
-										<div class="row">
+										<div>
 											<h5>BSc, Computer Science, Dec 2010</h5>
 											<h5>UFT - Federal University of Tocantins, Palmas, TO BRA</h5>
 											<ul>
