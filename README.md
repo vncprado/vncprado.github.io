@@ -1,5 +1,5 @@
 This is my github.io website
-It is based on (my cv site)[https://github.com/vncprado/cv2.git]
+It is based on [my cv site](https://github.com/vncprado/cv2.git)
 
 # My CV Site
 
