@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+This is my github.io website
+It is based on (my cv site)[https://github.com/vncprado/cv2.git]
+
 # My CV Site
 
 Simple and responsive professional CV site
@@ -40,7 +42,3 @@ Credits:
 		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
 		CSS3 Pie (css3pie.com)
 		skel (getskel.com)
-=======
-# vncprado.github.io
-My github.io website
->>>>>>> 5addb6d8ad955416e728532e17b405281241eca9
