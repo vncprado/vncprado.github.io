@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vanishing Point</title>
+    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</description>
+    <link>http://viniciusprado.org/</link>
+    <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 20 Nov 2015 17:19:23 -0500</pubDate>
+    <lastBuildDate>Fri, 20 Nov 2015 17:19:23 -0500</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;I’ll try to start using &lt;a href=&quot;http://jekyllrb.com/&quot; target=&quot;_blank&quot;&gt;Jekyll&lt;/a&gt; + &lt;a href=&quot;http://pages.github.com&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt; pages for simplicity. Manage a server takes too much time. With jekyll I’ll be able to have a small public thecnical blog without comrising my time which I baraly manage now.&lt;/p&gt;
+
+&lt;p&gt;I only have to understand now how to automatize this posts meta data. Probably will be easier then mantain a hole simple sistem like ghost.&lt;/p&gt;
+
+&lt;p&gt;Following below the original “Welcome to Jekyll!” post.&lt;/p&gt;
+
+&lt;p&gt;That’s All!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 18 Nov 2015 15:09:26 -0500</pubDate>
+        <link>http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>teste</title>
+        <description>
+</description>
+        <pubDate>Wed, 18 Nov 2015 00:00:00 -0500</pubDate>
+        <link>http://viniciusprado.org/2015/11/18/teste.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/11/18/teste.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Robô saltador flexível impresso em 3D [Pros/Cons]</title>
+        <description>&lt;p&gt;Quando aparecem notícias sobre ciência na mídia, a pesquisa é apresentada de forma simplificada, até pelos próprios cientistas. A ideia é que o publico geral consiga absorver e entender os possíveis prognósticos do trabalho. Mas esse tipo de publicação deixa passar alguns pontos positivos e negativos inerentes de qualquer trabalho científico.&lt;/p&gt;
+
+&lt;p&gt;Com isso em mente vou destacar alguns prós e contras do trabalho que foi divulgado como &lt;a href=&quot;http://g1.globo.com/tecnologia/noticia/2015/07/pesquisadores-de-harvard-criam-robo-capaz-de-saltar-como-sapos-veja.html&quot;&gt;“robô que salta igual um sapo”&lt;/a&gt; para tentar entender melhor a publicação. Não estou interessado em falar “mal” da notícia. É apenas um exercício de leitura do &lt;a href=&quot;http://www.sciencemag.org/content/349/6244/161&quot;&gt;artigo publicado&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;O trabalho foi apresentado como “sapo robô”. Este utiliza combustão para fazer saltos (o que já me parece diferente de um sapo, que utiliza força mecânica para saltar) sendo que a inclinação e o direcionamento do salto é feito pela modificação do formato da base do robô.&lt;/p&gt;
+
+&lt;p&gt;O desenvolvimento de sistemas robóticos bioinspirados são extremamente importantes. Quando o cientista ou engenheiro observa algo funcionando na natureza, principalmente com seres vivos, ele tenta entender e produzir algo que possa desempenhar a mesma função, com uma eficiência parecida.&lt;/p&gt;
+
+&lt;p&gt;Para o trabalho em questão eu consegui identificar:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Prós:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Técnicas de impressão 3D com vários materiais, inclusive flexíveis.&lt;/strong&gt; Ao invés de utilizar uma injetora ou outra técnica, o grupo utiliza impressão 3D com materiais flexíveis em várias camadas.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Técnica de mistura de gases e combustão controladas.&lt;/strong&gt; Não é uma área que eu entenda muito, mas o controle de gases, como essa pesquisa necessita, é muito interessante. São quantidades pequenas e precisas dos gases envolvidos na combustão.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Inclinação para mudança de direção.&lt;/strong&gt; Apenas um propulsor proporciona saltos em diversas direções.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Contras:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Sistema pneumático de mudança de direção.&lt;/strong&gt; O controle pneumático é difícil, além disso carregar um compressor pra todo lado não é uma boa ideia. No final deste post eu cito um trabalho que começa a repensar esse problema.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;A própria dinâmica do robô causa danos ao equipamento.&lt;/strong&gt; Mesmo flexível, acredito que ele ainda realiza poucos saltos antes de ter o funcionamento comprometido, aqui a questão do design é fundamental. Com um projeto mecânico diferente talvez o problema seja minimizado.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Apesar de colocar como contra, parece que a ideia do compressor começa a ser melhor trabalhada &lt;a href=&quot;http://spectrum.ieee.org/automaton/robotics/robotics-hardware/pneumatic-generator-could-make-soft-robots-useful&quot;&gt;aqui.&lt;/a&gt; Nesse artigo um compressor diferente é desenvolvido a partir da quebra de moléculas de água para criação de gases. A notícia acima exemplifica com vários projetos que utilizam ação pneumática e poderiam ser beneficiados com o trabalho, inclusive este “sapo robô”.&lt;/p&gt;
+
+&lt;p&gt;Isso é tudo.
+=]&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Jul 2015 13:24:22 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/07/11/robo-saltador-flexivel-impresso-em-3d.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/07/11/robo-saltador-flexivel-impresso-em-3d.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Best Pebble Apps Up to Now For Me</title>
+        <description>&lt;p&gt;I recently bought a Pebble smartwatch. I’ve heard about this for a long time, but now I’m getting into running so I thought that would be a good idea have something to help me tracking my goals. I know that they released a new version early this year but the original one is good enough for me and my pocket.&lt;/p&gt;
+
+&lt;p&gt;Following some apps that I found most useful up to now:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Fuzzy text:&lt;/strong&gt; This actually is an watchface which shows you a more human-like way to read time, available in several languages.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Music Boss:&lt;/strong&gt; One BIG improvement in the default music player which remains in Pebble’s main menu. I’ve got some bugs concerning Bluetooth delay and my Moto G laziness but worth every penny (actually 2 dollars). You can control many music apps (I’m using Google play and Podcast Republic in a daily basis). There are some shortcuts to change tracks and launch apps, but I’m not really too much into it.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Weather:&lt;/strong&gt; Shows you weather information for now or for the next five days. Uses GPS to get a closer information. It vibrates when results are loaded. It’s currently the app with most likes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Nav ME:&lt;/strong&gt; I think that this one is in beta for android and is paid for iOS (I’m not sure) but with a good price I would buy it. You just need set your destination on Google Maps and start navigation to get the information on your wrist. Really useful for cycling. Actually I think that this use case is the step closer to what we all need from a smartwatch. Set up some stuff on your cell phone and get useful information on your wrist.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Travvik:&lt;/strong&gt; Another really good surprise for my Pebble. Here in Ottawa I just set the bus stop that I’m at and the bus number I need to get updates on how long it will take to arrive. Another really good use case. It’s just missing a clever way to search the bus stop number (GPS or a fav list) or integration to android apps like NavMe.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Notification Center:&lt;/strong&gt; One really complete way to get your notifications. A simple way to dismiss and reply (limited but ok)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Run trackers:&lt;/strong&gt; I’ve used Nike+ to track my runs. It’s a nice app with a free training plan, but it has a lot of bugs here and there. Now I’m moving to RunKeeper, but this post is about Pebble! Most apps for runs usually use Pebble just to show time, distance, pace, etc. As far as I know, Endomondo is the only app that has a Pebble app where you can start and pause your activity. Personally, I’m gonna try RunKeeper for now because of its free training plans. Even with a simpler integration with Pebble its the best, but I will try to use Endomondo during races considering its start/stop feature.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That’s all!
+=]&lt;/p&gt;
+</description>
+        <pubDate>Mon, 25 May 2015 21:15:18 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/05/25/best-pebble-apps-up-to-now-for-me.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/05/25/best-pebble-apps-up-to-now-for-me.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>VHDL Snippets - Clock counter</title>
+        <description>&lt;p&gt;In our project this clock counter was user to counter 255 clock then forward a pulse:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+ENTITY clock_counter IS
+	PORT (	sclr	: IN STD_LOGIC;
+			clock   : IN STD_LOGIC;
+			cout	: OUT STD_LOGIC;
+			q 		: OUT STD_LOGIC_VECTOR (7 downto 0));
+END clock_counter;
+ARCHITECTURE behavior of clock_counter IS
+	SIGNAL temp: STD_LOGIC_VECTOR (7 downto 0);
+BEGIN
+	PROCESS(clock,sclr)
+	BEGIN
+		IF sclr=&#39;1&#39; THEN
+			cout &amp;lt;= &#39;0&#39;;
+			temp &amp;lt;= &quot;00000000&quot;;
+		ELSIF(clock&#39;event and clock=&#39;1&#39;) THEN
+			IF temp=&quot;11111111&quot; THEN
+				cout &amp;lt;= &#39;1&#39;;
+				temp &amp;lt;= &quot;00000000&quot;;
+			ELSE
+				cout &amp;lt;= &#39;0&#39;;
+				temp &amp;lt;= temp + 1;
+			END IF;
+		END IF;
+	END PROCESS;
+	q &amp;lt;= temp;
+END;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s all =]&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Apr 2015 00:36:26 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-clock-counter.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-clock-counter.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>VHDL Snippets - Mux 16</title>
+        <description>&lt;p&gt;Implementation of a Mux 16:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY mux16_1 IS
+	PORT (	sel    : IN STD_LOGIC_VECTOR (3 downto 0);
+			data15 : IN STD_LOGIC;
+			data14 : IN STD_LOGIC;
+			data13 : IN STD_LOGIC;
+			data12 : IN STD_LOGIC;
+			data11 : IN STD_LOGIC;
+			data10 : IN STD_LOGIC;
+			data9  : IN STD_LOGIC;
+			data8  : IN STD_LOGIC;
+			data7  : IN STD_LOGIC;
+			data6  : IN STD_LOGIC;
+			data5  : IN STD_LOGIC;
+			data4  : IN STD_LOGIC;
+			data3  : IN STD_LOGIC;
+			data2  : IN STD_LOGIC;
+			data1  : IN STD_LOGIC;
+			data0  : IN STD_LOGIC;
+			result : OUT STD_LOGIC);
+END mux16_1;
+ARCHITECTURE behavior of mux16_1 IS
+BEGIN
+	WITH sel SELECT
+		result &amp;lt;= data15 WHEN &quot;1111&quot;,
+				  data14 WHEN &quot;1110&quot;,
+				  data13 WHEN &quot;1101&quot;,
+				  data12 WHEN &quot;1100&quot;,
+				  data11 WHEN &quot;1011&quot;,
+				  data10 WHEN &quot;1010&quot;,
+				  data9	 WHEN &quot;1001&quot;,
+				  data8	 WHEN &quot;1000&quot;,
+				  data7	 WHEN &quot;0111&quot;,
+				  data6	 WHEN &quot;0110&quot;,
+				  data5	 WHEN &quot;0101&quot;,
+				  data4	 WHEN &quot;0100&quot;,
+				  data3	 WHEN &quot;0011&quot;,
+				  data2	 WHEN &quot;0010&quot;,
+				  data1	 WHEN &quot;0001&quot;,
+				  data0	 WHEN &quot;0000&quot;,
+				  &#39;0&#39;    WHEN others;
+END;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s all =]&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Apr 2015 00:31:36 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-mux-16.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-mux-16.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>VHDL Snippets - Decode 3 to 4 Enable and Clock</title>
+        <description>&lt;p&gt;This decode 3 to 4 has outputs only for binary 1, 4, 5 and 6 (particularities of our project), enable input and clock.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ENTITY decode3to4 IS
+	PORT (	enable : IN STD_LOGIC;
+			data   : IN STD_LOGIC_VECTOR (2 downto 0);  -- 3-bit input
+			clock  : IN STD_LOGIC;
+			eq1    : OUT STD_LOGIC;
+			eq4    : OUT STD_LOGIC;
+			eq5    : OUT STD_LOGIC;
+			eq6    : OUT STD_LOGIC);
+END decode3to4;
+ARCHITECTURE behavior OF decode3to4 IS
+BEGIN
+  PROCESS (clock,enable,data)
+  BEGIN
+      IF clock&#39;EVENT AND clock=&#39;1&#39; THEN
+          eq1 &amp;lt;= &#39;0&#39;; eq4 &amp;lt;= &#39;0&#39;; eq5 &amp;lt;= &#39;0&#39;; eq6 &amp;lt;= &#39;0&#39;;
+          IF (enable = &#39;1&#39;) THEN  -- active high enable pin
+              CASE data IS
+                  WHEN &quot;001&quot; =&amp;gt; eq1 &amp;lt;= &#39;1&#39;;
+                  WHEN &quot;100&quot; =&amp;gt; eq4 &amp;lt;= &#39;1&#39;;
+                  WHEN &quot;101&quot; =&amp;gt; eq5 &amp;lt;= &#39;1&#39;;
+                  WHEN &quot;110&quot; =&amp;gt; eq6 &amp;lt;= &#39;1&#39;;
+                  WHEN others =&amp;gt; eq1 &amp;lt;= &#39;0&#39;; eq4 &amp;lt;= &#39;0&#39;; eq5 &amp;lt;= &#39;0&#39;; eq6 &amp;lt;= &#39;0&#39;;
+              END CASE;
+          END IF;
+      END IF;
+  END PROCESS;
+END;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s all =]&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Apr 2015 00:23:39 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-3-to-4-enable-and-clock.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-3-to-4-enable-and-clock.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>VHDL Snippets - Decode 2 to 4 top</title>
+        <description>&lt;p&gt;This decode 2 to 4 have a enable input and its output is low when activated.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+ENTITY decode_2to4_top IS
+	PORT (	A  : IN STD_LOGIC_VECTOR (1 downto 0); -- 2-bit input
+			EN : IN STD_LOGIC -- enable input
+			X  : OUT STD_LOGIC_VECTOR (3 downto 0)); -- 4-bit output
+END decode_2to4_top;
+ARCHITECTURE behavior OF decode_2to4_top IS
+BEGIN
+PROCESS (A, EN)
+BEGIN
+	X &amp;lt;= &quot;1111&quot;;        -- default output value
+	IF (EN = &#39;1&#39;) THEN  -- active high enable pin
+		case A is
+			WHEN &quot;00&quot; =&amp;gt; X(0) &amp;lt;= &#39;0&#39;;
+			WHEN &quot;01&quot; =&amp;gt; X(1) &amp;lt;= &#39;0&#39;;
+			WHEN &quot;10&quot; =&amp;gt; X(2) &amp;lt;= &#39;0&#39;;
+			WHEN &quot;11&quot; =&amp;gt; X(3) &amp;lt;= &#39;0&#39;;
+			WHEN others =&amp;gt; X &amp;lt;= &quot;1111&quot;;
+		END CASE;
+	END IF;
+END PROCESS;
+END;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s all =]&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Apr 2015 00:14:41 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-2-to-4-top.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-2-to-4-top.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>VHDL Snippets - Decode 8-bit</title>
+        <description>&lt;p&gt;Following a 8-bit decode:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ENTITY decode8 IS
+	PORT (	enable : IN STD_LOGIC;
+			data   : IN STD_LOGIC_VECTOR (3 downto 0);  -- 3-bit input
+			eq0    : OUT STD_LOGIC;
+			eq1    : OUT STD_LOGIC;
+			eq2    : OUT STD_LOGIC;
+			eq3    : OUT STD_LOGIC;
+			eq4    : OUT STD_LOGIC;
+			eq5    : OUT STD_LOGIC;
+			eq6    : OUT STD_LOGIC;
+			eq7    : OUT STD_LOGIC);
+END decode8;
+ARCHITECTURE behavior OF decode8 IS
+BEGIN
+	PROCESS (data)
+	BEGIN
+		eq0 &amp;lt;= &#39;0&#39;; eq1 &amp;lt;= &#39;0&#39;; eq2 &amp;lt;= &#39;0&#39;; eq3 &amp;lt;= &#39;0&#39;; eq4 &amp;lt;= &#39;0&#39;; eq5 &amp;lt;= &#39;0&#39;; eq6 &amp;lt;= &#39;0&#39;; eq7 &amp;lt;= &#39;0&#39;;
+		IF (enable = &#39;1&#39;) THEN
+			CASE data IS
+				WHEN &quot;000&quot; =&amp;gt; eq0 &amp;lt;= &#39;1&#39;;
+				WHEN &quot;001&quot; =&amp;gt; eq1 &amp;lt;= &#39;1&#39;;
+				WHEN &quot;010&quot; =&amp;gt; eq2 &amp;lt;= &#39;1&#39;;
+				WHEN &quot;011&quot; =&amp;gt; eq3 &amp;lt;= &#39;1&#39;;
+				WHEN &quot;100&quot; =&amp;gt; eq4 &amp;lt;= &#39;1&#39;;
+				WHEN &quot;101&quot; =&amp;gt; eq5 &amp;lt;= &#39;1&#39;;
+				WHEN &quot;110&quot; =&amp;gt; eq6 &amp;lt;= &#39;1&#39;;
+				WHEN &quot;111&quot; =&amp;gt; eq7 &amp;lt;= &#39;1&#39;;
+				WHEN others =&amp;gt; eq0&amp;lt;= &#39;0&#39;;eq1&amp;lt;= &#39;0&#39;;eq2&amp;lt;= &#39;0&#39;;eq3&amp;lt;= &#39;0&#39;;eq4&amp;lt;= &#39;0&#39;;eq5&amp;lt;= &#39;0&#39;;eq6&amp;lt;= &#39;0&#39;;eq7&amp;lt;= &#39;0&#39;;
+			END CASE;
+		END IF;
+	END PROCESS;
+END;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s all =]&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Apr 2015 00:05:27 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-8-bit.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-8-bit.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>VHDL Snippets - Vector Comparator</title>
+        <description>&lt;p&gt;I’ve been working with some VHDL code for a Digital Logic Design course for my Ph.D. My project was to implement some kind of artificial neural network in hardware.&lt;/p&gt;
+
+&lt;p&gt;I have used one thesis as a basis, but I’ve been thinking to put here some code that I actually had to implement. Simple stuff that you actually can find online, but that could help someone, how knows!?&lt;/p&gt;
+
+&lt;p&gt;Starting with a simple vector comparator:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ENTITY comp_pulse IS
+	PORT (	dataa : IN STD_LOGIC_VECTOR (7 downto 0);
+			datab : IN STD_LOGIC_VECTOR (7 downto 0);
+			alb	: OUT STD_LOGIC);
+END comp_pulse;
+ARCHITECTURE behavior of comp_pulse IS
+BEGIN
+	alb &amp;lt;= &#39;1&#39; when (dataa &amp;lt; datab) else &#39;0&#39;;
+END;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This entity performs the unsigned comparison a &amp;lt; b.&lt;/p&gt;
+
+&lt;p&gt;That’s all =]&lt;/p&gt;
+</description>
+        <pubDate>Mon, 13 Apr 2015 23:38:59 -0400</pubDate>
+        <link>http://viniciusprado.org/2015/04/13/vhdl-snippets-vector-comparator.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/13/vhdl-snippets-vector-comparator.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
