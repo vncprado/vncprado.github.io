@@ -15,5 +15,13 @@ twitter_username: vncprado
 github_username:  vncprado
 permalink: "/:title/"
 
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: "Vincius Prado da Fonseca"
+
 # Build settings
 markdown: kramdown

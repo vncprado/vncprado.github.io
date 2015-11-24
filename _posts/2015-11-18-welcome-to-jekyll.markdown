@@ -5,13 +5,11 @@ date:   2015-11-18 15:09:26 -0500
 categories: jekyll update
 ---
 
-I'll try to start using [Jekyll](http://jekyllrb.com/) + [Github](http://pages.github.com) pages for simplicity. Manage a server takes too much time. With Jekyll I'll be able to have a small public technical blog without comprising my time which I barely manage now.
+I'll try to start using [Jekyll](http://jekyllrb.com/) + [Github](http://pages.github.com) pages for simplicity. Manage a server takes too much time. With Jekyll, I'll be able to have a small technical blog without taking my time which I barely manage now.
 
-I only have to understand now how to automatize this posts meta data. Probably will be easier then maintaining a hole simple system like ghost.
+I only have to understand now how to automatize this posts metadata. Probably will be easier than maintaining a whole system like I did with [Ghost](http://ghost.org).
 
-Following below the original "Welcome to Jekyll!" post.
-
-That's All!
+Following below the original "Welcome to Jekyll!" post. That's All!
 
 ---
 

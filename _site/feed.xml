@@ -5,30 +5,17 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Nov 2015 00:30:34 -0500</pubDate>
-    <lastBuildDate>Tue, 24 Nov 2015 00:30:34 -0500</lastBuildDate>
+    <pubDate>Tue, 24 Nov 2015 01:11:16 -0500</pubDate>
+    <lastBuildDate>Tue, 24 Nov 2015 01:11:16 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>apenas um teste</title>
-        <description>
-</description>
-        <pubDate>Mon, 23 Nov 2015 00:00:00 -0500</pubDate>
-        <link>http://viniciusprado.org/apenas-um-teste/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/apenas-um-teste/</guid>
-        
-        
-      </item>
-    
-      <item>
         <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;I’ll try to start using &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; + &lt;a href=&quot;http://pages.github.com&quot;&gt;Github&lt;/a&gt; pages for simplicity. Manage a server takes too much time. With Jekyll I’ll be able to have a small public technical blog without comprising my time which I barely manage now.&lt;/p&gt;
+        <description>&lt;p&gt;I’ll try to start using &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; + &lt;a href=&quot;http://pages.github.com&quot;&gt;Github&lt;/a&gt; pages for simplicity. Manage a server takes too much time. With Jekyll, I’ll be able to have a small technical blog without taking my time which I barely manage now.&lt;/p&gt;
 
-&lt;p&gt;I only have to understand now how to automatize this posts meta data. Probably will be easier then maintaining a hole simple system like ghost.&lt;/p&gt;
+&lt;p&gt;I only have to understand now how to automatize this posts metadata. Probably will be easier than maintaining a whole system like I did with &lt;a href=&quot;http://ghost.org&quot;&gt;Ghost&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Following below the original “Welcome to Jekyll!” post.&lt;/p&gt;
-
-&lt;p&gt;That’s All!&lt;/p&gt;
+&lt;p&gt;Following below the original “Welcome to Jekyll!” post. That’s All!&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -410,6 +397,59 @@ END;
         <pubDate>Mon, 13 Apr 2015 23:38:59 -0400</pubDate>
         <link>http://viniciusprado.org/vhdl-snippets-vector-comparator/</link>
         <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-vector-comparator/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Simple bilingual site with javascript</title>
+        <description>&lt;p&gt;The root directory of this domain is redirected to my &lt;a href=&quot;http://viniciusprado.org/cv&quot;&gt;resumé&lt;/a&gt;. It’s a simple Html+CSS+Javascript page where I use one &lt;a href=&quot;http://html5up.net/&quot;&gt;HTML5UP&lt;/a&gt; free template.&lt;/p&gt;
+
+&lt;p&gt;I made some changes, but the most interesting is that I made a simple script change the language of the whole site.&lt;/p&gt;
+
+&lt;p&gt;Basically, there is two CSS classes (en and pt) which objects (paragraphs, links or titles) for each language will be shown in their version of the site.&lt;/p&gt;
+
+&lt;p&gt;One small function to load English as default language if user browser is not in Portuguese:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function set_initial_lang() {
+  	var userLang = navigator.language || navigator.userLanguage;
+  	var userLang_lower = userLang.toLowerCase();
+
+  	set_lang(userLang_lower);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;One function that gets user language and hides/shows every object that belong to that class.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function set_lang(userLang) {
+	var en_p = document.getElementsByClassName(&#39;en&#39;);
+    var pt_p = document.getElementsByClassName(&#39;pt&#39;);
+
+  	if (userLang == &quot;pt-br&quot; || userLang == &quot;pt&quot;) {
+      	for (var i = 0; i &amp;lt; en_p.length; i++) {
+          	en_p[i].style.display = &#39;none&#39;;
+          	pt_p[i].style.display = &#39;block&#39;;
+      	}
+  	} else {
+      	for (var i = 0; i &amp;lt; en_p.length; i++) {
+          	pt_p[i].style.display = &#39;none&#39;;
+          	en_p[i].style.display = &#39;block&#39;;
+      	}
+  	}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Still in time, for this template, I used some &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;span&amp;gt;&lt;/code&gt; to get it working inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;li&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
+
+&lt;p&gt;This CV website is avaible on &lt;a href=&quot;https://github.com/vncprado/cv2&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s all =)&lt;/p&gt;
+</description>
+        <pubDate>Fri, 03 Apr 2015 23:14:15 -0400</pubDate>
+        <link>http://viniciusprado.org/simple-bilingual-site-with-javascript/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/simple-bilingual-site-with-javascript/</guid>
         
         
       </item>
