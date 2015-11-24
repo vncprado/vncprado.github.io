@@ -5,16 +5,15 @@ date:   2015-11-18 15:09:26 -0500
 categories: jekyll update
 ---
 
-I'll try to start using <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> + <a href="http://pages.github.com" target="_blank">Github</a> pages for simplicity. Manage a server takes too much time. With jekyll I'll be able to have a small public thecnical blog without comrising my time which I baraly manage now.
+I'll try to start using [Jekyll](http://jekyllrb.com/) + [Github](http://pages.github.com) pages for simplicity. Manage a server takes too much time. With Jekyll I'll be able to have a small public technical blog without comprising my time which I barely manage now.
 
-I only have to understand now how to automatize this posts meta data. Probably will be easier then mantain a hole simple sistem like ghost.
+I only have to understand now how to automatize this posts meta data. Probably will be easier then maintaining a hole simple system like ghost.
 
 Following below the original "Welcome to Jekyll!" post.
 
 That's All!
 
 ---
-
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 

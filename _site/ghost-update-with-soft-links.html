@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Welcome to Jekyll!</title>
-  <meta name="description" content="I’ll try to start using Jekyll + Github pages for simplicity. Manage a server takes too much time. With Jekyll I’ll be able to have a small public technical ...">
+  <title>Ghost update with soft links</title>
+  <meta name="description" content="Trying to find some easy way to update this blog, which uses ghost, I made some symbolic links and a small configuration.The actual folder location and links...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll.html">
+  <link rel="canonical" href="http://viniciusprado.org/ghost-update-with-soft-links">
   <link rel="alternate" type="application/rss+xml" title="Vanishing Point" href="http://viniciusprado.org/feed.xml">
 </head>
 
@@ -57,35 +57,75 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Welcome to Jekyll!</h1>
-    <p class="post-meta"><time datetime="2015-11-18T15:09:26-05:00" itemprop="datePublished">Nov 18, 2015</time></p>
+    <h1 class="post-title" itemprop="name headline">Ghost update with soft links</h1>
+    <p class="post-meta"><time datetime="2014-08-13T23:38:17-04:00" itemprop="datePublished">Aug 13, 2014</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>I’ll try to start using <a href="http://jekyllrb.com/">Jekyll</a> + <a href="http://pages.github.com">Github</a> pages for simplicity. Manage a server takes too much time. With Jekyll I’ll be able to have a small public technical blog without comprising my time which I barely manage now.</p>
+    <p>Trying to find some easy way to update this blog, which uses <a href="https://ghost.org/">ghost</a>, I made some symbolic links and a small configuration.
+The actual folder location and links are:</p>
 
-<p>I only have to understand now how to automatize this posts meta data. Probably will be easier then maintaining a hole simple system like ghost.</p>
+<ul>
+  <li>/var/www/ghost ~&gt; /var/www/ghost-data/versions/ghost-&lt;version&gt;/</li>
+  <li>/var/www/ghost-data/versions/ghost-&lt;version&gt;/config.js ~&gt; /var/www/ghost-data/config.js</li>
+  <li>/var/www/ghost-data/content</li>
+</ul>
 
-<p>Following below the original “Welcome to Jekyll!” post.</p>
+<p>This way I can change the version simply doing:</p>
 
-<p>That’s All!</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ ln -s /var/ghost-data/versions/ghost-&lt;version&gt;/ /var/www/ghost
+</code></pre>
+</div>
 
-<hr />
+<p>And setting the configuration file:</p>
 
-<p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ ln -s /var/ghost-data/config.js /var/ghost-data/versions/ghost-&lt;version&gt;/config.js
+</code></pre>
+</div>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>In order to matain only one content folder. The content folder is in the same base folder as config.js and versions folder:</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>/var/www/ghost-data/content
+</code></pre>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<p>but a small configuration in config.js is needed to make ghost see the content folder outside ghost installation folder:</p>
 
-<p>Check out the <a href="http://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>paths: {
+	contentPath: path.join(__dirname, '/path/to/content/dir/')
+}
+</code></pre>
+</div>
 
+<p>One can see that the config file have their symbolic link to the real file and content folder is located outside the folder of ghost’s new version.</p>
+
+<p>By the documentation, with a new version you have to run in its folder:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ npm install --production
+</code></pre>
+</div>
+
+<p>All soft links and folders must be owned by ghost user and group, so:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ chown ghost:ghost /var/www/ghost/*
+</code></pre>
+</div>
+
+<p>Restart ghost:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ service ghost restart
+</code></pre>
+</div>
+
+<p>I used to restart apache too:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ service apache2 restart
+</code></pre>
+</div>
+
+<p>It was hard to solve (mainly because I dont know about the path config option and for a week I tryed to use soft links in the content folder too) but so far I’ve had no problems. And I believe it will be easier to update that way, just a metter of copy files, and make two soft links =)</p>
+
+<p>That’s all.</p>
 
   </div>
 

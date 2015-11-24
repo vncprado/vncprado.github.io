@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Welcome to Jekyll!</title>
-  <meta name="description" content="I’ll try to start using Jekyll + Github pages for simplicity. Manage a server takes too much time. With Jekyll I’ll be able to have a small public technical ...">
+  <title>How To Install and Configure Codiad in Your Own Server</title>
+  <meta name="description" content="Codiad IDE in its own definition:">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll.html">
+  <link rel="canonical" href="http://viniciusprado.org/how-to-install-and-configure-codiad-in-your-own-server/">
   <link rel="alternate" type="application/rss+xml" title="Vanishing Point" href="http://viniciusprado.org/feed.xml">
 </head>
 
@@ -57,35 +57,49 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Welcome to Jekyll!</h1>
-    <p class="post-meta"><time datetime="2015-11-18T15:09:26-05:00" itemprop="datePublished">Nov 18, 2015</time></p>
+    <h1 class="post-title" itemprop="name headline">How To Install and Configure Codiad in Your Own Server</h1>
+    <p class="post-meta"><time datetime="2015-02-14T23:17:56-05:00" itemprop="datePublished">Feb 14, 2015</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>I’ll try to start using <a href="http://jekyllrb.com/">Jekyll</a> + <a href="http://pages.github.com">Github</a> pages for simplicity. Manage a server takes too much time. With Jekyll I’ll be able to have a small public technical blog without comprising my time which I barely manage now.</p>
+    <p>Codiad IDE in its own definition:</p>
 
-<p>I only have to understand now how to automatize this posts meta data. Probably will be easier then maintaining a hole simple system like ghost.</p>
+<blockquote>
+  <p>“…is a web-based IDE framework with a small footprint and minimal requirements.”</p>
+</blockquote>
 
-<p>Following below the original “Welcome to Jekyll!” post.</p>
+<p>Having this in mind is expected that configure Codiad in your server should be really easy and it is.
+As a solution for coding in a Chromebook, Codiad is almost perfect. For what I want to use, I found two major issues as I will describe along with the text.</p>
 
-<p>That’s All!</p>
+<h6 id="installation">Installation</h6>
+<p>I followed <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-codiad-a-web-based-ide-on-an-ubuntu-vps">this</a> tutorial and it works really well. Besides the installation It shows how to configure htaccess for a better authentication. Although Codiad asks for login too what is a little bit annoying. I dont figure out how to disable this second login but probably there is a way to do this.</p>
 
-<hr />
+<h6 id="plugins">Plugins</h6>
 
-<p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<p>Codiad has a plugin system that works simply copying (or cloning) plugins to its plugin folder. And they have a selection of plugins in their <a href="http://market.codiad.com/">market</a>.</p>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>So all you need to do is:</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd ~/Codiad/plugins/
+$ git clone https://github.com/Fluidbyte/Codiad-Terminal.git 
+</code></pre>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<p>and you can use a terminal emulator inside your IDE.
+To use the terminal you need to put a password (“terminal” by default). The main drawbacks is that it is a really simple terminal (e.g. there is no autocompletion).</p>
 
-<p>Check out the <a href="http://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+<p>I installed the git plugin too:</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/Andr3as/Codiad-CodeGit.git
+</code></pre>
+</div>
+
+<p>but I didn’t try it a lot (I had some issues with my github ssh accounts that time).</p>
+
+<p>It is a really nice option for an web-based IDE. The plugin system is really easy but I think they need to be more useful.</p>
+
+<p>At this time I moved for Cloud9. It is a more powerful IDE and it has advanced terminal and plugin options too.
+I made an installation tutorial <a href="http://blog.viniciusprado.org/how-to-install-and-configure-cloud9-in-your-own-server">here</a>.</p>
 
   </div>
 

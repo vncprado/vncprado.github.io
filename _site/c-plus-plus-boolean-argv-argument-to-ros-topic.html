@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Welcome to Jekyll!</title>
-  <meta name="description" content="I’ll try to start using Jekyll + Github pages for simplicity. Manage a server takes too much time. With Jekyll I’ll be able to have a small public technical ...">
+  <title>C++ boolean argv argument to ROS topic</title>
+  <meta name="description" content="In our lab, we’ve been working on an ROS solution to record movements and playback then in a servo-controlled DF-Robot called Dr Robot a.k.a. Pumpkin.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll.html">
+  <link rel="canonical" href="http://viniciusprado.org/c-plus-plus-boolean-argv-argument-to-ros-topic">
   <link rel="alternate" type="application/rss+xml" title="Vanishing Point" href="http://viniciusprado.org/feed.xml">
 </head>
 
@@ -57,35 +57,53 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Welcome to Jekyll!</h1>
-    <p class="post-meta"><time datetime="2015-11-18T15:09:26-05:00" itemprop="datePublished">Nov 18, 2015</time></p>
+    <h1 class="post-title" itemprop="name headline">C++ boolean argv argument to ROS topic</h1>
+    <p class="post-meta"><time datetime="2015-03-16T10:50:50-04:00" itemprop="datePublished">Mar 16, 2015</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>I’ll try to start using <a href="http://jekyllrb.com/">Jekyll</a> + <a href="http://pages.github.com">Github</a> pages for simplicity. Manage a server takes too much time. With Jekyll I’ll be able to have a small public technical blog without comprising my time which I barely manage now.</p>
+    <p>In our lab, we’ve been working on an <a href="http://www.ros.org/">ROS</a> solution to record movements and playback then in a servo-controlled DF-Robot called Dr Robot a.k.a. Pumpkin.</p>
 
-<p>I only have to understand now how to automatize this posts meta data. Probably will be easier then maintaining a hole simple system like ghost.</p>
+<p>To change a MOSFET status we use this simple and useful snippet to get a boolean variable from the command line in C++, publishing the value as a topic for ROS.</p>
 
-<p>Following below the original “Welcome to Jekyll!” post.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>#include "ros/ros.h"
+#include "std_msgs/Bool.h"
 
-<p>That’s All!</p>
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "mosfet_status_publisher");
+  ros::NodeHandle n;
+  ros::Publisher mosfet_status_pub = n.advertise&lt;std_msgs::Bool&gt;("mosfet_status", 1000);
+  ros::Rate loop_rate(10);
 
-<hr />
+  bool status;
+  char* status_char;
 
-<p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+  if (argc &lt;= 1) {
+      status = false;
+  } else {
+      status_char = argv[1];
+      std::stringstream ss;
+      ss &lt;&lt; status_char;
+      ss &gt;&gt; std::boolalpha &gt;&gt; status;
+  }
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+  int count = 0;
+  std_msgs::Bool mosfet_status;
+  while (ros::ok()) {
+      mosfet_status.data = status;
+      mosfet_status_pub.publish(mosfet_status);
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+      ros::spinOnce();
+      loop_rate.sleep();
+      ++count;
+  }
+  return 0;
+}
+</code></pre>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
-
-<p>Check out the <a href="http://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
-
+<p>If there isn’t arguments, false is the default value published.
+That’s all.</p>
 
   </div>
 
