@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>How To Install and Configure Cloud9 in Your Own Server</title>
-  <meta name="description" content="I’ve been watching Cloud 9 for a while for this project. I like their online IDE. Even in localhost would be nice to have something for development really wo...">
+  <title>apenas um teste</title>
+  <meta name="description" content="">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://viniciusprado.org/2015/02/15/how-to-install-and-configure-cloud9-in-your-own-server.html">
+  <link rel="canonical" href="http://viniciusprado.org/2015/11/23/apenas-um-teste.html">
   <link rel="alternate" type="application/rss+xml" title="Vanishing Point" href="http://viniciusprado.org/feed.xml">
 </head>
 
@@ -57,76 +57,12 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">How To Install and Configure Cloud9 in Your Own Server</h1>
-    <p class="post-meta"><time datetime="2015-02-15T00:21:31-05:00" itemprop="datePublished">Feb 15, 2015</time></p>
+    <h1 class="post-title" itemprop="name headline">apenas um teste</h1>
+    <p class="post-meta"><time datetime="2015-11-23T00:00:00-05:00" itemprop="datePublished">Nov 23, 2015</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>I’ve been watching <a href="http://c9.io">Cloud 9</a> for a while for this project. I like their online IDE. Even in localhost would be nice to have something for development really working in the browser for many reasons.</p>
-
-<p>But the version they had available in github was really poor comparing to the running version online. Which is really understandable, because they work with paid plans.</p>
-
-<p>But I recently they released the <a href="https://github.com/c9/core/">Cloud9 3.0 SDK</a> version.
-I don’t know how much this version is similar to online version but for my purposes is already good enough.</p>
-
-<p>So less talk and more action.</p>
-
-<h6 id="installation">Installation</h6>
-
-<p>In my setup I have an <code class="highlighter-rouge">Apache2</code>, <code class="highlighter-rouge">Node.js</code> and <code class="highlighter-rouge">forever</code> installed previously. You will need to google how to install these things first. I use a dev subdomain for Cloud9 but other Apache configurations would be quite similar. Besides that I have one user (not root) for development. In this user’s home folder we have the Cloud9 code and the workspace.</p>
-
-<p>Login with your developer user (I used ssh). Clone the Cloud9 project in its home folder:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cd ~/
-git clone https://github.com/c9/core.git c9sdk
-</code></pre>
-</div>
-
-<p>Then go to the project and install it</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cd c9sdk/
-scripts/install-sdk.sh
-</code></pre>
-</div>
-
-<p>Now, still in the cloud9 folder, use <code class="highlighter-rouge">forever</code> to start the server with the following parameters:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>forever start server.js -p 8181 -w ~/workspace/ -l 0.0.0.0 --auth username:passswd
-</code></pre>
-</div>
-
-<p>Select an username and password to login in addition a workspace folder.</p>
-
-<p>In apache, create a dev.conf file:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo nano /etc/apache2/sites-avaible/dev.conf
-</code></pre>
-</div>
-
-<p>Paste the following lines inside the file:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
-    ServerName dev.yourdomain.org
-    ProxyPass / http://0.0.0.0:8181/
-    ProxyPassReverse / http://0.0.0.0:8181/
-    ProxyPreserveHost On
-&lt;/VirtualHost&gt;
-</code></pre>
-</div>
-
-<p>Enable the site:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo a2ensite dev
-</code></pre>
-</div>
-
-<p>Finally restart Apache:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo service apache2 restart
-</code></pre>
-</div>
-
-<p>In a comparison with Codiad, I think that Cloud9 is far more robust and stable. Besides having a better terminal, which permits a large range of development.</p>
+    
 
   </div>
 

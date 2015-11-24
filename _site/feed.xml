@@ -2,13 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vanishing Point</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</description>
+    <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Nov 2015 17:19:23 -0500</pubDate>
-    <lastBuildDate>Fri, 20 Nov 2015 17:19:23 -0500</lastBuildDate>
+    <pubDate>Tue, 24 Nov 2015 00:15:55 -0500</pubDate>
+    <lastBuildDate>Tue, 24 Nov 2015 00:15:55 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>apenas um teste</title>
+        <description>
+</description>
+        <pubDate>Mon, 23 Nov 2015 00:00:00 -0500</pubDate>
+        <link>http://viniciusprado.org/2015/11/23/apenas-um-teste.html</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/11/23/apenas-um-teste.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -45,17 +55,6 @@
         <category>jekyll</category>
         
         <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>teste</title>
-        <description>
-</description>
-        <pubDate>Wed, 18 Nov 2015 00:00:00 -0500</pubDate>
-        <link>http://viniciusprado.org/2015/11/18/teste.html</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/11/18/teste.html</guid>
-        
         
       </item>
     
