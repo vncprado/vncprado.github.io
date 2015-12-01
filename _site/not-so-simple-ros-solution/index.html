@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>No so simple ROS Solution</title>
-  <meta name="description" content="In our lab there is a robot in which we’ve been working a lot since the beginig of the year.I’ll ewxplain a little bit about it and show our implementations ...">
+  <title>Simple standalone computer solution for our robot</title>
+  <meta name="description" content="In our lab there is a robot for demos in which we’ve been working a lot since the beginning of this year. I’ll explain a little bit about it and show our imp...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://viniciusprado.org/not-so-simple-ros-solution/">
@@ -57,18 +57,18 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">No so simple ROS Solution</h1>
-    <p class="post-meta"><time datetime="2015-11-27T00:00:00-05:00" itemprop="datePublished">Nov 27, 2015</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Vincius Prado da Fonseca</span></span></p>
+    <h1 class="post-title" itemprop="name headline">Simple standalone computer solution for our robot</h1>
+    <p class="post-meta"><time datetime="2015-11-30T00:00:00-05:00" itemprop="datePublished">Nov 30, 2015</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Vincius Prado da Fonseca</span></span></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>In our lab there is a robot in which we’ve been working a lot since the beginig of the year.
-I’ll ewxplain a little bit about it and show our implementations in some post in the future.</p>
+    <p>In our lab there is a robot for demos in which we’ve been working a lot since the beginning of this year. I’ll explain a little bit about it and show our implementations in some post in the future.</p>
 
-<p>Now I just want to talk about our standalone computer solution: <a href="https://www.raspberrypi.org/">Raspberry Pi</a> + <a href="https://wiki.ubuntu.com/ARM/RaspberryPi">Ubuntu</a> + <a href="http://wiki.ros.org/indigo/Installation/UbuntuARM">ROS</a> both for ARM.
-Quite simple, right? Not really.</p>
+<p>Now I want to talk about our standalone computer solution for this robot: <a href="https://www.raspberrypi.org/">Raspberry Pi 2</a> + <a href="https://wiki.ubuntu.com/ARM/RaspberryPi">Ubuntu-ARM</a> + <a href="http://wiki.ros.org/indigo/Installation/UbuntuARM">ROS-ARM</a>. Quite simple, right? At this point yes, but I first tried using Raspbian in a Raspberry Pi A+ but its small RAM and limitations, which alone deserves a post, was almost impossible.</p>
 
-<p>I first tried to install in a raspberry pi A+ but its small RAM and limitations persé deservers a post.</p>
+<p>I am sure need to try again but without an ROS-ARM repository for Debian things are hard. Using Raspberry 2 with Ubuntu installed, I had an initialization script set up for configuration and launch our robot code. In this way our solution provides a simple way to have the robot work with our code without any huge changes or portabilities. So It’s just put a battery and you have the robot running.</p>
+
+<p>That’s All!</p>
 
   </div>
 
