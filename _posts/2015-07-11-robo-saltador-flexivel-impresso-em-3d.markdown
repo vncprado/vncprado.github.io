@@ -2,7 +2,9 @@
 layout: post
 title: Robô saltador flexível impresso em 3D [Pros/Cons]
 date: 2015-07-11 13:24:22.000000000 -04:00
+header-img: "img/sapo-robo-g1-1.gif"
 ---
+
 Quando aparecem notícias sobre ciência na mídia, a pesquisa é apresentada de forma simplificada, até pelos próprios cientistas. A ideia é que o publico geral consiga absorver e entender os possíveis prognósticos do trabalho. Mas esse tipo de publicação deixa passar alguns pontos positivos e negativos inerentes de qualquer trabalho científico.
 
 Com isso em mente vou destacar alguns prós e contras do trabalho que foi divulgado como ["robô que salta igual um sapo"](http://g1.globo.com/tecnologia/noticia/2015/07/pesquisadores-de-harvard-criam-robo-capaz-de-saltar-como-sapos-veja.html) para tentar entender melhor a publicação. Não estou interessado em falar "mal" da notícia. É apenas um exercício de leitura do [artigo publicado](http://www.sciencemag.org/content/349/6244/161).

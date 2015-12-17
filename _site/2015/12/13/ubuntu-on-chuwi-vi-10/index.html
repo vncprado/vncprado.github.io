@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hey Kowalski, you out there?">
+
+    <title>Ubuntu on Chuwi Vi 10 - Vanishing Point</title>
+
+    <link rel="canonical" href="http://viniciusprado.org/2015/12/13/ubuntu-on-chuwi-vi-10/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Vanishing Point</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+                
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Ubuntu on Chuwi Vi 10</h1>
+                    
+                    <span class="meta">Posted by Vincius Prado da Fonseca on December 13, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>I’m writing this post to summarize all stuff I’ve been trying on my Chuwi Vi 10 tablet to work with Ubuntu.</p>
+
+<p>Here is some aspects of it:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th style="text-align: center">Specs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Audio</td>
+      <td style="text-align: center">Realtek ALC 5642 (byt_rt5640)</td>
+    </tr>
+    <tr>
+      <td>MIPI Panel</td>
+      <td style="text-align: center">Panasonic 19x12</td>
+    </tr>
+    <tr>
+      <td>WIFI</td>
+      <td style="text-align: center">Realtek RGN RTL8723BS</td>
+    </tr>
+    <tr>
+      <td>Rear camera</td>
+      <td style="text-align: center">Lite-On 13P2BA829</td>
+    </tr>
+    <tr>
+      <td>Front camera</td>
+      <td style="text-align: center">Lite-On 13P2BA829</td>
+    </tr>
+    <tr>
+      <td>Bluetooth</td>
+      <td style="text-align: center">Realtek RGN RTL8723BS</td>
+    </tr>
+    <tr>
+      <td>Charger</td>
+      <td style="text-align: center">X-Powers integrated (AXP288)</td>
+    </tr>
+    <tr>
+      <td>Fuel Gauge</td>
+      <td style="text-align: center">X-Powers integrated (AXP288)</td>
+    </tr>
+    <tr>
+      <td>ALS Sensor</td>
+      <td style="text-align: center">Capella CM32181</td>
+    </tr>
+    <tr>
+      <td>Gyro Sensor</td>
+      <td style="text-align: center">Bosch BMG 160</td>
+    </tr>
+    <tr>
+      <td>Accel/Compass</td>
+      <td style="text-align: center">Bosch BMC 150</td>
+    </tr>
+    <tr>
+      <td>Touchscreen</td>
+      <td style="text-align: center">Silead touch</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To boot I made an Ubuntu 14.04 (I tested 15.10 and it boot too) USB drive with <a href="https://rufus.akeo.ie/">Rufus</a> on Windows. The boot need to be made with GPT but I didn’t have time to have an working USB drive created on Ubuntu yet. After created, I put <a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32.efi</a> file at <code>/EFI/boot/</code> Ubuntu USB drive directory.</p>
+
+<p>If you have no graphics after grub, you can type <code>e</code> in grub menu to edit the line starting on <code>linux	/casper/vmlinuz.efi...</code>, remove <code>quite splash</code> and add <code>nomodeset reboot=pci,force</code> in the end.</p>
+
+<p>Using the option <code>Try Ubuntu</code> you would be able to install like in any other computer.</p>
+
+<p>After installation, you need to boot from USB drive again and compile Grub inside your installation, to do so you need any USB dongle for WIFI connection. You can find this instructions <a href="http://www.jfwhome.com/2014/03/07/perfect-ubuntu-or-other-linux-on-the-asus-transformer-book-t100/">here</a>. When Grub starts, type <code>c</code> to enter command line and type:</p>
+
+<pre><code>linux (hd2,gpt5)/boot/vmlinuz-3.13-xxxx root=/dev/mmcblk0p5 video=VGA-1:1368x768e reboot=pci,force
+initrd (hd2,gpt5)/boot/initrd-3.13-xxxx
+boot
+</code></pre>
+
+<p>After booting you need to install some stuff, and clone Grub repository to compile it:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
+</code></pre>
+
+<p>The package <code>ia32_libs</code> maybe a problem because, apparently, it is not anymore on Ubuntu 14.04. To install it try:</p>
+
+<pre><code>sudo -i
+cd /etc/apt/sources.list.d
+echo "deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse" &gt;ia32-libs-raring.list
+apt-get update
+apt-get install ia32-libs
+</code></pre>
+
+<p>Then get the Grub source:</p>
+
+<pre><code>git clone git://git.savannah.gnu.org/grub.git
+</code></pre>
+
+<p>Now build it:</p>
+
+<pre><code>cd grub
+./autogen.sh
+./configure --with-platform=efi --target=i386 --program-prefix=""
+make
+</code></pre>
+
+<p>And install to efi:</p>
+
+<pre><code>cd grub-core
+sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
+</code></pre>
+
+<p>This will create a directory, ‘grub’, in your EFI partition.
+We want to copy the grubia32.efi from there to the location Ubuntu created during installation:</p>
+
+<pre><code>cd /boot/efi/EFI
+sudo cp grub/grubia32.efi ubuntu/grubx64.efi
+</code></pre>
+
+<p>After this command you should be able to boot directly to your new Ubuntu installation.</p>
+
+<p>I’ll (hope to) continue to update this with improvements.
+I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better support for Atom processors. So the idea is to have a newer Ubuntu (probably 15.10 which were already released, or a testing version) in order to get at least basic stuff working.</p>
+
+<p>Some other sources:</p>
+
+<ul>
+  <li><a href="http://techtablets.com/chuwi-vi10/review/">http://techtablets.com/chuwi-vi10/review/</a></li>
+  <li><a href="http://forum.xda-developers.com/windows-8-rt/general/chuwi-vi10-dual-boot-win-8-1-android-4-4-t3112954">http://forum.xda-developers.com/windows-8-rt/general/chuwi-vi10-dual-boot-win-8-1-android-4-4-t3112954</a></li>
+</ul>
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/11/30/not-so-simple-ros-solution/" data-toggle="tooltip" data-placement="top" title="Simple standalone computer solution for our robot">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://www.facebook.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>

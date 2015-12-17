@@ -4,9 +4,9 @@
     <title>Vanishing Point</title>
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
-    <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 13 Dec 2015 22:48:46 -0500</pubDate>
-    <lastBuildDate>Sun, 13 Dec 2015 22:48:46 -0500</lastBuildDate>
+    <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 17 Dec 2015 15:39:30 -0500</pubDate>
+    <lastBuildDate>Thu, 17 Dec 2015 15:39:30 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -74,65 +74,58 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;To boot I made an Ubuntu 14.04 (I tested 15.10 and it boot too) USB drive with &lt;a href=&quot;https://rufus.akeo.ie/&quot;&gt;Rufus&lt;/a&gt; on Windows. The boot need to be made with GPT but I didn’t have time to have an working USB drive created on Ubuntu yet. After created, I put &lt;a href=&quot;https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi&quot;&gt;bootia32.efi&lt;/a&gt; file at &lt;code class=&quot;highlighter-rouge&quot;&gt;/EFI/boot/&lt;/code&gt; Ubuntu USB drive directory.&lt;/p&gt;
+&lt;p&gt;To boot I made an Ubuntu 14.04 (I tested 15.10 and it boot too) USB drive with &lt;a href=&quot;https://rufus.akeo.ie/&quot;&gt;Rufus&lt;/a&gt; on Windows. The boot need to be made with GPT but I didn’t have time to have an working USB drive created on Ubuntu yet. After created, I put &lt;a href=&quot;https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi&quot;&gt;bootia32.efi&lt;/a&gt; file at &lt;code&gt;/EFI/boot/&lt;/code&gt; Ubuntu USB drive directory.&lt;/p&gt;
 
-&lt;p&gt;If you have no graphics after grub, you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; in grub menu to edit the line starting on &lt;code class=&quot;highlighter-rouge&quot;&gt;linux	/casper/vmlinuz.efi...&lt;/code&gt;, remove &lt;code class=&quot;highlighter-rouge&quot;&gt;quite splash&lt;/code&gt; and add &lt;code class=&quot;highlighter-rouge&quot;&gt;nomodeset reboot=pci,force&lt;/code&gt; in the end.&lt;/p&gt;
+&lt;p&gt;If you have no graphics after grub, you can type &lt;code&gt;e&lt;/code&gt; in grub menu to edit the line starting on &lt;code&gt;linux	/casper/vmlinuz.efi...&lt;/code&gt;, remove &lt;code&gt;quite splash&lt;/code&gt; and add &lt;code&gt;nomodeset reboot=pci,force&lt;/code&gt; in the end.&lt;/p&gt;
 
-&lt;p&gt;Using the option &lt;code class=&quot;highlighter-rouge&quot;&gt;Try Ubuntu&lt;/code&gt; you would be able to install like in any other computer.&lt;/p&gt;
+&lt;p&gt;Using the option &lt;code&gt;Try Ubuntu&lt;/code&gt; you would be able to install like in any other computer.&lt;/p&gt;
 
-&lt;p&gt;After installation, you need to boot from USB drive again and compile Grub inside your installation, to do so you need any USB dongle for WIFI connection. You can find this instructions &lt;a href=&quot;http://www.jfwhome.com/2014/03/07/perfect-ubuntu-or-other-linux-on-the-asus-transformer-book-t100/&quot;&gt;here&lt;/a&gt;. When Grub starts, type &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; to enter command line and type:&lt;/p&gt;
+&lt;p&gt;After installation, you need to boot from USB drive again and compile Grub inside your installation, to do so you need any USB dongle for WIFI connection. You can find this instructions &lt;a href=&quot;http://www.jfwhome.com/2014/03/07/perfect-ubuntu-or-other-linux-on-the-asus-transformer-book-t100/&quot;&gt;here&lt;/a&gt;. When Grub starts, type &lt;code&gt;c&lt;/code&gt; to enter command line and type:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linux (hd2,gpt5)/boot/vmlinuz-3.13-xxxx root=/dev/mmcblk0p5 video=VGA-1:1368x768e reboot=pci,force
+&lt;pre&gt;&lt;code&gt;linux (hd2,gpt5)/boot/vmlinuz-3.13-xxxx root=/dev/mmcblk0p5 video=VGA-1:1368x768e reboot=pci,force
 initrd (hd2,gpt5)/boot/initrd-3.13-xxxx
 boot
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;After booting you need to install some stuff, and clone Grub repository to compile it:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
+&lt;pre&gt;&lt;code&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;The package &lt;code class=&quot;highlighter-rouge&quot;&gt;ia32_libs&lt;/code&gt; maybe a problem because, apparently, it is not anymore on Ubuntu 14.04. To install it try:&lt;/p&gt;
+&lt;p&gt;The package &lt;code&gt;ia32_libs&lt;/code&gt; maybe a problem because, apparently, it is not anymore on Ubuntu 14.04. To install it try:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -i
+&lt;pre&gt;&lt;code&gt;sudo -i
 cd /etc/apt/sources.list.d
 echo &quot;deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse&quot; &amp;gt;ia32-libs-raring.list
 apt-get update
 apt-get install ia32-libs
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Then get the Grub source:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone git://git.savannah.gnu.org/grub.git
+&lt;pre&gt;&lt;code&gt;git clone git://git.savannah.gnu.org/grub.git
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Now build it:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd grub
+&lt;pre&gt;&lt;code&gt;cd grub
 ./autogen.sh
 ./configure --with-platform=efi --target=i386 --program-prefix=&quot;&quot;
 make
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;And install to efi:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd grub-core
+&lt;pre&gt;&lt;code&gt;cd grub-core
 sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;This will create a directory, ‘grub’, in your EFI partition.
 We want to copy the grubia32.efi from there to the location Ubuntu created during installation:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /boot/efi/EFI
+&lt;pre&gt;&lt;code&gt;cd /boot/efi/EFI
 sudo cp grub/grubia32.efi ubuntu/grubx64.efi
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;After this command you should be able to boot directly to your new Ubuntu installation.&lt;/p&gt;
 
@@ -147,8 +140,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 13 Dec 2015 00:00:00 -0500</pubDate>
-        <link>http://viniciusprado.org/ubuntu-on-chuwi-vi-10/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/ubuntu-on-chuwi-vi-10/</guid>
+        <link>http://viniciusprado.org/2015/12/13/ubuntu-on-chuwi-vi-10/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/12/13/ubuntu-on-chuwi-vi-10/</guid>
         
         
       </item>
@@ -164,8 +157,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 &lt;p&gt;That’s All!&lt;/p&gt;
 </description>
         <pubDate>Mon, 30 Nov 2015 00:00:00 -0500</pubDate>
-        <link>http://viniciusprado.org/not-so-simple-ros-solution/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/not-so-simple-ros-solution/</guid>
+        <link>http://viniciusprado.org/2015/11/30/not-so-simple-ros-solution/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/11/30/not-so-simple-ros-solution/</guid>
         
         
       </item>
@@ -180,24 +173,24 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 
 &lt;hr /&gt;
 
-&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 18 Nov 2015 15:09:26 -0500</pubDate>
-        <link>http://viniciusprado.org/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/welcome-to-jekyll/</guid>
+        <link>http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>
@@ -243,8 +236,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 =]&lt;/p&gt;
 </description>
         <pubDate>Sat, 11 Jul 2015 13:24:22 -0400</pubDate>
-        <link>http://viniciusprado.org/robo-saltador-flexivel-impresso-em-3d/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/robo-saltador-flexivel-impresso-em-3d/</guid>
+        <link>http://viniciusprado.org/2015/07/11/robo-saltador-flexivel-impresso-em-3d/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/07/11/robo-saltador-flexivel-impresso-em-3d/</guid>
         
         
       </item>
@@ -283,8 +276,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 =]&lt;/p&gt;
 </description>
         <pubDate>Mon, 25 May 2015 21:15:18 -0400</pubDate>
-        <link>http://viniciusprado.org/best-pebble-apps-up-to-now-for-me/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/best-pebble-apps-up-to-now-for-me/</guid>
+        <link>http://viniciusprado.org/2015/05/25/best-pebble-apps-up-to-now-for-me/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/05/25/best-pebble-apps-up-to-now-for-me/</guid>
         
         
       </item>
@@ -293,7 +286,7 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
         <title>VHDL Snippets - Clock counter</title>
         <description>&lt;p&gt;In our project this clock counter was user to counter 255 clock then forward a pulse:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+&lt;pre&gt;&lt;code&gt;LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
@@ -324,13 +317,12 @@ BEGIN
 	q &amp;lt;= temp;
 END;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:36:26 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-clock-counter/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-clock-counter/</guid>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-clock-counter/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-clock-counter/</guid>
         
         
       </item>
@@ -339,7 +331,7 @@ END;
         <title>VHDL Snippets - Mux 16</title>
         <description>&lt;p&gt;Implementation of a Mux 16:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+&lt;pre&gt;&lt;code&gt;LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 ENTITY mux16_1 IS
@@ -384,13 +376,12 @@ BEGIN
 				  &#39;0&#39;    WHEN others;
 END;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:31:36 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-mux-16/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-mux-16/</guid>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-mux-16/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-mux-16/</guid>
         
         
       </item>
@@ -399,7 +390,7 @@ END;
         <title>VHDL Snippets - Decode 3 to 4 Enable and Clock</title>
         <description>&lt;p&gt;This decode 3 to 4 has outputs only for binary 1, 4, 5 and 6 (particularities of our project), enable input and clock.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+&lt;pre&gt;&lt;code&gt;LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY decode3to4 IS
 	PORT (	enable : IN STD_LOGIC;
@@ -429,13 +420,12 @@ BEGIN
   END PROCESS;
 END;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:23:39 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-decode-3-to-4-enable-and-clock/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-3-to-4-enable-and-clock/</guid>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-3-to-4-enable-and-clock/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-3-to-4-enable-and-clock/</guid>
         
         
       </item>
@@ -444,7 +434,7 @@ END;
         <title>VHDL Snippets - Decode 2 to 4 top</title>
         <description>&lt;p&gt;This decode 2 to 4 have a enable input and its output is low when activated.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY IEEE;
+&lt;pre&gt;&lt;code&gt;LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 ENTITY decode_2to4_top IS
 	PORT (	A  : IN STD_LOGIC_VECTOR (1 downto 0); -- 2-bit input
@@ -468,13 +458,12 @@ BEGIN
 END PROCESS;
 END;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:14:41 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-decode-2-to-4-top/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-2-to-4-top/</guid>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-2-to-4-top/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-2-to-4-top/</guid>
         
         
       </item>
@@ -483,7 +472,7 @@ END;
         <title>VHDL Snippets - Decode 8-bit</title>
         <description>&lt;p&gt;Following a 8-bit decode:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
+&lt;pre&gt;&lt;code&gt;LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY decode8 IS
 	PORT (	enable : IN STD_LOGIC;
@@ -518,13 +507,12 @@ BEGIN
 	END PROCESS;
 END;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:05:27 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-decode-8-bit/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-8-bit/</guid>
+        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-8-bit/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-8-bit/</guid>
         
         
       </item>
