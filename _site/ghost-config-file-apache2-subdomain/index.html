@@ -38,6 +38,18 @@
 
 <body>
 
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60695381-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -64,10 +76,6 @@
                 </li>
                 
                 <li>
-                    <a href="/about/">About</a>
-                </li>
-                
-                <li>
                     <a href="/contact/">Contact</a>
                 </li>
                 
@@ -80,7 +88,7 @@
 
 
     <!-- Post Header -->
-<header class="intro-header" style="background-image: url('/')">
+<header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -102,9 +110,9 @@
 
 				<p>Using ghost blogging platform with a Apache subdomain is as easy as it may seem.</p>
 
-<p>First I unzipped ghost data at <code class="highlighter-rouge">/var/www/ghost/</code> and followed default install instructions to have it running. Ghost production <code class="highlighter-rouge">IP</code> and <code class="highlighter-rouge">URL</code> in the config file have to be setted to <code class="highlighter-rouge">0.0.0.0</code> and <code class="highlighter-rouge">http://subdomain.example.com</code>, respectively.</p>
+<p>First I unzipped ghost data at <code>/var/www/ghost/</code> and followed default install instructions to have it running. Ghost production <code>IP</code> and <code>URL</code> in the config file have to be setted to <code>0.0.0.0</code> and <code>http://subdomain.example.com</code>, respectively.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>// # Ghost Configuration
+<pre><code>// # Ghost Configuration
 // Setup your Ghost install for various environments
 var path = require('path'),
 	config;
@@ -132,11 +140,10 @@ config = {
 // Export config
 module.exports = config;
 </code></pre>
-</div>
 
-<p>Second I configured a subdomain called <code class="highlighter-rouge">blog</code> that uses apache-proxy to foward ghost port. So the apache config files for the blog are under <code class="highlighter-rouge">/etc/apache2/sites-available/blog</code> and follows:</p>
+<p>Second I configured a subdomain called <code>blog</code> that uses apache-proxy to foward ghost port. So the apache config files for the blog are under <code>/etc/apache2/sites-available/blog</code> and follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
+<pre><code>&lt;VirtualHost *:80&gt;
    		ServerName subdomain.example.com
    		ProxyPass / http://0.0.0.0:2368/
    		ProxyPassReverse / http://0.0.0.0:2368/
@@ -147,13 +154,11 @@ module.exports = config;
    		&lt;/DirectoryMatch&gt;
 &lt;/VirtualHost&gt;
 </code></pre>
-</div>
 
 <p>So finally I would enable the blog:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>user@machine:/etc/apache2/sites-available/# a2ensite blog
+<pre><code>user@machine:/etc/apache2/sites-available/# a2ensite blog
 </code></pre>
-</div>
 
 <p>I think that’s all.</p>
 
@@ -173,6 +178,28 @@ module.exports = config;
                     </li>
                     
                 </ul>
+            <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//vanishingpointgithub.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
             </div>
         </div>
@@ -206,6 +233,15 @@ module.exports = config;
                         </a>
                     </li>
                     
+                    
+                    <li>
+                        <a href="https://www.facebook.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
                     
                     
                     <li>

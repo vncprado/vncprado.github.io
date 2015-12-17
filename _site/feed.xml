@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 17 Dec 2015 16:42:20 -0500</pubDate>
-    <lastBuildDate>Thu, 17 Dec 2015 16:42:20 -0500</lastBuildDate>
+    <pubDate>Thu, 17 Dec 2015 17:09:42 -0500</pubDate>
+    <lastBuildDate>Thu, 17 Dec 2015 17:09:42 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -140,8 +140,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 13 Dec 2015 00:00:00 -0500</pubDate>
-        <link>http://viniciusprado.org/2015/12/13/ubuntu-on-chuwi-vi-10/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/12/13/ubuntu-on-chuwi-vi-10/</guid>
+        <link>http://viniciusprado.org/ubuntu-on-chuwi-vi-10/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/ubuntu-on-chuwi-vi-10/</guid>
         
         
       </item>
@@ -157,8 +157,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 &lt;p&gt;That’s All!&lt;/p&gt;
 </description>
         <pubDate>Mon, 30 Nov 2015 00:00:00 -0500</pubDate>
-        <link>http://viniciusprado.org/2015/11/30/not-so-simple-ros-solution/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/11/30/not-so-simple-ros-solution/</guid>
+        <link>http://viniciusprado.org/not-so-simple-ros-solution/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/not-so-simple-ros-solution/</guid>
         
         
       </item>
@@ -189,8 +189,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 
 </description>
         <pubDate>Wed, 18 Nov 2015 15:09:26 -0500</pubDate>
-        <link>http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/jekyll/update/2015/11/18/welcome-to-jekyll/</guid>
+        <link>http://viniciusprado.org/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>
@@ -236,8 +236,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 =]&lt;/p&gt;
 </description>
         <pubDate>Sat, 11 Jul 2015 13:24:22 -0400</pubDate>
-        <link>http://viniciusprado.org/2015/07/11/robo-saltador-flexivel-impresso-em-3d/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/07/11/robo-saltador-flexivel-impresso-em-3d/</guid>
+        <link>http://viniciusprado.org/robo-saltador-flexivel-impresso-em-3d/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/robo-saltador-flexivel-impresso-em-3d/</guid>
         
         
       </item>
@@ -276,8 +276,8 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 =]&lt;/p&gt;
 </description>
         <pubDate>Mon, 25 May 2015 21:15:18 -0400</pubDate>
-        <link>http://viniciusprado.org/2015/05/25/best-pebble-apps-up-to-now-for-me/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/05/25/best-pebble-apps-up-to-now-for-me/</guid>
+        <link>http://viniciusprado.org/best-pebble-apps-up-to-now-for-me/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/best-pebble-apps-up-to-now-for-me/</guid>
         
         
       </item>
@@ -321,8 +321,8 @@ END;
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:36:26 -0400</pubDate>
-        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-clock-counter/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-clock-counter/</guid>
+        <link>http://viniciusprado.org/vhdl-snippets-clock-counter/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-clock-counter/</guid>
         
         
       </item>
@@ -380,8 +380,8 @@ END;
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:31:36 -0400</pubDate>
-        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-mux-16/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-mux-16/</guid>
+        <link>http://viniciusprado.org/vhdl-snippets-mux-16/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-mux-16/</guid>
         
         
       </item>
@@ -424,8 +424,8 @@ END;
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:23:39 -0400</pubDate>
-        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-3-to-4-enable-and-clock/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-3-to-4-enable-and-clock/</guid>
+        <link>http://viniciusprado.org/vhdl-snippets-decode-3-to-4-enable-and-clock/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-3-to-4-enable-and-clock/</guid>
         
         
       </item>
@@ -462,8 +462,8 @@ END;
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:14:41 -0400</pubDate>
-        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-2-to-4-top/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-2-to-4-top/</guid>
+        <link>http://viniciusprado.org/vhdl-snippets-decode-2-to-4-top/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-2-to-4-top/</guid>
         
         
       </item>
@@ -511,8 +511,8 @@ END;
 &lt;p&gt;That’s all =]&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:05:27 -0400</pubDate>
-        <link>http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-8-bit/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/2015/04/14/vhdl-snippets-decode-8-bit/</guid>
+        <link>http://viniciusprado.org/vhdl-snippets-decode-8-bit/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-8-bit/</guid>
         
         
       </item>

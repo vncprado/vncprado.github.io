@@ -38,6 +38,18 @@
 
 <body>
 
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60695381-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -64,10 +76,6 @@
                 </li>
                 
                 <li>
-                    <a href="/about/">About</a>
-                </li>
-                
-                <li>
                     <a href="/contact/">Contact</a>
                 </li>
                 
@@ -80,7 +88,7 @@
 
 
     <!-- Post Header -->
-<header class="intro-header" style="background-image: url('/')">
+<header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -110,16 +118,15 @@
 Pense num cara com processo, acho que tinha uns lá de 1980 e poucos. Depois percebi que o nome do reclamante (não sei se esse é o termo) vem como autor do processo na listagem. Ainda dei uma olhada rápida de traz para frente (o processo era de 1994-95 segundo minha namorada) mas sinceramente, nesse caso para encontrar o processo, a pessoa tinha que ser um pouco mais minuciosa e paciente do que eu sou. Pensei em deixar o trabalho braçal pra minha namorada mas
 lembrei desse gráfico: <img src="http://www.globalnerdy.com/wordpress/wp-content/uploads/2012/04/geeks-and-repetitive-tasks.jpg" alt="geeks-and-repetitive-tasks" /> e comecei a imaginar algumas soluções.</p>
 
-<p>A <em>URL</em> tinha uma opçãozinha <em>GET</em> charmosa: <code class="highlighter-rouge">&amp;pAcIniNavprocessonomeadvselNav=1</code>, então pensei: <em>“dá pra fazer um script juntando wget e grep passando por todos os ‘pAcIniNavprocessonomeadvselNav’ pra achar essa parada”</em>.
+<p>A <em>URL</em> tinha uma opçãozinha <em>GET</em> charmosa: <code>&amp;pAcIniNavprocessonomeadvselNav=1</code>, então pensei: <em>“dá pra fazer um script juntando wget e grep passando por todos os ‘pAcIniNavprocessonomeadvselNav’ pra achar essa parada”</em>.
 Na internet achei rapidamente a resposta:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ wget -q -O- "http://exemple.com" | grep -c palavra
+<pre><code>~$ wget -q -O- "http://exemple.com" | grep -c palavra
 </code></pre>
-</div>
 
 <p>Antes de fazer um loop qualquer fiz uns testes pra ver se era possível encontrar alguma coisa nessa página com essa técnica. Ainda apanhei um pouco antes de colocar as aspas pois em endereços simples não são necessárias.</p>
 
-<p>Logo veio a graça da coisa. As linhas da tabela eram geradas por <em>AJAX</em> e o <code class="highlighter-rouge">wget</code> não “pegava” essa parte. Em qualquer outra parte da página, inclusive no cabeçalho da tabela o <code class="highlighter-rouge">grep</code> conseguia achar, mas as linhas da tabela eram geradas dinamicamente. Eu pensei então: <em>“é só baixar todas as paginações dessa listagem e procurar nos arquivos HTML”</em>.</p>
+<p>Logo veio a graça da coisa. As linhas da tabela eram geradas por <em>AJAX</em> e o <code>wget</code> não “pegava” essa parte. Em qualquer outra parte da página, inclusive no cabeçalho da tabela o <code>grep</code> conseguia achar, mas as linhas da tabela eram geradas dinamicamente. Eu pensei então: <em>“é só baixar todas as paginações dessa listagem e procurar nos arquivos HTML”</em>.</p>
 
 <p>Utilizando o plugin <em>DownThemAll</em> do firefox e o endereço da página com a listagem foi possível baixar mais ou menos 160 páginas <em>HTML</em>.</p>
 
@@ -128,9 +135,8 @@ Na internet achei rapidamente a resposta:</p>
 <p>Quando eu adicionei a primeira vez, o <em>DownThemAll</em> me perguntou se eu realmente queria baixar 3600 páginas. Lembrei que tinha paginação da tabela, a cada 20 itens. O <em>DownThemAll</em> de forma inteligente aceita intervalos de iteração. Depois foi só colocar <strong>[1:3600:20]</strong> no local certo da <em>URL</em> para ele gerar os endereços e baixar as páginas <em>HTML</em>.
 Depois foi só rodar o grep na pasta:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ grep -r "Nome" .
+<pre><code>~$ grep -r "Nome" .
 </code></pre>
-</div>
 
 <p>para encontrar em qual arquivo existia o nome procurado.</p>
 
@@ -157,6 +163,28 @@ Depois foi só rodar o grep na pasta:</p>
                     </li>
                     
                 </ul>
+            <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//vanishingpointgithub.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
             </div>
         </div>
@@ -190,6 +218,15 @@ Depois foi só rodar o grep na pasta:</p>
                         </a>
                     </li>
                     
+                    
+                    <li>
+                        <a href="https://www.facebook.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
                     
                     
                     <li>

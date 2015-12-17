@@ -38,6 +38,18 @@
 
 <body>
 
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60695381-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -64,10 +76,6 @@
                 </li>
                 
                 <li>
-                    <a href="/about/">About</a>
-                </li>
-                
-                <li>
                     <a href="/contact/">Contact</a>
                 </li>
                 
@@ -80,7 +88,7 @@
 
 
     <!-- Post Header -->
-<header class="intro-header" style="background-image: url('/')">
+<header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -100,14 +108,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>A simple tip to put a <code class="highlighter-rouge">PRINT</code> command and save some time with <code class="highlighter-rouge">cout &lt;&lt; blablabla &lt;&lt; endl;</code> and this stuff.</p>
+				<p>A simple tip to put a <code>PRINT</code> command and save some time with <code>cout &lt;&lt; blablabla &lt;&lt; endl;</code> and this stuff.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#define PRINT(val) \
+<pre><code>#define PRINT(val) \
 		cout &lt;&lt; val &lt;&lt; endl
 #define PRINTTXT(txt, val) \
 		cout &lt;&lt; txt &lt;&lt; endl &lt;&lt; val &lt;&lt; endl
 </code></pre>
-</div>
 
 
                 <hr>
@@ -124,6 +131,28 @@
                     </li>
                     
                 </ul>
+            <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//vanishingpointgithub.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
             </div>
         </div>
@@ -157,6 +186,15 @@
                         </a>
                     </li>
                     
+                    
+                    <li>
+                        <a href="https://www.facebook.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
                     
                     
                     <li>
