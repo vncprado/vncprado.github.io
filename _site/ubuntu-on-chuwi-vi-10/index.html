@@ -121,6 +121,10 @@
   </thead>
   <tbody>
     <tr>
+      <td>CPU</td>
+      <td style="text-align: center">Intel Z3736F</td>
+    </tr>
+    <tr>
       <td>Audio</td>
       <td style="text-align: center">Realtek ALC 5642 (byt_rt5640)</td>
     </tr>
@@ -171,6 +175,19 @@
   </tbody>
 </table>
 
+<hr />
+
+<p>UPDATE (19/12/15):</p>
+
+<p>Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:</p>
+
+<pre><code>$ /usr/lib/nux/unity_support_test -p
+</code></pre>
+
+<p>In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.</p>
+
+<hr />
+
 <p>To boot I made an Ubuntu 14.04 (I tested 15.10 and it boot too) USB drive with <a href="https://rufus.akeo.ie/">Rufus</a> on Windows. The boot need to be made with GPT but I didn’t have time to have an working USB drive created on Ubuntu yet. After created, I put <a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32.efi</a> file at <code>/EFI/boot/</code> Ubuntu USB drive directory.</p>
 
 <p>If you have no graphics after grub, you can type <code>e</code> in grub menu to edit the line starting on <code>linux	/casper/vmlinuz.efi...</code>, remove <code>quite splash</code> and add <code>nomodeset reboot=pci,force</code> in the end.</p>
@@ -186,42 +203,42 @@ boot
 
 <p>After booting you need to install some stuff, and clone Grub repository to compile it:</p>
 
-<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
+<pre><code>$ sudo apt-get update &amp;&amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
 </code></pre>
 
 <p>The package <code>ia32_libs</code> maybe a problem because, apparently, it is not anymore on Ubuntu 14.04. To install it try:</p>
 
-<pre><code>sudo -i
-cd /etc/apt/sources.list.d
-echo "deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse" &gt;ia32-libs-raring.list
-apt-get update
-apt-get install ia32-libs
+<pre><code>$ sudo -i
+# cd /etc/apt/sources.list.d
+# echo "deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse" &gt;ia32-libs-raring.list
+# apt-get update
+# apt-get install ia32-libs
 </code></pre>
 
 <p>Then get the Grub source:</p>
 
-<pre><code>git clone git://git.savannah.gnu.org/grub.git
+<pre><code>$ git clone git://git.savannah.gnu.org/grub.git
 </code></pre>
 
 <p>Now build it:</p>
 
-<pre><code>cd grub
-./autogen.sh
-./configure --with-platform=efi --target=i386 --program-prefix=""
-make
+<pre><code>$ cd grub
+$ ./autogen.sh
+$ ./configure --with-platform=efi --target=i386 --program-prefix=""
+$ make
 </code></pre>
 
 <p>And install to efi:</p>
 
-<pre><code>cd grub-core
-sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
+<pre><code>$ cd grub-core
+$ sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
 </code></pre>
 
 <p>This will create a directory, ‘grub’, in your EFI partition.
 We want to copy the grubia32.efi from there to the location Ubuntu created during installation:</p>
 
-<pre><code>cd /boot/efi/EFI
-sudo cp grub/grubia32.efi ubuntu/grubx64.efi
+<pre><code>$ cd /boot/efi/EFI
+$ sudo cp grub/grubia32.efi ubuntu/grubx64.efi
 </code></pre>
 
 <p>After this command you should be able to boot directly to your new Ubuntu installation.</p>

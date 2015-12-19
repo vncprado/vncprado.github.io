@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 17 Dec 2015 17:09:42 -0500</pubDate>
-    <lastBuildDate>Thu, 17 Dec 2015 17:09:42 -0500</lastBuildDate>
+    <pubDate>Sat, 19 Dec 2015 18:10:39 -0500</pubDate>
+    <lastBuildDate>Sat, 19 Dec 2015 18:10:39 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -23,6 +23,10 @@
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CPU&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Intel Z3736F&lt;/td&gt;
+    &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Audio&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Realtek ALC 5642 (byt_rt5640)&lt;/td&gt;
@@ -74,6 +78,19 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
+&lt;hr /&gt;
+
+&lt;p&gt;UPDATE (19/12/15):&lt;/p&gt;
+
+&lt;p&gt;Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ /usr/lib/nux/unity_support_test -p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;p&gt;To boot I made an Ubuntu 14.04 (I tested 15.10 and it boot too) USB drive with &lt;a href=&quot;https://rufus.akeo.ie/&quot;&gt;Rufus&lt;/a&gt; on Windows. The boot need to be made with GPT but I didn’t have time to have an working USB drive created on Ubuntu yet. After created, I put &lt;a href=&quot;https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi&quot;&gt;bootia32.efi&lt;/a&gt; file at &lt;code&gt;/EFI/boot/&lt;/code&gt; Ubuntu USB drive directory.&lt;/p&gt;
 
 &lt;p&gt;If you have no graphics after grub, you can type &lt;code&gt;e&lt;/code&gt; in grub menu to edit the line starting on &lt;code&gt;linux	/casper/vmlinuz.efi...&lt;/code&gt;, remove &lt;code&gt;quite splash&lt;/code&gt; and add &lt;code&gt;nomodeset reboot=pci,force&lt;/code&gt; in the end.&lt;/p&gt;
@@ -89,42 +106,42 @@ boot
 
 &lt;p&gt;After booting you need to install some stuff, and clone Grub repository to compile it:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The package &lt;code&gt;ia32_libs&lt;/code&gt; maybe a problem because, apparently, it is not anymore on Ubuntu 14.04. To install it try:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo -i
-cd /etc/apt/sources.list.d
-echo &quot;deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse&quot; &amp;gt;ia32-libs-raring.list
-apt-get update
-apt-get install ia32-libs
+&lt;pre&gt;&lt;code&gt;$ sudo -i
+# cd /etc/apt/sources.list.d
+# echo &quot;deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse&quot; &amp;gt;ia32-libs-raring.list
+# apt-get update
+# apt-get install ia32-libs
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Then get the Grub source:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git clone git://git.savannah.gnu.org/grub.git
+&lt;pre&gt;&lt;code&gt;$ git clone git://git.savannah.gnu.org/grub.git
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now build it:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd grub
-./autogen.sh
-./configure --with-platform=efi --target=i386 --program-prefix=&quot;&quot;
-make
+&lt;pre&gt;&lt;code&gt;$ cd grub
+$ ./autogen.sh
+$ ./configure --with-platform=efi --target=i386 --program-prefix=&quot;&quot;
+$ make
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;And install to efi:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd grub-core
-sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
+&lt;pre&gt;&lt;code&gt;$ cd grub-core
+$ sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This will create a directory, ‘grub’, in your EFI partition.
 We want to copy the grubia32.efi from there to the location Ubuntu created during installation:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd /boot/efi/EFI
-sudo cp grub/grubia32.efi ubuntu/grubx64.efi
+&lt;pre&gt;&lt;code&gt;$ cd /boot/efi/EFI
+$ sudo cp grub/grubia32.efi ubuntu/grubx64.efi
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After this command you should be able to boot directly to your new Ubuntu installation.&lt;/p&gt;
