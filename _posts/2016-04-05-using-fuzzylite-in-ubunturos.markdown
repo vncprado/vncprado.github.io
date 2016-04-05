@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Using Fuzzylite in Ubuntu/ROS
 date: 2016-04-05
 permalink: using-fuzzylite-in-ubuntu-ros/
