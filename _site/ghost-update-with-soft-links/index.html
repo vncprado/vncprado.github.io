@@ -119,47 +119,55 @@ The actual folder location and links are:</p>
 
 <p>This way I can change the version simply doing:</p>
 
-<pre><code>~$ ln -s /var/ghost-data/versions/ghost-&lt;version&gt;/ /var/www/ghost
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ ln -s /var/ghost-data/versions/ghost-&lt;version&gt;/ /var/www/ghost
 </code></pre>
+</div>
 
 <p>And setting the configuration file:</p>
 
-<pre><code>~$ ln -s /var/ghost-data/config.js /var/ghost-data/versions/ghost-&lt;version&gt;/config.js
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ ln -s /var/ghost-data/config.js /var/ghost-data/versions/ghost-&lt;version&gt;/config.js
 </code></pre>
+</div>
 
 <p>In order to matain only one content folder. The content folder is in the same base folder as config.js and versions folder:</p>
 
-<pre><code>/var/www/ghost-data/content
+<div class="highlighter-rouge"><pre class="highlight"><code>/var/www/ghost-data/content
 </code></pre>
+</div>
 
 <p>but a small configuration in config.js is needed to make ghost see the content folder outside ghost installation folder:</p>
 
-<pre><code>paths: {
+<div class="highlighter-rouge"><pre class="highlight"><code>paths: {
 	contentPath: path.join(__dirname, '/path/to/content/dir/')
 }
 </code></pre>
+</div>
 
 <p>One can see that the config file have their symbolic link to the real file and content folder is located outside the folder of ghost’s new version.</p>
 
 <p>By the documentation, with a new version you have to run in its folder:</p>
 
-<pre><code>~$ npm install --production
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ npm install --production
 </code></pre>
+</div>
 
 <p>All soft links and folders must be owned by ghost user and group, so:</p>
 
-<pre><code>~$ chown ghost:ghost /var/www/ghost/*
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ chown ghost:ghost /var/www/ghost/*
 </code></pre>
+</div>
 
 <p>Restart ghost:</p>
 
-<pre><code>~$ service ghost restart
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ service ghost restart
 </code></pre>
+</div>
 
 <p>I used to restart apache too:</p>
 
-<pre><code>~$ service apache2 restart
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ service apache2 restart
 </code></pre>
+</div>
 
 <p>It was hard to solve (mainly because I dont know about the path config option and for a week I tryed to use soft links in the content folder too) but so far I’ve had no problems. And I believe it will be easier to update that way, just a metter of copy files, and make two soft links =)</p>
 
@@ -256,7 +264,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

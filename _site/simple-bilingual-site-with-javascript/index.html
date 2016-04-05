@@ -116,17 +116,18 @@
 
 <p>One small function to load English as default language if user browser is not in Portuguese:</p>
 
-<pre><code>function set_initial_lang() {
+<div class="highlighter-rouge"><pre class="highlight"><code>function set_initial_lang() {
   	var userLang = navigator.language || navigator.userLanguage;
   	var userLang_lower = userLang.toLowerCase();
 
   	set_lang(userLang_lower);
 }
 </code></pre>
+</div>
 
 <p>One function that gets user language and hides/shows every object that belong to that class.</p>
 
-<pre><code>function set_lang(userLang) {
+<div class="highlighter-rouge"><pre class="highlight"><code>function set_lang(userLang) {
 	var en_p = document.getElementsByClassName('en');
     var pt_p = document.getElementsByClassName('pt');
 
@@ -143,8 +144,9 @@
   	}
 	}
 </code></pre>
+</div>
 
-<p>Still in time, for this template, I used some <code>&lt;span&gt;</code> to get it working inside <code>&lt;li&gt;</code> tags.</p>
+<p>Still in time, for this template, I used some <code class="highlighter-rouge">&lt;span&gt;</code> to get it working inside <code class="highlighter-rouge">&lt;li&gt;</code> tags.</p>
 
 <p>This CV website is avaible on <a href="https://github.com/vncprado/cv2">github</a></p>
 
@@ -241,7 +243,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

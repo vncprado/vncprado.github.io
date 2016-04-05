@@ -110,9 +110,9 @@
 
 				<p>Using ghost blogging platform with a Apache subdomain is as easy as it may seem.</p>
 
-<p>First I unzipped ghost data at <code>/var/www/ghost/</code> and followed default install instructions to have it running. Ghost production <code>IP</code> and <code>URL</code> in the config file have to be setted to <code>0.0.0.0</code> and <code>http://subdomain.example.com</code>, respectively.</p>
+<p>First I unzipped ghost data at <code class="highlighter-rouge">/var/www/ghost/</code> and followed default install instructions to have it running. Ghost production <code class="highlighter-rouge">IP</code> and <code class="highlighter-rouge">URL</code> in the config file have to be setted to <code class="highlighter-rouge">0.0.0.0</code> and <code class="highlighter-rouge">http://subdomain.example.com</code>, respectively.</p>
 
-<pre><code>// # Ghost Configuration
+<div class="highlighter-rouge"><pre class="highlight"><code>// # Ghost Configuration
 // Setup your Ghost install for various environments
 var path = require('path'),
 	config;
@@ -140,10 +140,11 @@ config = {
 // Export config
 module.exports = config;
 </code></pre>
+</div>
 
-<p>Second I configured a subdomain called <code>blog</code> that uses apache-proxy to foward ghost port. So the apache config files for the blog are under <code>/etc/apache2/sites-available/blog</code> and follows:</p>
+<p>Second I configured a subdomain called <code class="highlighter-rouge">blog</code> that uses apache-proxy to foward ghost port. So the apache config files for the blog are under <code class="highlighter-rouge">/etc/apache2/sites-available/blog</code> and follows:</p>
 
-<pre><code>&lt;VirtualHost *:80&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
    		ServerName subdomain.example.com
    		ProxyPass / http://0.0.0.0:2368/
    		ProxyPassReverse / http://0.0.0.0:2368/
@@ -154,11 +155,13 @@ module.exports = config;
    		&lt;/DirectoryMatch&gt;
 &lt;/VirtualHost&gt;
 </code></pre>
+</div>
 
 <p>So finally I would enable the blog:</p>
 
-<pre><code>user@machine:/etc/apache2/sites-available/# a2ensite blog
+<div class="highlighter-rouge"><pre class="highlight"><code>user@machine:/etc/apache2/sites-available/# a2ensite blog
 </code></pre>
+</div>
 
 <p>I think that’s all.</p>
 
@@ -254,7 +257,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

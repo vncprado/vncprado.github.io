@@ -108,9 +108,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>A simple example on how to get the time in milliseconds using <code>clock</code> from <code>time.h</code>.</p>
+				<p>A simple example on how to get the time in milliseconds using <code class="highlighter-rouge">clock</code> from <code class="highlighter-rouge">time.h</code>.</p>
 
-<pre><code>#include &lt;time.h&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>#include &lt;time.h&gt;
 #include &lt;iostream&gt;
 
 int main() {
@@ -121,6 +121,7 @@ int main() {
 	cout &lt;&lt; (((float)time_end - (float)time_begin) / (double)CLOCKS_PER_SEC ) * 1000 &lt;&lt; endl;
 }
 </code></pre>
+</div>
 
 <p>Some explanation from documentation:
 &gt;it merely measures the total CPU time devoted so far to the current process.</p>
@@ -216,7 +217,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

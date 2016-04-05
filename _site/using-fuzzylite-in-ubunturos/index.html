@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hey Kowalski, you out there?">
 
-    <title>Automating international calls using pause option - Vanishing Point</title>
+    <title>Using Fuzzylite in Ubuntu/ROS - Vanishing Point</title>
 
-    <link rel="canonical" href="http://viniciusprado.org/automating-international-calls-using-pause-option/">
+    <link rel="canonical" href="http://viniciusprado.org/using-fuzzylite-in-ubunturos/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -87,95 +87,75 @@
 </nav>
 
 
-    <!-- Post Header -->
+    <!-- Page Header -->
 <header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>Automating international calls using pause option</h1>
-                    
-                    <span class="meta">Posted by Vincius Prado da Fonseca on October 20, 2014</span>
+                <div class="site-heading">
+                    <h1>Using Fuzzylite in Ubuntu/ROS</h1>
+                    <hr class="small">
+                    <span class="subheading"></span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<p>In my PhD work we maybe are going to use some Fuzzy controllers, I found out this <a href="http://www.fuzzylite.com/">Fuzzylite</a> really light and simple to use. Following how I got it working on my environment.</p>
 
-				<p>Trying to make cheaper calls to my family in Brazil using a international card, I found out that I need to dial 21 numbers before my parent’s number every call. So I looked for a way to store all that stuff in my phonebook.</p>
+<p>I installed it following <a href="http://praghuvamsi.blogspot.ca/2014/02/fuzzylite-installation-on-ubuntu.html">this</a> instructions. With a different version cloned from github <a href="https://github.com/fuzzylite/fuzzylite.git">repository</a>.</p>
 
-<p>The system works like these:</p>
+<p>So I don’t need to extract, only <code class="highlighter-rouge">cd</code> fuzzylite folder inside fuzzylite git repository:</p>
 
-<ul>
-  <li>You call to a local number (10 digits).</li>
-  <li>Select the language for instructions (1 digit).</li>
-  <li>Dial a PIN number printed in the card you bought (12 digits!).</li>
-  <li>They tell the card’s balance.</li>
-  <li>Finally you dial 5 digits (011 55 for Brazil) followed by the desired number (10-11 digits).</li>
-</ul>
-
-<p>Then I found that you can use a pause option to store a whole ramal number that you dial frequently. It is useful when you call an automated system that asks for a ramal. The option makes your cellphone wait a second and dial by itself the desired ramal. This way I could put all this numbers in an entry and simply call like an unique number.</p>
-
-<p>In my phone comma is the symbol for this pause.
-Finally the whole number is stored like this:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>access #, option, PIN, country digit + # 
-613 216 0780,1,xxx xxx xxx xxx,011 55 xx xxxx xxxx
+<div class="highlighter-rouge"><pre class="highlight"><code>fuzzylite/:~$ cd fuzzylite
 </code></pre>
 </div>
 
-<p>So I can make calls to Brazil directly from my phonebook. There is only one issue that I need to change the PIN in all stored numbers when money runs out in my current card =/</p>
+<p>Then CMake, make and make install:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>fuzzylite/fuzzylite:~$ cmake .
+fuzzylite/fuzzylite:~$ make
+fuzzylite/fuzzylite:~$ sudo make install
+</code></pre>
+</div>
+
+<p>After that you need to export the installation local</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+</code></pre>
+</div>
+
+<p>In this way it is possible to link the fuzzylite dynamically, you can use their <a href="/misc/example.cpp">example</a>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ g++ example.cpp -lfuzzylite
+$ ./a.out
+</code></pre>
+</div>
+
+<p>On ROS you can utilize the library updating your CMakelists.txt:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Specify libraries to link a library or executable target against
+target_link_libraries(fuzzy_tests_node
+  ${catkin_LIBRARIES}
+  fuzzylite
+)
+</code></pre>
+</div>
+
+<p>Up to now I didn’t have any problems and I can use fuzzylite values to read from and update ROS topics.</p>
 
 <p>That’s all.</p>
 
+<center> =] </center>
 
-                <hr>
-
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/ghost-update-with-soft-links/" data-toggle="tooltip" data-placement="top" title="Ghost update with soft links">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/coding-with-a-chromebook/" data-toggle="tooltip" data-placement="top" title="Coding with a Chromebook">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-            <div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//vanishingpointgithub.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-            </div>
-        </div>
-    </div>
-</article>
+		</div>
+	</div>
+</div>
 
 <hr>
 

@@ -119,51 +119,58 @@ I don’t know how much this version is similar to online version but for my pur
 
 <h6 id="installation">Installation</h6>
 
-<p>In my setup I have an <code>Apache2</code>, <code>Node.js</code> and <code>forever</code> installed previously. You will need to google how to install these things first. I use a dev subdomain for Cloud9 but other Apache configurations would be quite similar. Besides that I have one user (not root) for development. In this user’s home folder we have the Cloud9 code and the workspace.</p>
+<p>In my setup I have an <code class="highlighter-rouge">Apache2</code>, <code class="highlighter-rouge">Node.js</code> and <code class="highlighter-rouge">forever</code> installed previously. You will need to google how to install these things first. I use a dev subdomain for Cloud9 but other Apache configurations would be quite similar. Besides that I have one user (not root) for development. In this user’s home folder we have the Cloud9 code and the workspace.</p>
 
 <p>Login with your developer user (I used ssh). Clone the Cloud9 project in its home folder:</p>
 
-<pre><code>cd ~/
+<div class="highlighter-rouge"><pre class="highlight"><code>cd ~/
 git clone https://github.com/c9/core.git c9sdk
 </code></pre>
+</div>
 
 <p>Then go to the project and install it</p>
 
-<pre><code>cd c9sdk/
+<div class="highlighter-rouge"><pre class="highlight"><code>cd c9sdk/
 scripts/install-sdk.sh
 </code></pre>
+</div>
 
-<p>Now, still in the cloud9 folder, use <code>forever</code> to start the server with the following parameters:</p>
+<p>Now, still in the cloud9 folder, use <code class="highlighter-rouge">forever</code> to start the server with the following parameters:</p>
 
-<pre><code>forever start server.js -p 8181 -w ~/workspace/ -l 0.0.0.0 --auth username:passswd
+<div class="highlighter-rouge"><pre class="highlight"><code>forever start server.js -p 8181 -w ~/workspace/ -l 0.0.0.0 --auth username:passswd
 </code></pre>
+</div>
 
 <p>Select an username and password to login in addition a workspace folder.</p>
 
 <p>In apache, create a dev.conf file:</p>
 
-<pre><code>$ sudo nano /etc/apache2/sites-avaible/dev.conf
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo nano /etc/apache2/sites-avaible/dev.conf
 </code></pre>
+</div>
 
 <p>Paste the following lines inside the file:</p>
 
-<pre><code>&lt;VirtualHost *:80&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
     ServerName dev.yourdomain.org
     ProxyPass / http://0.0.0.0:8181/
     ProxyPassReverse / http://0.0.0.0:8181/
     ProxyPreserveHost On
 &lt;/VirtualHost&gt;
 </code></pre>
+</div>
 
 <p>Enable the site:</p>
 
-<pre><code>$ sudo a2ensite dev
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo a2ensite dev
 </code></pre>
+</div>
 
 <p>Finally restart Apache:</p>
 
-<pre><code>$ sudo service apache2 restart
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo service apache2 restart
 </code></pre>
+</div>
 
 <p>In a comparison with Codiad, I think that Cloud9 is far more robust and stable. Besides having a better terminal, which permits a large range of development.</p>
 
@@ -258,7 +265,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

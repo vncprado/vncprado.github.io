@@ -114,7 +114,7 @@
 
 <p>Starting with a simple vector comparator:</p>
 
-<pre><code>LIBRARY ieee;
+<div class="highlighter-rouge"><pre class="highlight"><code>LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY comp_pulse IS
 	PORT (	dataa : IN STD_LOGIC_VECTOR (7 downto 0);
@@ -126,6 +126,7 @@ BEGIN
 	alb &lt;= '1' when (dataa &lt; datab) else '0';
 END;
 </code></pre>
+</div>
 
 <p>This entity performs the unsigned comparison a &lt; b.</p>
 
@@ -222,7 +223,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

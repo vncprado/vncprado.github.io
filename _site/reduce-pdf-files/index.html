@@ -110,14 +110,15 @@
 
 				<p>A simple way to reduce a pdf size using ghost script:</p>
 
-<pre><code>~$ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=reduced.pdf input.pdf
+<div class="highlighter-rouge"><pre class="highlight"><code>~$ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=reduced.pdf input.pdf
 </code></pre>
+</div>
 
 <p>Where reduced.pdf is the name of output file and input is the file that you want to reduce. I have no idea either time to find out what the other options do =)</p>
 
 <p>UPDATE 30/11/15:</p>
 
-<p>If the <code>-dPDFSETTINGS=/screen</code> setting is too low quality to suit your needs, replace it with <code>-dPDFSETTINGS=/ebook</code> for better quality, but slightly larger pdfs. Delete the setting altogether for the high quality default, which you can also explicitly call for with <code>-dPDFSETTINGS=/prepress</code> (<a href="http://askubuntu.com/a/256449">source</a>).</p>
+<p>If the <code class="highlighter-rouge">-dPDFSETTINGS=/screen</code> setting is too low quality to suit your needs, replace it with <code class="highlighter-rouge">-dPDFSETTINGS=/ebook</code> for better quality, but slightly larger pdfs. Delete the setting altogether for the high quality default, which you can also explicitly call for with <code class="highlighter-rouge">-dPDFSETTINGS=/prepress</code> (<a href="http://askubuntu.com/a/256449">source</a>).</p>
 
 <p>That’s all.</p>
 
@@ -212,7 +213,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

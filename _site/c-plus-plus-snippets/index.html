@@ -114,7 +114,7 @@
 
 <p>I am not a fluent guy in C++ so many stuffs here are discoveries. We heavily used <a href="http://www.shoup.net/ntl/">NTL</a> library which helped me a lot with the theorical part. From our implementation, there are two functions that helped me a lot and maybe useful for someone else.</p>
 
-<pre><code>vec_GF2E slice_vec(vec_GF2E x, int n) {
+<div class="highlighter-rouge"><pre class="highlight"><code>vec_GF2E slice_vec(vec_GF2E x, int n) {
 	// Function that returns a subvector [0:n]
 	
     vec_GF2E result;
@@ -144,6 +144,7 @@ mat_GF2E slice_mat(mat_GF2E O, int i_ini, int i_end, int j_ini, int j_end) {
 	return R;
 }
 </code></pre>
+</div>
 
 <p>One can see that we try to emulate some matrix and vector slicing in C++.</p>
 
@@ -243,7 +244,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>

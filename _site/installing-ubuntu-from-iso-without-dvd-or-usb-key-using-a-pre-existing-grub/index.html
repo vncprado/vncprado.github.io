@@ -111,53 +111,59 @@
 				<p>This walkthrough is a really piece of gold. I found this purely by curiosity but I realized it is really useful. Even when you don’t have any medium to install or upgrade from scratch your ubuntu, with a running grub installation and an ubuntu iso file on your HD you can do this following this steps:</p>
 
 <p>Go to grub menu (if your installation hides it).
-<code>press c</code> to go to grub’s command-line.</p>
+<code class="highlighter-rouge">press c</code> to go to grub’s command-line.</p>
 
 <p>Verify presence of grub modules, special attention to (hd0,1):</p>
 
-<pre><code>grub&gt; ls (hd0,1)/boot/grub/
+<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; ls (hd0,1)/boot/grub/
 grub&gt; ls (hd0,1)/usr/lib/grub/i386-pc/
 </code></pre>
+</div>
 
 <p>Setting prefix for modules:</p>
 
-<pre><code>grub&gt; set prefix=(hd0,1)/boot/grub/
+<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; set prefix=(hd0,1)/boot/grub/
 grub&gt; set prefix=(hd0,1)/usr/lib/grub/i386-pc/
 </code></pre>
+</div>
 
 <p>Inserting modules:</p>
 
-<pre><code>grub&gt; insmod linux
+<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; insmod linux
 grub&gt; insmod loopback
 grub&gt; insmod iso9660
 grub&gt; insmod fat
 grub&gt; insmod ntfs
 grub&gt; insmod ntfscomp
 </code></pre>
+</div>
 
 <p>Verifying installed disks:</p>
 
-<pre><code>grub&gt; ls
+<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; ls
     (hd0) (hd0,msdos1) ...
 </code></pre>
+</div>
 
 <p>Setting loopback file, root path and linux boot options:</p>
 
-<pre><code>grub&gt; loopback loop (hd0,msdos3)/path/to/iso/ubuntu-14.04-desktop-amd64.iso
+<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; loopback loop (hd0,msdos3)/path/to/iso/ubuntu-14.04-desktop-amd64.iso
 grub&gt; set root=(loop)
 grub&gt; linux /casper/vmlinuz.eti boot=casper iso-scan/filename=/path/to/iso/ubuntu-14.04-desktop-amd64.iso noprompt noeject
 grub&gt; initrd /casper/initrd.lz
 grub&gt; boot
 </code></pre>
+</div>
 
 <p>So here you are! A running version of ubuntu iso.</p>
 
-<p>You can use autocomplete in almost all above commands. The autocomplete is somewhat dumb but it’s useful to test the directories. But doesn’t works when you need to put the iso path in the line <code>linux /casper/vmlinuz ...</code>.</p>
+<p>You can use autocomplete in almost all above commands. The autocomplete is somewhat dumb but it’s useful to test the directories. But doesn’t works when you need to put the iso path in the line <code class="highlighter-rouge">linux /casper/vmlinuz ...</code>.</p>
 
-<p>Before installing you need to unmount <code>/isodevice</code>. So open a terminal and type:</p>
+<p>Before installing you need to unmount <code class="highlighter-rouge">/isodevice</code>. So open a terminal and type:</p>
 
-<pre><code>$ sudo unmount -l -r -f /isodevice
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo unmount -l -r -f /isodevice
 </code></pre>
+</div>
 
 <p>Follow installation instructions as usual.</p>
 
@@ -254,7 +260,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2016</p>
             </div>
         </div>
     </div>
