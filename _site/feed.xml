@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
-    <lastBuildDate>Sat, 16 Apr 2016 21:52:18 -0400</lastBuildDate>
+    <pubDate>Sat, 16 Apr 2016 21:53:28 -0400</pubDate>
+    <lastBuildDate>Sat, 16 Apr 2016 21:53:28 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -40,7 +40,7 @@ $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
 
 &lt;center&gt; =] &lt;/center&gt;
 </description>
-        <pubDate>Sat, 16 Apr 2016 00:00:00 -0400</pubDate>
+        <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
         <link>http://viniciusprado.org/retropie-snes-controller-kodi-brazil-list-yatse/</link>
         <guid isPermaLink="true">http://viniciusprado.org/retropie-snes-controller-kodi-brazil-list-yatse/</guid>
         
