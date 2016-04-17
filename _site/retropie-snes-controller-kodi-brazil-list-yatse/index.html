@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hey Kowalski, you out there?">
 
-    <title>Dynamixel Setup Using ROS - Vanishing Point</title>
+    <title>Retropie + SNES controller + Kodi + Brazil list + Yatse - Vanishing Point</title>
 
-    <link rel="canonical" href="http://viniciusprado.org/dynamixel-setup-using-ros/">
+    <link rel="canonical" href="http://viniciusprado.org/retropie-snes-controller-kodi-brazil-list-yatse/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,9 +93,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Dynamixel Setup Using ROS</h1>
+                    <h1>Retropie + SNES controller + Kodi + Brazil list + Yatse</h1>
                     
-                    <span class="meta">Posted by Vincius Prado da Fonseca on April 6, 2016</span>
+                    <span class="meta">Posted by Vincius Prado da Fonseca on April 16, 2016</span>
                 </div>
             </div>
         </div>
@@ -108,23 +108,30 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>The Dynamixel package that is provided by ROS is really useful to control multi-joint manipulators or mobile robots using Dynamixel motors. It’s possible to find a nice tutorial <a href="http://wiki.ros.org/dynamixel_controllers/Tutorials">here</a>.</p>
+				<p>Some side project I’m working with my <a href="https://www.raspberrypi.org/products/model-a-plus/">Raspberry Pi A+</a> is to transform it in a retro game with Bluetooth control and <a href="http://kodi.wiki/view/Main_Page">Kodi</a> for IPTV. I’ve got <a href="https://github.com/RetroPie/RetroPie-Setup/releases">Retropie 3.5</a> (for some reason 3.6 doesn’t update).</p>
 
-<p>One tutorial about the torque joint controller can be found <a href="http://wiki.ros.org/dynamixel_controllers/Tutorials/Creating%20a%20joint%20torque%20controller">here</a>. The detail is that, in order to get this step-by-step working, you should setup the motor to wheel mode ON. For this, there is some scripts in the <a href="https://github.com/arebgun/dynamixel_motor/tree/master/dynamixel_driver/scripts">dynamixel package</a>. Which you can install from <code class="highlighter-rouge">apt-get</code> as usual.</p>
+<p>To install:</p>
 
-<p>Using the package you could run:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
+<div class="highlighter-rouge"><pre class="highlight"><code>$ gzip -d retropie-v3.5-rpi1.img.gz
+$ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
 </code></pre>
 </div>
 
-<p>To get some information about your motors, and:</p>
+<p>To get my <a href="http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ">USB hub</a> working with WIFI dongle and keyboard I had to append <code class="highlighter-rouge">dwc_otg.speed=1</code> in the file <code class="highlighter-rouge">/boot/cmdline.txt</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
+<div class="highlighter-rouge"><pre class="highlight"><code>dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
 </code></pre>
 </div>
 
-<p>To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set <code class="highlighter-rouge">--ccw-angle-limit=1023</code> or the max value your motor supports.</p>
+<p>Then configured WIFI from Raspberry’s menu.</p>
+
+<p>After that I installed the experimental Kodi from menu. Basically follow <a href="https://github.com/RetroPie/RetroPie-Setup/wiki/KODI">this</a>. It is important to follow the instructions to have Kodi on the main menu of Emulation Station.</p>
+
+<p>To use my cellphone as a remote control I installed <a href="http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp">Yatse</a>. In this way you have a Chromecast like equipament. Remember to follow Yatse help to change Kodi Web settings.</p>
+
+<p>I have Brazil list of channels on PVR Simple client plug-in on Kodi.</p>
+
+<p>I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.</p>
 
 <p>That’s all.</p>
 
@@ -136,13 +143,9 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/using-fuzzylite-in-ubuntu-ros/" data-toggle="tooltip" data-placement="top" title="Using Fuzzylite in Ubuntu/ROS">&larr; Previous Post</a>
+                        <a href="/dynamixel-setup-using-ros/" data-toggle="tooltip" data-placement="top" title="Dynamixel Setup Using ROS">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/retropie-snes-controller-kodi-brazil-list-yatse/" data-toggle="tooltip" data-placement="top" title="Retropie + SNES controller + Kodi + Brazil list + Yatse">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
             <div id="disqus_thread"></div>

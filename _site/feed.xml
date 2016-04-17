@@ -5,9 +5,78 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Apr 2016 23:23:00 -0400</pubDate>
-    <lastBuildDate>Tue, 05 Apr 2016 23:23:00 -0400</lastBuildDate>
+    <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
+    <lastBuildDate>Sat, 16 Apr 2016 21:52:18 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
+        <description>&lt;p&gt;Some side project I’m working with my &lt;a href=&quot;https://www.raspberrypi.org/products/model-a-plus/&quot;&gt;Raspberry Pi A+&lt;/a&gt; is to transform it in a retro game with Bluetooth control and &lt;a href=&quot;http://kodi.wiki/view/Main_Page&quot;&gt;Kodi&lt;/a&gt; for IPTV. I’ve got &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/releases&quot;&gt;Retropie 3.5&lt;/a&gt; (for some reason 3.6 doesn’t update).&lt;/p&gt;
+
+&lt;p&gt;To install:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gzip -d retropie-v3.5-rpi1.img.gz
+$ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get my &lt;a href=&quot;http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ&quot;&gt;USB hub&lt;/a&gt; working with WIFI dongle and keyboard I had to append &lt;code class=&quot;highlighter-rouge&quot;&gt;dwc_otg.speed=1&lt;/code&gt; in the file &lt;code class=&quot;highlighter-rouge&quot;&gt;/boot/cmdline.txt&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then configured WIFI from Raspberry’s menu.&lt;/p&gt;
+
+&lt;p&gt;After that I installed the experimental Kodi from menu. Basically follow &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/wiki/KODI&quot;&gt;this&lt;/a&gt;. It is important to follow the instructions to have Kodi on the main menu of Emulation Station.&lt;/p&gt;
+
+&lt;p&gt;To use my cellphone as a remote control I installed &lt;a href=&quot;http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp&quot;&gt;Yatse&lt;/a&gt;. In this way you have a Chromecast like equipament. Remember to follow Yatse help to change Kodi Web settings.&lt;/p&gt;
+
+&lt;p&gt;I have Brazil list of channels on PVR Simple client plug-in on Kodi.&lt;/p&gt;
+
+&lt;p&gt;I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.&lt;/p&gt;
+
+&lt;p&gt;That’s all.&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+</description>
+        <pubDate>Sat, 16 Apr 2016 00:00:00 -0400</pubDate>
+        <link>http://viniciusprado.org/retropie-snes-controller-kodi-brazil-list-yatse/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/retropie-snes-controller-kodi-brazil-list-yatse/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Dynamixel Setup Using ROS</title>
+        <description>&lt;p&gt;The Dynamixel package that is provided by ROS is really useful to control multi-joint manipulators or mobile robots using Dynamixel motors. It’s possible to find a nice tutorial &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;One tutorial about the torque joint controller can be found &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials/Creating%20a%20joint%20torque%20controller&quot;&gt;here&lt;/a&gt;. The detail is that, in order to get this step-by-step working, you should setup the motor to wheel mode ON. For this, there is some scripts in the &lt;a href=&quot;https://github.com/arebgun/dynamixel_motor/tree/master/dynamixel_driver/scripts&quot;&gt;dynamixel package&lt;/a&gt;. Which you can install from &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; as usual.&lt;/p&gt;
+
+&lt;p&gt;Using the package you could run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get some information about your motors, and:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set &lt;code class=&quot;highlighter-rouge&quot;&gt;--ccw-angle-limit=1023&lt;/code&gt; or the max value your motor supports.&lt;/p&gt;
+
+&lt;p&gt;That’s all.&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+</description>
+        <pubDate>Wed, 06 Apr 2016 00:00:00 -0400</pubDate>
+        <link>http://viniciusprado.org/dynamixel-setup-using-ros/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/dynamixel-setup-using-ros/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Using Fuzzylite in Ubuntu/ROS</title>
@@ -465,90 +534,6 @@ END;
         <pubDate>Tue, 14 Apr 2015 00:31:36 -0400</pubDate>
         <link>http://viniciusprado.org/vhdl-snippets-mux-16/</link>
         <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-mux-16/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>VHDL Snippets - Decode 3 to 4 Enable and Clock</title>
-        <description>&lt;p&gt;This decode 3 to 4 has outputs only for binary 1, 4, 5 and 6 (particularities of our project), enable input and clock.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-ENTITY decode3to4 IS
-	PORT (	enable : IN STD_LOGIC;
-			data   : IN STD_LOGIC_VECTOR (2 downto 0);  -- 3-bit input
-			clock  : IN STD_LOGIC;
-			eq1    : OUT STD_LOGIC;
-			eq4    : OUT STD_LOGIC;
-			eq5    : OUT STD_LOGIC;
-			eq6    : OUT STD_LOGIC);
-END decode3to4;
-ARCHITECTURE behavior OF decode3to4 IS
-BEGIN
-  PROCESS (clock,enable,data)
-  BEGIN
-      IF clock&#39;EVENT AND clock=&#39;1&#39; THEN
-          eq1 &amp;lt;= &#39;0&#39;; eq4 &amp;lt;= &#39;0&#39;; eq5 &amp;lt;= &#39;0&#39;; eq6 &amp;lt;= &#39;0&#39;;
-          IF (enable = &#39;1&#39;) THEN  -- active high enable pin
-              CASE data IS
-                  WHEN &quot;001&quot; =&amp;gt; eq1 &amp;lt;= &#39;1&#39;;
-                  WHEN &quot;100&quot; =&amp;gt; eq4 &amp;lt;= &#39;1&#39;;
-                  WHEN &quot;101&quot; =&amp;gt; eq5 &amp;lt;= &#39;1&#39;;
-                  WHEN &quot;110&quot; =&amp;gt; eq6 &amp;lt;= &#39;1&#39;;
-                  WHEN others =&amp;gt; eq1 &amp;lt;= &#39;0&#39;; eq4 &amp;lt;= &#39;0&#39;; eq5 &amp;lt;= &#39;0&#39;; eq6 &amp;lt;= &#39;0&#39;;
-              END CASE;
-          END IF;
-      END IF;
-  END PROCESS;
-END;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;That’s all =]&lt;/p&gt;
-</description>
-        <pubDate>Tue, 14 Apr 2015 00:23:39 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-decode-3-to-4-enable-and-clock/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-3-to-4-enable-and-clock/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>VHDL Snippets - Decode 2 to 4 top</title>
-        <description>&lt;p&gt;This decode 2 to 4 have a enable input and its output is low when activated.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY IEEE;
-USE IEEE.STD_LOGIC_1164.ALL;
-ENTITY decode_2to4_top IS
-	PORT (	A  : IN STD_LOGIC_VECTOR (1 downto 0); -- 2-bit input
-			EN : IN STD_LOGIC -- enable input
-			X  : OUT STD_LOGIC_VECTOR (3 downto 0)); -- 4-bit output
-END decode_2to4_top;
-ARCHITECTURE behavior OF decode_2to4_top IS
-BEGIN
-PROCESS (A, EN)
-BEGIN
-	X &amp;lt;= &quot;1111&quot;;        -- default output value
-	IF (EN = &#39;1&#39;) THEN  -- active high enable pin
-		case A is
-			WHEN &quot;00&quot; =&amp;gt; X(0) &amp;lt;= &#39;0&#39;;
-			WHEN &quot;01&quot; =&amp;gt; X(1) &amp;lt;= &#39;0&#39;;
-			WHEN &quot;10&quot; =&amp;gt; X(2) &amp;lt;= &#39;0&#39;;
-			WHEN &quot;11&quot; =&amp;gt; X(3) &amp;lt;= &#39;0&#39;;
-			WHEN others =&amp;gt; X &amp;lt;= &quot;1111&quot;;
-		END CASE;
-	END IF;
-END PROCESS;
-END;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;That’s all =]&lt;/p&gt;
-</description>
-        <pubDate>Tue, 14 Apr 2015 00:14:41 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-decode-2-to-4-top/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-decode-2-to-4-top/</guid>
         
         
       </item>
