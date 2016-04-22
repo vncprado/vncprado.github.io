@@ -26,6 +26,16 @@ Here is some aspects of it:
 
 ---
 
+UPDATE (22/04/16):
+
+I forgot to write how to boot on USB-EFI. With the device off, you need to press `POWER + VOLUME_UP + VOLUME_DOWN` and keep both volume buttons after it turned on, until you see the screen with selection buttons.
+
+grub.cfg
+linux	/casper/vmlinuz.efi  file=/cdrom/preseed/ubuntu.seed boot=casper **video=1366x768** --- **persistent**
+
+Now that Ubuntu 16.04 was released I'll try to make a stable version of it.
+TODO: Talk about wifi if it works and silead if I make my own driver
+
 UPDATE (19/12/15):
 
 Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:
