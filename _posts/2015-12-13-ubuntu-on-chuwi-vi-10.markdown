@@ -4,6 +4,24 @@ title: "Ubuntu on Chuwi Vi 10"
 date: "2015-12-13"
 ---
 
+UPDATE (22-24/04/16):
+
+I forgot to write how to boot on USB-EFI. With the device off, you need to press `POWER + VOLUME_UP + VOLUME_DOWN` and keep both volume buttons after it turned on, until you see the screen with selection buttons.
+
+Now that Ubuntu 16.04 was released I'll try to make a stable version of it.
+
+I got touch screen working with [this](https://github.com/onitake/gslx680-acpi) driver. I'm planning to submit a pull request with Chuwi Vi 10 driver extracted from my Windows 10 driver to their [firmware](https://github.com/onitake/gsl-firmware) repository.
+
+UPDATE (19/12/15):
+
+Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:
+
+    $ /usr/lib/nux/unity_support_test -p
+
+In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.
+
+---
+
 I'm writing this post to summarize all stuff I've been trying on my Chuwi Vi 10 tablet to work with Ubuntu.
 
 Here is some aspects of it:
@@ -23,24 +41,6 @@ Here is some aspects of it:
 | Gyro Sensor   | Bosch BMG 160                   |
 | Accel/Compass | Bosch BMC 150                   |
 | Touchscreen   | Silead touch                    |
-
----
-
-UPDATE (22-24/04/16):
-
-I forgot to write how to boot on USB-EFI. With the device off, you need to press `POWER + VOLUME_UP + VOLUME_DOWN` and keep both volume buttons after it turned on, until you see the screen with selection buttons.
-
-Now that Ubuntu 16.04 was released I'll try to make a stable version of it.
-
-I got touch screen working with [this](https://github.com/onitake/gslx680-acpi) driver. I'm planning to submit a pull request with Chuwi Vi 10 driver extracted from my Windows 10 driver to their [firmware](https://github.com/onitake/gsl-firmware) repository.
-
-UPDATE (19/12/15):
-
-Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:
-
-    $ /usr/lib/nux/unity_support_test -p
-
-In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.
 
 ---
 
