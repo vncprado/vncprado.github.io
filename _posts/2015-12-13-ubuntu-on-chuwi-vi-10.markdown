@@ -26,15 +26,13 @@ Here is some aspects of it:
 
 ---
 
-UPDATE (22/04/16):
+UPDATE (22-24/04/16):
 
 I forgot to write how to boot on USB-EFI. With the device off, you need to press `POWER + VOLUME_UP + VOLUME_DOWN` and keep both volume buttons after it turned on, until you see the screen with selection buttons.
 
-grub.cfg
-linux	/casper/vmlinuz.efi  file=/cdrom/preseed/ubuntu.seed boot=casper **video=1366x768** --- **persistent**
-
 Now that Ubuntu 16.04 was released I'll try to make a stable version of it.
-TODO: Talk about wifi if it works and silead if I make my own driver
+
+I got touch screen working with [this](https://github.com/onitake/gslx680-acpi) driver. I'm planning to submit a pull request with Chuwi Vi 10 driver extracted from my Windows 10 driver to their [firmware](https://github.com/onitake/gsl-firmware) repository.
 
 UPDATE (19/12/15):
 
