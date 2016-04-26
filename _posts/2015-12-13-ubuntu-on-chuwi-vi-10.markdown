@@ -4,6 +4,20 @@ title: "Ubuntu on Chuwi Vi 10"
 date: "2015-12-13"
 ---
 
+UPDATE (26/04/16):
+
+**Installation on a USB 3.0 drive**: It fails on grub normal installation. So I boot again with the first USB drive and type `c` at GRUB and use instructions listed below to boot the USB 3.0 recent installed Ubuntu. After that I got my WIFI dongle (my built-in WIFI card is still not working) and follow [this](http://www.jfwhome.com/2016/01/04/latest-steps-to-install-ubuntu-on-the-asus-t100ta/) GRUB instructions:
+
+    sudo apt-get update
+    sudo apt-get install grub-efi-ia32
+    sudo nano /etc/default/grub
+
+Find the line starting GRUB_CMDLINE_LINUX_DEFAULT and add intel_idle.max_cstate=0 before quiet splash".
+
+    sudo update-grub
+
+Now I just need the USB 3.0 to boot my system, without changing (for now) my Windows installation.
+
 UPDATE (22-24/04/16):
 
 I forgot to write how to boot on USB-EFI. With the device off, you need to press `POWER + VOLUME_UP + VOLUME_DOWN` and keep both volume buttons after it turned on, until you see the screen with selection buttons.
