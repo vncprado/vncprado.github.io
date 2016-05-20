@@ -15,6 +15,7 @@ To get WIFI you need to compile [this driver](https://github.com/lwfinger/rtl872
     sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
 
 There is also some changes in the Makefile:
+
 > Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.
 
     ifeq ($(CONFIG_RASPBIAN), y)

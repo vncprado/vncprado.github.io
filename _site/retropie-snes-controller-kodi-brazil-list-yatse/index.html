@@ -120,8 +120,11 @@ sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
 </code></pre>
 </div>
 
-<p>There is also some changes in the Makefile:
-&gt; Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.</p>
+<p>There is also some changes in the Makefile:</p>
+
+<blockquote>
+  <p>Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.</p>
+</blockquote>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>ifeq ($(CONFIG_RASPBIAN), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
