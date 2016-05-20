@@ -108,8 +108,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>UPDATE 19/05/16:
-I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
+				<p>UPDATE 19/05/16:</p>
+
+<p>I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
 The model is <a href="https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1">this</a>. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.</p>
 
 <p>To get WIFI you need to compile <a href="https://github.com/lwfinger/rtl8723bu/">this driver</a>. To compile it on your Retropie you will need the help of <a href="http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html">this guy</a>. But basically you will need to get and install linux-headers for Raspbian:</p>
@@ -119,11 +120,8 @@ sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
 </code></pre>
 </div>
 
-<p>There is also some changes in the Makefile:</p>
-
-<blockquote>
-  <p>Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.</p>
-</blockquote>
+<p>There is also some changes in the Makefile:
+&gt; Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>ifeq ($(CONFIG_RASPBIAN), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN

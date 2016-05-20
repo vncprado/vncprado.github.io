@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 19 May 2016 23:30:16 -0400</pubDate>
-    <lastBuildDate>Thu, 19 May 2016 23:30:16 -0400</lastBuildDate>
+    <pubDate>Thu, 19 May 2016 23:32:00 -0400</pubDate>
+    <lastBuildDate>Thu, 19 May 2016 23:32:00 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -57,8 +57,9 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
     
       <item>
         <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
-        <description>&lt;p&gt;UPDATE 19/05/16:
-I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
+        <description>&lt;p&gt;UPDATE 19/05/16:&lt;/p&gt;
+
+&lt;p&gt;I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
 The model is &lt;a href=&quot;https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1&quot;&gt;this&lt;/a&gt;. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.&lt;/p&gt;
 
 &lt;p&gt;To get WIFI you need to compile &lt;a href=&quot;https://github.com/lwfinger/rtl8723bu/&quot;&gt;this driver&lt;/a&gt;. To compile it on your Retropie you will need the help of &lt;a href=&quot;http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html&quot;&gt;this guy&lt;/a&gt;. But basically you will need to get and install linux-headers for Raspbian:&lt;/p&gt;
@@ -68,11 +69,8 @@ sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;There is also some changes in the Makefile:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;There is also some changes in the Makefile:
+&amp;gt; Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifeq ($(CONFIG_RASPBIAN), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN

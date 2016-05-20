@@ -5,6 +5,7 @@ date: "2016-04-16 21:52:18 -0400"
 ---
 
 UPDATE 19/05/16:
+
 I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
 The model is [this](https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1). The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.
 
@@ -14,7 +15,6 @@ To get WIFI you need to compile [this driver](https://github.com/lwfinger/rtl872
     sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
 
 There is also some changes in the Makefile:
-
 > Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.
 
     ifeq ($(CONFIG_RASPBIAN), y)
