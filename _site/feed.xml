@@ -5,13 +5,97 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 16 Apr 2016 21:53:28 -0400</pubDate>
-    <lastBuildDate>Sat, 16 Apr 2016 21:53:28 -0400</lastBuildDate>
+    <pubDate>Thu, 19 May 2016 23:30:16 -0400</pubDate>
+    <lastBuildDate>Thu, 19 May 2016 23:30:16 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
+        <title>Installation boot error (or don&#39;t forget GRUB)</title>
+        <description>&lt;p&gt;Last week I updated my lab laptop to Ubuntu 16.04 even with lots of problems reported up to now I have no problems, with one simple exception.
+I choose to do a fresh install. To make a dist-upgrade I would need to wait the 16.04.1 release. There’s some workarounds but laziness dominates.
+During the installation I got an Grub error, a fatal error that crashes the install wizard. But I had the feeling that everything was fine but the grub.
+During the reboot in USB drive Grub you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; to get a terminal. So you just need to type:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linux (hd0,msdos)/boot/grub/vmlinuz&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt; root=/dev/sda1
+initrd (hd0,msdos)/boot/initrd.gz
+boot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The auto-complete works so just &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt;&lt;/code&gt; and you get list of partitions and files to complete. You just need to be sure about your root partition.
+After boot the installed Ubuntu, you can run boot-repair to fix your boot installation.&lt;/p&gt;
+
+&lt;p&gt;That’s all!&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+</description>
+        <pubDate>Sat, 14 May 2016 20:31:32 -0400</pubDate>
+        <link>http://viniciusprado.org/installation-boot-error-or-dont-forget-grub/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/installation-boot-error-or-dont-forget-grub/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Updates about Pebble apps</title>
+        <description>&lt;p&gt;I’ve been using my Pebble again after some time. I wrote about my expectations and applications &lt;a href=&quot;http://vncprado.github.io/best-pebble-apps-up-to-now-for-me/&quot;&gt;before&lt;/a&gt;. For my total surprise, they updated the firmware with something really good, closer to Pebble time. Basically, they redesigned the whole interface and learn which are the basic apps and made their own. Apps to get weather, calendar and notifications are built-in and really good.&lt;/p&gt;
+
+&lt;p&gt;I’m in a huge dilemma about Music Boss. Its single advantage now is to launch the music apps. The built-in music app is really good. So I keep both but probably I’m going to remove Music Boss in the short term. I always can start the apps directly.&lt;/p&gt;
+
+&lt;p&gt;For navigation, I’m using Directions by Thibaut Rey but I need to test it. I keep Nav Me because I thing that I paid for it but definitely lost its position. I like Runkeeper and it stays the best and simplest. Endomondo didn’t have any updates since 2014 so I’m not going to test it again.&lt;/p&gt;
+
+&lt;p&gt;That’s all!&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+</description>
+        <pubDate>Mon, 02 May 2016 23:01:37 -0400</pubDate>
+        <link>http://viniciusprado.org/updates-about-pebble-apps/</link>
+        <guid isPermaLink="true">http://viniciusprado.org/updates-about-pebble-apps/</guid>
+        
+        
+      </item>
+    
+      <item>
         <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
-        <description>&lt;p&gt;Some side project I’m working with my &lt;a href=&quot;https://www.raspberrypi.org/products/model-a-plus/&quot;&gt;Raspberry Pi A+&lt;/a&gt; is to transform it in a retro game with Bluetooth control and &lt;a href=&quot;http://kodi.wiki/view/Main_Page&quot;&gt;Kodi&lt;/a&gt; for IPTV. I’ve got &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/releases&quot;&gt;Retropie 3.5&lt;/a&gt; (for some reason 3.6 doesn’t update).&lt;/p&gt;
+        <description>&lt;p&gt;UPDATE 19/05/16:
+I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
+The model is &lt;a href=&quot;https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1&quot;&gt;this&lt;/a&gt;. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.&lt;/p&gt;
+
+&lt;p&gt;To get WIFI you need to compile &lt;a href=&quot;https://github.com/lwfinger/rtl8723bu/&quot;&gt;this driver&lt;/a&gt;. To compile it on your Retropie you will need the help of &lt;a href=&quot;http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html&quot;&gt;this guy&lt;/a&gt;. But basically you will need to get and install linux-headers for Raspbian:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
+sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There is also some changes in the Makefile:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifeq ($(CONFIG_RASPBIAN), y)
+EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
+EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211
+EXTRA_CFLAGS += -DRTW_USE_CFG80211_STA_EVENT # only enable when kernel &amp;gt;= 3.2
+EXTRA_CFLAGS += -DCONFIG_P2P_IPS
+ARCH := arm
+CROSS_COMPILE := arm-linux-gnueabihf-
+KVER := $(shell uname -r)
+KSRC ?= /lib/modules/$(KVER)/build
+MODULE_NAME := 8723bu
+MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Bluetooth you’ll use &lt;a href=&quot;https://github.com/lwfinger/rtl8723au_bt&quot;&gt;this one&lt;/a&gt;. The &lt;a href=&quot;https://www.amazon.ca/dp/B00MB6CNN8/ref=pe_386430_193739550_TE_dp_1&quot;&gt;controller&lt;/a&gt; that I bought works with the test branch today. Maybe this will change in the future. The driver documentation says that you should use kernel branch for most recent kernels.&lt;/p&gt;
+
+&lt;p&gt;Still need to test without USB 3.0 hub (using only the direct USB port in my raspberry pi).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Some side project I’m working with my &lt;a href=&quot;https://www.raspberrypi.org/products/model-a-plus/&quot;&gt;Raspberry Pi A+&lt;/a&gt; is to transform it in a retro game with Bluetooth control and &lt;a href=&quot;http://kodi.wiki/view/Main_Page&quot;&gt;Kodi&lt;/a&gt; for IPTV. I’ve got &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/releases&quot;&gt;Retropie 3.5&lt;/a&gt; (for some reason 3.6 doesn’t update).&lt;/p&gt;
 
 &lt;p&gt;To install:&lt;/p&gt;
 
@@ -30,7 +114,7 @@ $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
 
 &lt;p&gt;After that I installed the experimental Kodi from menu. Basically follow &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/wiki/KODI&quot;&gt;this&lt;/a&gt;. It is important to follow the instructions to have Kodi on the main menu of Emulation Station.&lt;/p&gt;
 
-&lt;p&gt;To use my cellphone as a remote control I installed &lt;a href=&quot;http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp&quot;&gt;Yatse&lt;/a&gt;. In this way you have a Chromecast like equipament. Remember to follow Yatse help to change Kodi Web settings.&lt;/p&gt;
+&lt;p&gt;To use my cellphone as a remote control I installed &lt;a href=&quot;http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp&quot;&gt;Yatse&lt;/a&gt;. In this way you have a Chromecast like equipment. Remember to follow Yatse help to change Kodi Web settings.&lt;/p&gt;
 
 &lt;p&gt;I have Brazil list of channels on PVR Simple client plug-in on Kodi.&lt;/p&gt;
 
@@ -136,7 +220,45 @@ target_link_libraries(fuzzy_tests_node
     
       <item>
         <title>Ubuntu on Chuwi Vi 10</title>
-        <description>&lt;p&gt;I’m writing this post to summarize all stuff I’ve been trying on my Chuwi Vi 10 tablet to work with Ubuntu.&lt;/p&gt;
+        <description>&lt;p&gt;UPDATE (26/04/16):&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Installation on a USB 3.0 drive&lt;/strong&gt;: It fails on grub normal installation. So I boot again with the first USB drive and type &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; at GRUB and use instructions listed below to boot the USB 3.0 recent installed Ubuntu. After that I got my WIFI dongle (my built-in WIFI card is still not working) and follow &lt;a href=&quot;http://www.jfwhome.com/2016/01/04/latest-steps-to-install-ubuntu-on-the-asus-t100ta/&quot;&gt;this&lt;/a&gt; GRUB instructions:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install grub-efi-ia32
+sudo nano /etc/default/grub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Find the line starting GRUB_CMDLINE_LINUX_DEFAULT and add intel_idle.max_cstate=0 before quiet splash”.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo update-grub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now I just need the USB 3.0 to boot my system, without changing (for now) my Windows installation.&lt;/p&gt;
+
+&lt;p&gt;UPDATE (22-24/04/16):&lt;/p&gt;
+
+&lt;p&gt;I forgot to write how to boot on USB-EFI. With the device off, you need to press &lt;code class=&quot;highlighter-rouge&quot;&gt;POWER + VOLUME_UP + VOLUME_DOWN&lt;/code&gt; and keep both volume buttons after it turned on, until you see the screen with selection buttons.&lt;/p&gt;
+
+&lt;p&gt;Now that Ubuntu 16.04 was released I’ll try to make a stable version of it.&lt;/p&gt;
+
+&lt;p&gt;I got touch screen working with &lt;a href=&quot;https://github.com/onitake/gslx680-acpi&quot;&gt;this&lt;/a&gt; driver. I’m planning to submit a pull request with Chuwi Vi 10 driver extracted from my Windows 10 driver to their &lt;a href=&quot;https://github.com/onitake/gsl-firmware&quot;&gt;firmware&lt;/a&gt; repository.&lt;/p&gt;
+
+&lt;p&gt;UPDATE (19/12/15):&lt;/p&gt;
+
+&lt;p&gt;Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/lib/nux/unity_support_test -p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I’m writing this post to summarize all stuff I’ve been trying on my Chuwi Vi 10 tablet to work with Ubuntu.&lt;/p&gt;
 
 &lt;p&gt;Here is some aspects of it:&lt;/p&gt;
 
@@ -202,18 +324,6 @@ target_link_libraries(fuzzy_tests_node
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;UPDATE (19/12/15):&lt;/p&gt;
-
-&lt;p&gt;Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/lib/nux/unity_support_test -p
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -428,112 +538,6 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
         <pubDate>Mon, 25 May 2015 21:15:18 -0400</pubDate>
         <link>http://viniciusprado.org/best-pebble-apps-up-to-now-for-me/</link>
         <guid isPermaLink="true">http://viniciusprado.org/best-pebble-apps-up-to-now-for-me/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>VHDL Snippets - Clock counter</title>
-        <description>&lt;p&gt;In our project this clock counter was user to counter 255 clock then forward a pulse:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE IEEE.STD_LOGIC_ARITH.ALL;
-USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-ENTITY clock_counter IS
-	PORT (	sclr	: IN STD_LOGIC;
-			clock   : IN STD_LOGIC;
-			cout	: OUT STD_LOGIC;
-			q 		: OUT STD_LOGIC_VECTOR (7 downto 0));
-END clock_counter;
-ARCHITECTURE behavior of clock_counter IS
-	SIGNAL temp: STD_LOGIC_VECTOR (7 downto 0);
-BEGIN
-	PROCESS(clock,sclr)
-	BEGIN
-		IF sclr=&#39;1&#39; THEN
-			cout &amp;lt;= &#39;0&#39;;
-			temp &amp;lt;= &quot;00000000&quot;;
-		ELSIF(clock&#39;event and clock=&#39;1&#39;) THEN
-			IF temp=&quot;11111111&quot; THEN
-				cout &amp;lt;= &#39;1&#39;;
-				temp &amp;lt;= &quot;00000000&quot;;
-			ELSE
-				cout &amp;lt;= &#39;0&#39;;
-				temp &amp;lt;= temp + 1;
-			END IF;
-		END IF;
-	END PROCESS;
-	q &amp;lt;= temp;
-END;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;That’s all =]&lt;/p&gt;
-</description>
-        <pubDate>Tue, 14 Apr 2015 00:36:26 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-clock-counter/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-clock-counter/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>VHDL Snippets - Mux 16</title>
-        <description>&lt;p&gt;Implementation of a Mux 16:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-
-ENTITY mux16_1 IS
-	PORT (	sel    : IN STD_LOGIC_VECTOR (3 downto 0);
-			data15 : IN STD_LOGIC;
-			data14 : IN STD_LOGIC;
-			data13 : IN STD_LOGIC;
-			data12 : IN STD_LOGIC;
-			data11 : IN STD_LOGIC;
-			data10 : IN STD_LOGIC;
-			data9  : IN STD_LOGIC;
-			data8  : IN STD_LOGIC;
-			data7  : IN STD_LOGIC;
-			data6  : IN STD_LOGIC;
-			data5  : IN STD_LOGIC;
-			data4  : IN STD_LOGIC;
-			data3  : IN STD_LOGIC;
-			data2  : IN STD_LOGIC;
-			data1  : IN STD_LOGIC;
-			data0  : IN STD_LOGIC;
-			result : OUT STD_LOGIC);
-END mux16_1;
-ARCHITECTURE behavior of mux16_1 IS
-BEGIN
-	WITH sel SELECT
-		result &amp;lt;= data15 WHEN &quot;1111&quot;,
-				  data14 WHEN &quot;1110&quot;,
-				  data13 WHEN &quot;1101&quot;,
-				  data12 WHEN &quot;1100&quot;,
-				  data11 WHEN &quot;1011&quot;,
-				  data10 WHEN &quot;1010&quot;,
-				  data9	 WHEN &quot;1001&quot;,
-				  data8	 WHEN &quot;1000&quot;,
-				  data7	 WHEN &quot;0111&quot;,
-				  data6	 WHEN &quot;0110&quot;,
-				  data5	 WHEN &quot;0101&quot;,
-				  data4	 WHEN &quot;0100&quot;,
-				  data3	 WHEN &quot;0011&quot;,
-				  data2	 WHEN &quot;0010&quot;,
-				  data1	 WHEN &quot;0001&quot;,
-				  data0	 WHEN &quot;0000&quot;,
-				  &#39;0&#39;    WHEN others;
-END;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;That’s all =]&lt;/p&gt;
-</description>
-        <pubDate>Tue, 14 Apr 2015 00:31:36 -0400</pubDate>
-        <link>http://viniciusprado.org/vhdl-snippets-mux-16/</link>
-        <guid isPermaLink="true">http://viniciusprado.org/vhdl-snippets-mux-16/</guid>
         
         
       </item>

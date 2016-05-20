@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hey Kowalski, you out there?">
 
-    <title>Retropie + SNES controller + Kodi + Brazil list + Yatse - Vanishing Point</title>
+    <title>Installation boot error (or don't forget GRUB) - Vanishing Point</title>
 
-    <link rel="canonical" href="http://viniciusprado.org/retropie-snes-controller-kodi-brazil-list-yatse/">
+    <link rel="canonical" href="http://viniciusprado.org/installation-boot-error-or-dont-forget-grub/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,9 +93,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Retropie + SNES controller + Kodi + Brazil list + Yatse</h1>
+                    <h1>Installation boot error (or don't forget GRUB)</h1>
                     
-                    <span class="meta">Posted by Vincius Prado da Fonseca on April 16, 2016</span>
+                    <span class="meta">Posted by Vincius Prado da Fonseca on May 14, 2016</span>
                 </div>
             </div>
         </div>
@@ -108,70 +108,21 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>UPDATE 19/05/16:
-I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
-The model is <a href="https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1">this</a>. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.</p>
+				<p>Last week I updated my lab laptop to Ubuntu 16.04 even with lots of problems reported up to now I have no problems, with one simple exception.
+I choose to do a fresh install. To make a dist-upgrade I would need to wait the 16.04.1 release. There’s some workarounds but laziness dominates.
+During the installation I got an Grub error, a fatal error that crashes the install wizard. But I had the feeling that everything was fine but the grub.
+During the reboot in USB drive Grub you can type <code class="highlighter-rouge">c</code> to get a terminal. So you just need to type:</p>
 
-<p>To get WIFI you need to compile <a href="https://github.com/lwfinger/rtl8723bu/">this driver</a>. To compile it on your Retropie you will need the help of <a href="http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html">this guy</a>. But basically you will need to get and install linux-headers for Raspbian:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
-sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
+<div class="highlighter-rouge"><pre class="highlight"><code>linux (hd0,msdos)/boot/grub/vmlinuz&lt;TAB&gt;&lt;TAB&gt; root=/dev/sda1
+initrd (hd0,msdos)/boot/initrd.gz
+boot
 </code></pre>
 </div>
 
-<p>There is also some changes in the Makefile:</p>
+<p>The auto-complete works so just <code class="highlighter-rouge">&lt;TAB&gt;&lt;TAB&gt;</code> and you get list of partitions and files to complete. You just need to be sure about your root partition.
+After boot the installed Ubuntu, you can run boot-repair to fix your boot installation.</p>
 
-<blockquote>
-  <p>Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.</p>
-</blockquote>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ifeq ($(CONFIG_RASPBIAN), y)
-EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
-EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211
-EXTRA_CFLAGS += -DRTW_USE_CFG80211_STA_EVENT # only enable when kernel &gt;= 3.2
-EXTRA_CFLAGS += -DCONFIG_P2P_IPS
-ARCH := arm
-CROSS_COMPILE := arm-linux-gnueabihf-
-KVER := $(shell uname -r)
-KSRC ?= /lib/modules/$(KVER)/build
-MODULE_NAME := 8723bu
-MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
-endif
-</code></pre>
-</div>
-
-<p>For Bluetooth you’ll use <a href="https://github.com/lwfinger/rtl8723au_bt">this one</a>. The <a href="https://www.amazon.ca/dp/B00MB6CNN8/ref=pe_386430_193739550_TE_dp_1">controller</a> that I bought works with the test branch today. Maybe this will change in the future. The driver documentation says that you should use kernel branch for most recent kernels.</p>
-
-<p>Still need to test without USB 3.0 hub (using only the direct USB port in my raspberry pi).</p>
-
-<hr />
-
-<p>Some side project I’m working with my <a href="https://www.raspberrypi.org/products/model-a-plus/">Raspberry Pi A+</a> is to transform it in a retro game with Bluetooth control and <a href="http://kodi.wiki/view/Main_Page">Kodi</a> for IPTV. I’ve got <a href="https://github.com/RetroPie/RetroPie-Setup/releases">Retropie 3.5</a> (for some reason 3.6 doesn’t update).</p>
-
-<p>To install:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ gzip -d retropie-v3.5-rpi1.img.gz
-$ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
-</code></pre>
-</div>
-
-<p>To get my <a href="http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ">USB hub</a> working with WIFI dongle and keyboard I had to append <code class="highlighter-rouge">dwc_otg.speed=1</code> in the file <code class="highlighter-rouge">/boot/cmdline.txt</code>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
-</code></pre>
-</div>
-
-<p>Then configured WIFI from Raspberry’s menu.</p>
-
-<p>After that I installed the experimental Kodi from menu. Basically follow <a href="https://github.com/RetroPie/RetroPie-Setup/wiki/KODI">this</a>. It is important to follow the instructions to have Kodi on the main menu of Emulation Station.</p>
-
-<p>To use my cellphone as a remote control I installed <a href="http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp">Yatse</a>. In this way you have a Chromecast like equipment. Remember to follow Yatse help to change Kodi Web settings.</p>
-
-<p>I have Brazil list of channels on PVR Simple client plug-in on Kodi.</p>
-
-<p>I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.</p>
-
-<p>That’s all.</p>
+<p>That’s all!</p>
 
 <center> =] </center>
 
@@ -181,13 +132,9 @@ $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/dynamixel-setup-using-ros/" data-toggle="tooltip" data-placement="top" title="Dynamixel Setup Using ROS">&larr; Previous Post</a>
+                        <a href="/updates-about-pebble-apps/" data-toggle="tooltip" data-placement="top" title="Updates about Pebble apps">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/updates-about-pebble-apps/" data-toggle="tooltip" data-placement="top" title="Updates about Pebble apps">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
             <div id="disqus_thread"></div>

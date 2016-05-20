@@ -108,7 +108,45 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>I’m writing this post to summarize all stuff I’ve been trying on my Chuwi Vi 10 tablet to work with Ubuntu.</p>
+				<p>UPDATE (26/04/16):</p>
+
+<p><strong>Installation on a USB 3.0 drive</strong>: It fails on grub normal installation. So I boot again with the first USB drive and type <code class="highlighter-rouge">c</code> at GRUB and use instructions listed below to boot the USB 3.0 recent installed Ubuntu. After that I got my WIFI dongle (my built-in WIFI card is still not working) and follow <a href="http://www.jfwhome.com/2016/01/04/latest-steps-to-install-ubuntu-on-the-asus-t100ta/">this</a> GRUB instructions:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install grub-efi-ia32
+sudo nano /etc/default/grub
+</code></pre>
+</div>
+
+<p>Find the line starting GRUB_CMDLINE_LINUX_DEFAULT and add intel_idle.max_cstate=0 before quiet splash”.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo update-grub
+</code></pre>
+</div>
+
+<p>Now I just need the USB 3.0 to boot my system, without changing (for now) my Windows installation.</p>
+
+<p>UPDATE (22-24/04/16):</p>
+
+<p>I forgot to write how to boot on USB-EFI. With the device off, you need to press <code class="highlighter-rouge">POWER + VOLUME_UP + VOLUME_DOWN</code> and keep both volume buttons after it turned on, until you see the screen with selection buttons.</p>
+
+<p>Now that Ubuntu 16.04 was released I’ll try to make a stable version of it.</p>
+
+<p>I got touch screen working with <a href="https://github.com/onitake/gslx680-acpi">this</a> driver. I’m planning to submit a pull request with Chuwi Vi 10 driver extracted from my Windows 10 driver to their <a href="https://github.com/onitake/gsl-firmware">firmware</a> repository.</p>
+
+<p>UPDATE (19/12/15):</p>
+
+<p>Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/lib/nux/unity_support_test -p
+</code></pre>
+</div>
+
+<p>In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.</p>
+
+<hr />
+
+<p>I’m writing this post to summarize all stuff I’ve been trying on my Chuwi Vi 10 tablet to work with Ubuntu.</p>
 
 <p>Here is some aspects of it:</p>
 
@@ -174,18 +212,6 @@
     </tr>
   </tbody>
 </table>
-
-<hr />
-
-<p>UPDATE (19/12/15):</p>
-
-<p>Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/lib/nux/unity_support_test -p
-</code></pre>
-</div>
-
-<p>In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.</p>
 
 <hr />
 
