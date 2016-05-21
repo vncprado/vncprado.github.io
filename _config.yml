@@ -11,7 +11,7 @@ header-img: img/large-vanishing-point-blu-ray6-1.jpg
 email: vncprado@gmail.com
 description: "Hey Kowalski, you out there?"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://viniciusprado.org" # the base hostname & protocol for your site
+url: "http://vncprado.github.io" # the base hostname & protocol for your site
 twitter_username: vncprado
 github_username:  vncprado
 facebook_username: vncprado
