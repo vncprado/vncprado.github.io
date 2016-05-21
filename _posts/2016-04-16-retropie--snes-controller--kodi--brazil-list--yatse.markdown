@@ -24,6 +24,8 @@ You need to keep these lines below in order to get config screen when starting e
 
 I'm really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.
 
+PS: Sometimes need to restart controller always with `start + B`.
+
 All the best!
 
 <center> =] </center>
