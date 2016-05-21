@@ -4,6 +4,32 @@ title: "Retropie + SNES controller + Kodi + Brazil list + Yatse"
 date: "2016-04-16 21:52:18 -0400"
 ---
 
+UPDATE 21/05/16:
+
+I got everything working now and arrange all the stuff behind my TV with my Chromecast:
+![TV back with Chromecast and Raspberry pi](assets/TV-back.jpg)
+
+
+Pay attention on the [USB power splitter](http://www.dx.com/p/cwxuan-usb-2-0-male-to-2-x-female-data-sync-charging-splitter-cable-black-32-5cm-409905#.V0Ceo3UrLQo) and the [30 cm HDMI cable](http://www.dx.com/p/hdmi-male-to-male-connection-cable-black-30cm-318400#.V0Ch3HUrLQo).
+
+So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:
+
+    nano /home/pi/.emulationstation/es_input.cfg
+
+You need to keep these lines below in order to get config screen when starting emulationstation:
+
+    <inputAction type="onfinish">
+        <command>/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh</command>
+    </inputAction>
+
+I'm really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.
+
+All the best!
+
+<center> =] </center>
+
+---
+
 UPDATE 19/05/16:
 
 I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.

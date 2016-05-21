@@ -108,7 +108,36 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>UPDATE 19/05/16:</p>
+				<p>UPDATE 21/05/16:</p>
+
+<p>I got everything working now and arrange all the stuff behind my TV with my Chromecast:
+<img src="assets/TV-back.jpg" alt="TV back with Chromecast and Raspberry pi" /></p>
+
+<p>Pay attention on the <a href="http://www.dx.com/p/cwxuan-usb-2-0-male-to-2-x-female-data-sync-charging-splitter-cable-black-32-5cm-409905#.V0Ceo3UrLQo">USB power splitter</a> and the <a href="http://www.dx.com/p/hdmi-male-to-male-connection-cable-black-30cm-318400#.V0Ch3HUrLQo">30 cm HDMI cable</a>.</p>
+
+<p>So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>nano /home/pi/.emulationstation/es_input.cfg
+</code></pre>
+</div>
+
+<p>You need to keep these lines below in order to get config screen when starting emulationstation:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;inputAction type="onfinish"&gt;
+    &lt;command&gt;/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh&lt;/command&gt;
+&lt;/inputAction&gt;
+</code></pre>
+</div>
+
+<p>I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.</p>
+
+<p>All the best!</p>
+
+<center> =] </center>
+
+<hr />
+
+<p>UPDATE 19/05/16:</p>
 
 <p>I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
 The model is <a href="https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1">this</a>. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.</p>

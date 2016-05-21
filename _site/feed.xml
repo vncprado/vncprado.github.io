@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://viniciusprado.org/</link>
     <atom:link href="http://viniciusprado.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 19 May 2016 23:32:59 -0400</pubDate>
-    <lastBuildDate>Thu, 19 May 2016 23:32:59 -0400</lastBuildDate>
+    <pubDate>Sat, 21 May 2016 14:06:43 -0400</pubDate>
+    <lastBuildDate>Sat, 21 May 2016 14:06:43 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -57,7 +57,36 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
     
       <item>
         <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
-        <description>&lt;p&gt;UPDATE 19/05/16:&lt;/p&gt;
+        <description>&lt;p&gt;UPDATE 21/05/16:&lt;/p&gt;
+
+&lt;p&gt;I got everything working now and arrange all the stuff behind my TV with my Chromecast:
+&lt;img src=&quot;assets/TV-back.jpg&quot; alt=&quot;TV back with Chromecast and Raspberry pi&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pay attention on the &lt;a href=&quot;http://www.dx.com/p/cwxuan-usb-2-0-male-to-2-x-female-data-sync-charging-splitter-cable-black-32-5cm-409905#.V0Ceo3UrLQo&quot;&gt;USB power splitter&lt;/a&gt; and the &lt;a href=&quot;http://www.dx.com/p/hdmi-male-to-male-connection-cable-black-30cm-318400#.V0Ch3HUrLQo&quot;&gt;30 cm HDMI cable&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano /home/pi/.emulationstation/es_input.cfg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You need to keep these lines below in order to get config screen when starting emulationstation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;inputAction type=&quot;onfinish&quot;&amp;gt;
+    &amp;lt;command&amp;gt;/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh&amp;lt;/command&amp;gt;
+&amp;lt;/inputAction&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;UPDATE 19/05/16:&lt;/p&gt;
 
 &lt;p&gt;I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
 The model is &lt;a href=&quot;https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1&quot;&gt;this&lt;/a&gt;. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.&lt;/p&gt;
