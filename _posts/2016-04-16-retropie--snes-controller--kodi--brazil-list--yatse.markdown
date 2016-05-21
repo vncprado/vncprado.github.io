@@ -9,7 +9,6 @@ UPDATE 21/05/16:
 I got everything working now and arrange all the stuff behind my TV with my Chromecast:
 ![TV back with Chromecast and Raspberry pi](assets/TV-back.jpg)
 
-
 Pay attention on the [USB power splitter](http://www.dx.com/p/cwxuan-usb-2-0-male-to-2-x-female-data-sync-charging-splitter-cable-black-32-5cm-409905#.V0Ceo3UrLQo) and the [30 cm HDMI cable](http://www.dx.com/p/hdmi-male-to-male-connection-cable-black-30cm-318400#.V0Ch3HUrLQo).
 
 So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:
