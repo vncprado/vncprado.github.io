@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 May 2016 14:11:19 -0400</pubDate>
-    <lastBuildDate>Sat, 21 May 2016 14:11:19 -0400</lastBuildDate>
+    <pubDate>Sat, 21 May 2016 14:44:40 -0400</pubDate>
+    <lastBuildDate>Sat, 21 May 2016 14:44:40 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -80,6 +80,8 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
 &lt;/div&gt;
 
 &lt;p&gt;I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.&lt;/p&gt;
+
+&lt;p&gt;PS: Sometimes need to restart controller always with &lt;code class=&quot;highlighter-rouge&quot;&gt;start + B&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;All the best!&lt;/p&gt;
 
