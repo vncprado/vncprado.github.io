@@ -19,5 +19,3 @@ To get some information about your motors, and:
 To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set `--ccw-angle-limit=1023` or the max value your motor supports.
 
 That's all.
-
-<center> =] </center>

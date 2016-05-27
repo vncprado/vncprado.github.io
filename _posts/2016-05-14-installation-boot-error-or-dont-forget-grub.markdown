@@ -17,5 +17,3 @@ The auto-complete works so just `<TAB><TAB>` and you get list of partitions and 
 After boot the installed Ubuntu, you can run boot-repair to fix your boot installation.
 
 That's all!
-
-<center> =] </center>

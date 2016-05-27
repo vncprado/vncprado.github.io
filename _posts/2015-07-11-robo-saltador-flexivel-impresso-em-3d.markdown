@@ -30,4 +30,3 @@ Para o trabalho em questão eu consegui identificar:
 Apesar de colocar como contra, parece que a ideia do compressor começa a ser melhor trabalhada [aqui.](http://spectrum.ieee.org/automaton/robotics/robotics-hardware/pneumatic-generator-could-make-soft-robots-useful) Nesse artigo um compressor diferente é desenvolvido a partir da quebra de moléculas de água para criação de gases. A notícia acima exemplifica com vários projetos que utilizam ação pneumática e poderiam ser beneficiados com o trabalho, inclusive este "sapo robô".
 
 Isso é tudo.
-=]

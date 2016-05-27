@@ -11,5 +11,3 @@ I'm in a huge dilemma about Music Boss. Its single advantage now is to launch th
 For navigation, I'm using Directions by Thibaut Rey but I need to test it. I keep Nav Me because I thing that I paid for it but definitely lost its position. I like Runkeeper and it stays the best and simplest. Endomondo didn't have any updates since 2014 so I'm not going to test it again.
 
 That's all!
-
-<center> =] </center>

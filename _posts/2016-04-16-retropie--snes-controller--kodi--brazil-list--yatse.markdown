@@ -87,5 +87,3 @@ I have Brazil list of channels on PVR Simple client plug-in on Kodi.
 I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.
 
 That's all.
-
-<center> =] </center>

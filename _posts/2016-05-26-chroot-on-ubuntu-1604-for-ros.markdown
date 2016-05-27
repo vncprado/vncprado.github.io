@@ -16,5 +16,3 @@ Then, let apt complete the installation by running `apt-get upgrade -y`.
 After fixing this you can proceed and install Nvidia drivers. To enter your chroot `schroot -c indigo_trusty`.
 
 All the best!
-
-<center> =] </center>

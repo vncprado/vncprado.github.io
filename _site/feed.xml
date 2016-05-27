@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 27 May 2016 11:14:45 -0400</pubDate>
-    <lastBuildDate>Fri, 27 May 2016 11:14:45 -0400</lastBuildDate>
+    <pubDate>Fri, 27 May 2016 11:39:12 -0400</pubDate>
+    <lastBuildDate>Fri, 27 May 2016 11:39:12 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -25,8 +25,6 @@
 &lt;p&gt;After fixing this you can proceed and install Nvidia drivers. To enter your chroot &lt;code class=&quot;highlighter-rouge&quot;&gt;schroot -c indigo_trusty&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;All the best!&lt;/p&gt;
-
-&lt;center&gt; =] &lt;/center&gt;
 </description>
         <pubDate>Thu, 26 May 2016 22:12:27 -0400</pubDate>
         <link>http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/</link>
@@ -52,8 +50,6 @@ boot
 After boot the installed Ubuntu, you can run boot-repair to fix your boot installation.&lt;/p&gt;
 
 &lt;p&gt;That’s all!&lt;/p&gt;
-
-&lt;center&gt; =] &lt;/center&gt;
 </description>
         <pubDate>Sat, 14 May 2016 20:31:32 -0400</pubDate>
         <link>http://vncprado.github.io/installation-boot-error-or-dont-forget-grub/</link>
@@ -71,8 +67,6 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
 &lt;p&gt;For navigation, I’m using Directions by Thibaut Rey but I need to test it. I keep Nav Me because I thing that I paid for it but definitely lost its position. I like Runkeeper and it stays the best and simplest. Endomondo didn’t have any updates since 2014 so I’m not going to test it again.&lt;/p&gt;
 
 &lt;p&gt;That’s all!&lt;/p&gt;
-
-&lt;center&gt; =] &lt;/center&gt;
 </description>
         <pubDate>Mon, 02 May 2016 23:01:37 -0400</pubDate>
         <link>http://vncprado.github.io/updates-about-pebble-apps/</link>
@@ -180,8 +174,6 @@ $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
 &lt;p&gt;I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.&lt;/p&gt;
 
 &lt;p&gt;That’s all.&lt;/p&gt;
-
-&lt;center&gt; =] &lt;/center&gt;
 </description>
         <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
         <link>http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</link>
@@ -211,8 +203,6 @@ $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
 &lt;p&gt;To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set &lt;code class=&quot;highlighter-rouge&quot;&gt;--ccw-angle-limit=1023&lt;/code&gt; or the max value your motor supports.&lt;/p&gt;
 
 &lt;p&gt;That’s all.&lt;/p&gt;
-
-&lt;center&gt; =] &lt;/center&gt;
 </description>
         <pubDate>Wed, 06 Apr 2016 00:00:00 -0400</pubDate>
         <link>http://vncprado.github.io/dynamixel-setup-using-ros/</link>
@@ -267,8 +257,6 @@ target_link_libraries(fuzzy_tests_node
 &lt;p&gt;Up to now I didn’t have any problems and I can use fuzzylite values to read from and update ROS topics.&lt;/p&gt;
 
 &lt;p&gt;That’s all.&lt;/p&gt;
-
-&lt;center&gt; =] &lt;/center&gt;
 </description>
         <pubDate>Tue, 05 Apr 2016 00:00:00 -0400</pubDate>
         <link>http://vncprado.github.io/using-fuzzylite-in-ubuntu-ros/</link>
@@ -551,8 +539,7 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
 
 &lt;p&gt;Apesar de colocar como contra, parece que a ideia do compressor começa a ser melhor trabalhada &lt;a href=&quot;http://spectrum.ieee.org/automaton/robotics/robotics-hardware/pneumatic-generator-could-make-soft-robots-useful&quot;&gt;aqui.&lt;/a&gt; Nesse artigo um compressor diferente é desenvolvido a partir da quebra de moléculas de água para criação de gases. A notícia acima exemplifica com vários projetos que utilizam ação pneumática e poderiam ser beneficiados com o trabalho, inclusive este “sapo robô”.&lt;/p&gt;
 
-&lt;p&gt;Isso é tudo.
-=]&lt;/p&gt;
+&lt;p&gt;Isso é tudo.&lt;/p&gt;
 </description>
         <pubDate>Sat, 11 Jul 2015 13:24:22 -0400</pubDate>
         <link>http://vncprado.github.io/robo-saltador-flexivel-impresso-em-3d/</link>

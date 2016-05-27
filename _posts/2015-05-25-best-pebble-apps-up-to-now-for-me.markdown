@@ -22,4 +22,3 @@ Following some apps that I found most useful up to now:
 * **Run trackers:** I've used Nike+ to track my runs. It's a nice app with a free training plan, but it has a lot of bugs here and there. Now I'm moving to RunKeeper, but this post is about Pebble! Most apps for runs usually use Pebble just to show time, distance, pace, etc. As far as I know, Endomondo is the only app that has a Pebble app where you can start and pause your activity. Personally, I'm gonna try RunKeeper for now because of its free training plans. Even with a simpler integration with Pebble its the best, but I will try to use Endomondo during races considering its start/stop feature.
 
 That's all!
-=]

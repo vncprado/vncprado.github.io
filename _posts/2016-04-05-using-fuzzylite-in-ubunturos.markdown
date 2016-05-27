@@ -39,5 +39,3 @@ On ROS you can utilize the library updating your CMakelists.txt:
 Up to now I didn't have any problems and I can use fuzzylite values to read from and update ROS topics.
 
 That's all.
-
-<center> =] </center>
