@@ -5,9 +5,35 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 May 2016 14:44:40 -0400</pubDate>
-    <lastBuildDate>Sat, 21 May 2016 14:44:40 -0400</lastBuildDate>
+    <pubDate>Thu, 26 May 2016 22:13:22 -0400</pubDate>
+    <lastBuildDate>Thu, 26 May 2016 22:13:22 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Chroot on Ubuntu 16.04 for ROS</title>
+        <description>&lt;p&gt;After install Ubuntu 16.04 on my laptop I found out that maybe would be challenging to have a nice ROS installation like in 14.04 but I could work almost in the same way before with a chroot of Ubuntu 14.04 in my 16.04 installation.&lt;/p&gt;
+
+&lt;p&gt;I followed &lt;a href=&quot;http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot&quot;&gt;this&lt;/a&gt; tutorial but I got an error on libpan. But &lt;a href=&quot;https://blog.tan-ce.com/chroot-ubuntu-14-04-on-android-nexus-10/&quot;&gt;this&lt;/a&gt; guy has a solution. Create a dummy &lt;code class=&quot;highlighter-rouge&quot;&gt;init.d&lt;/code&gt; script at &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d/systemd-logind&lt;/code&gt; with 0755 permissions (executable by all). In this file, enter the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then, let apt complete the installation by running &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get upgrade -y&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;After fixing this you can proceed and install Nvidia drivers. To enter your chroot &lt;code class=&quot;highlighter-rouge&quot;&gt;schroot -c indigo_trusty&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+</description>
+        <pubDate>Thu, 26 May 2016 22:12:27 -0400</pubDate>
+        <link>http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Installation boot error (or don&#39;t forget GRUB)</title>
@@ -531,46 +557,6 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
         <pubDate>Sat, 11 Jul 2015 13:24:22 -0400</pubDate>
         <link>http://vncprado.github.io/robo-saltador-flexivel-impresso-em-3d/</link>
         <guid isPermaLink="true">http://vncprado.github.io/robo-saltador-flexivel-impresso-em-3d/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Best Pebble Apps Up to Now For Me</title>
-        <description>&lt;p&gt;I recently bought a Pebble smartwatch. I’ve heard about this for a long time, but now I’m getting into running so I thought that would be a good idea have something to help me tracking my goals. I know that they released a new version early this year but the original one is good enough for me and my pocket.&lt;/p&gt;
-
-&lt;p&gt;Following some apps that I found most useful up to now:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Fuzzy text:&lt;/strong&gt; This actually is an watchface which shows you a more human-like way to read time, available in several languages.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Music Boss:&lt;/strong&gt; One BIG improvement in the default music player which remains in Pebble’s main menu. I’ve got some bugs concerning Bluetooth delay and my Moto G laziness but worth every penny (actually 2 dollars). You can control many music apps (I’m using Google play and Podcast Republic in a daily basis). There are some shortcuts to change tracks and launch apps, but I’m not really too much into it.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Weather:&lt;/strong&gt; Shows you weather information for now or for the next five days. Uses GPS to get a closer information. It vibrates when results are loaded. It’s currently the app with most likes.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Nav ME:&lt;/strong&gt; I think that this one is in beta for android and is paid for iOS (I’m not sure) but with a good price I would buy it. You just need set your destination on Google Maps and start navigation to get the information on your wrist. Really useful for cycling. Actually I think that this use case is the step closer to what we all need from a smartwatch. Set up some stuff on your cell phone and get useful information on your wrist.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Travvik:&lt;/strong&gt; Another really good surprise for my Pebble. Here in Ottawa I just set the bus stop that I’m at and the bus number I need to get updates on how long it will take to arrive. Another really good use case. It’s just missing a clever way to search the bus stop number (GPS or a fav list) or integration to android apps like NavMe.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Notification Center:&lt;/strong&gt; One really complete way to get your notifications. A simple way to dismiss and reply (limited but ok)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Run trackers:&lt;/strong&gt; I’ve used Nike+ to track my runs. It’s a nice app with a free training plan, but it has a lot of bugs here and there. Now I’m moving to RunKeeper, but this post is about Pebble! Most apps for runs usually use Pebble just to show time, distance, pace, etc. As far as I know, Endomondo is the only app that has a Pebble app where you can start and pause your activity. Personally, I’m gonna try RunKeeper for now because of its free training plans. Even with a simpler integration with Pebble its the best, but I will try to use Endomondo during races considering its start/stop feature.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That’s all!
-=]&lt;/p&gt;
-</description>
-        <pubDate>Mon, 25 May 2015 21:15:18 -0400</pubDate>
-        <link>http://vncprado.github.io/best-pebble-apps-up-to-now-for-me/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/best-pebble-apps-up-to-now-for-me/</guid>
         
         
       </item>

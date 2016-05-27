@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hey Kowalski, you out there?">
 
-    <title>Vanishing Point</title>
+    <title>Chroot on Ubuntu 16.04 for ROS - Vanishing Point</title>
 
-    <link rel="canonical" href="http://vncprado.github.io/page7/">
+    <link rel="canonical" href="http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -87,96 +87,82 @@
 </nav>
 
 
-    <!-- Page Header -->
+    <!-- Post Header -->
 <header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Vanishing Point</h1>
-                    <hr class="small">
-                    <span class="subheading">Hey Kowalski, you out there?</span>
+                <div class="post-heading">
+                    <h1>Chroot on Ubuntu 16.04 for ROS</h1>
+                    
+                    <span class="meta">Posted by Vincius Prado da Fonseca on May 26, 2016</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
-<div class="post-preview">
-    <a href="/reduce-pdf-files/">
-        <h2 class="post-title">            Reduce PDF files size
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on June 18, 2014</p>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>After install Ubuntu 16.04 on my laptop I found out that maybe would be challenging to have a nice ROS installation like in 14.04 but I could work almost in the same way before with a chroot of Ubuntu 14.04 in my 16.04 installation.</p>
+
+<p>I followed <a href="http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot">this</a> tutorial but I got an error on libpan. But <a href="https://blog.tan-ce.com/chroot-ubuntu-14-04-on-android-nexus-10/">this</a> guy has a solution. Create a dummy <code class="highlighter-rouge">init.d</code> script at <code class="highlighter-rouge">/etc/init.d/systemd-logind</code> with 0755 permissions (executable by all). In this file, enter the following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="nb">exit </span>0
+</code></pre>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/java-update-alternatives-optjava-install/">
-        <h2 class="post-title">            Java JRE and mozilla-javaplugin update-alternatives install
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on June 3, 2014</p>
-</div>
-<hr>
+<p>Then, let apt complete the installation by running <code class="highlighter-rouge">apt-get upgrade -y</code>.</p>
 
-<div class="post-preview">
-    <a href="/c-define-print/">
-        <h2 class="post-title">            C++ #define PRINT
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on May 20, 2014</p>
-</div>
-<hr>
+<p>After fixing this you can proceed and install Nvidia drivers. To enter your chroot <code class="highlighter-rouge">schroot -c indigo_trusty</code>.</p>
 
-<div class="post-preview">
-    <a href="/time-c-ms/">
-        <h2 class="post-title">            Time C++ in milliseconds
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on May 12, 2014</p>
-</div>
-<hr>
+<p>All the best!</p>
 
-<div class="post-preview">
-    <a href="/ghost-config-file-apache2-subdomain/">
-        <h2 class="post-title">            Ghost config file Apache2 + subdomain
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on January 15, 2014</p>
-</div>
-<hr>
+<center> =] </center>
 
 
-<!-- Pager -->
+                <hr>
 
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page6">&larr; Newer Posts</a>
-    </li>
-    
-    
-    <li class="next">
-        <a href="/page8">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/installation-boot-error-or-dont-forget-grub/" data-toggle="tooltip" data-placement="top" title="Installation boot error (or don't forget GRUB)">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+            <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
 
+s.src = '//vanishingpointgithub.disqus.com/embed.js';
 
-		</div>
-	</div>
-</div>
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 

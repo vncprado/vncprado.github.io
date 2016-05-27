@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hey Kowalski, you out there?">
 
-    <title>Vanishing Point</title>
+    <title>Booting Ubuntu 14.04 on Dell Venue 8 Pro - Vanishing Point</title>
 
-    <link rel="canonical" href="http://vncprado.github.io/page7/">
+    <link rel="canonical" href="http://vncprado.github.io/booting-ubuntu-1404-on-dell-venue-8-pro/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -87,96 +87,115 @@
 </nav>
 
 
-    <!-- Page Header -->
+    <!-- Post Header -->
 <header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Vanishing Point</h1>
-                    <hr class="small">
-                    <span class="subheading">Hey Kowalski, you out there?</span>
+                <div class="post-heading">
+                    <h1>Booting Ubuntu 14.04 on Dell Venue 8 Pro</h1>
+                    
+                    <span class="meta">Posted by Vincius Prado da Fonseca on April 6, 2016</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
-<div class="post-preview">
-    <a href="/reduce-pdf-files/">
-        <h2 class="post-title">            Reduce PDF files size
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on June 18, 2014</p>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>Boot USB
+iso Rufus
+efi</p>
+
+<p>grub.cfg ok</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>menuentry "MOD Try Ubuntu without installing" {
+	set gfxpayload=keep
+	linux	/casper/vmlinuz.efi file=/cdrom/preseed/ubuntu.seed boot=casper nomodeset reboot=pci,force
+	initrd	/casper/initrd.lz
+}
+</code></pre>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/java-update-alternatives-optjava-install/">
-        <h2 class="post-title">            Java JRE and mozilla-javaplugin update-alternatives install
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on June 3, 2014</p>
-</div>
-<hr>
+<p>installation normal
+first boot by usb drive</p>
 
-<div class="post-preview">
-    <a href="/c-define-print/">
-        <h2 class="post-title">            C++ #define PRINT
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on May 20, 2014</p>
-</div>
-<hr>
+<p>ia32-libs
+sudo -i
+cd /etc/apt/sources.list.d
+echo “deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse” &gt;ia32-libs-raring.list
+apt-get update
+apt-get install ia32-libs</p>
 
-<div class="post-preview">
-    <a href="/time-c-ms/">
-        <h2 class="post-title">            Time C++ in milliseconds
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on May 12, 2014</p>
-</div>
-<hr>
+<p>grub compiling</p>
 
-<div class="post-preview">
-    <a href="/ghost-config-file-apache2-subdomain/">
-        <h2 class="post-title">            Ghost config file Apache2 + subdomain
-        </h2>
-        
-    </a>
-    <p class="post-meta">Posted by Vincius Prado da Fonseca on January 15, 2014</p>
-</div>
-<hr>
+<p>patch, config (using generic config) and compiling kernel 4.2
+sound modules, SoC, atom etc</p>
+
+<p>chromium os firmware sound, rename 48hz to master
+alsa conf</p>
+
+<p>wireless firmware</p>
+
+<p>3D Acceleration: kernel 3.15 + patch</p>
+
+<p>http://forum.tabletpcreview.com/threads/linux-on-dell-venue-8-pro.66575/</p>
+
+<p>http://liliputing.com/2013/10/booting-ubuntu-asus-transformer-book-t100.html</p>
+
+<p>http://www.jfwhome.com/2014/03/07/perfect-ubuntu-or-other-linux-on-the-asus-transformer-book-t100/</p>
+
+<p>http://sturmflut.github.io/linux/ubuntu/2015/02/04/installing-ubuntu-on-baytrail-tablets-version-2/</p>
+
+<p>http://www.cnx-software.com/2015/08/12/ubuntu-14-04-3-desktop-image-for-intel-atom-z3735f-mini-pcs-and-sticks/</p>
 
 
-<!-- Pager -->
+                <hr>
 
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page6">&larr; Newer Posts</a>
-    </li>
-    
-    
-    <li class="next">
-        <a href="/page8">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/using-fuzzylite-in-ubuntu-ros/" data-toggle="tooltip" data-placement="top" title="Using Fuzzylite in Ubuntu/ROS">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/raspberry-pi-wifi-file-server-with-external-usb-drive/" data-toggle="tooltip" data-placement="top" title="Raspberry Pi WiFi File server with External USB Drive">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+            <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
 
+s.src = '//vanishingpointgithub.disqus.com/embed.js';
 
-		</div>
-	</div>
-</div>
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 
