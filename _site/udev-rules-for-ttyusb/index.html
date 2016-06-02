@@ -9,14 +9,14 @@
     <meta name="description" content="Hey Kowalski, you out there?">
 
     <meta property="og:image" content="http://vncprado.github.io/img/large-vanishing-point-blu-ray6-1.jpg" />
-    <meta property="og:url" content="http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/" />
-    <meta property="og:title" content="Chroot on Ubuntu 16.04 for ROS" />
-    <meta property="og:description" content="Chroot on Ubuntu 16.04 for ROS" />
+    <meta property="og:url" content="http://vncprado.github.io/udev-rules-for-ttyusb/" />
+    <meta property="og:title" content="UDEV rules for ttyUSB" />
+    <meta property="og:description" content="UDEV rules for ttyUSB" />
     <meta property="fb:app_id" content="166534027083083" />
 
-    <title>Chroot on Ubuntu 16.04 for ROS - Vanishing Point</title>
+    <title>UDEV rules for ttyUSB - Vanishing Point</title>
 
-    <link rel="canonical" href="http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/">
+    <link rel="canonical" href="http://vncprado.github.io/udev-rules-for-ttyusb/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -121,9 +121,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Chroot on Ubuntu 16.04 for ROS</h1>
+                    <h1>UDEV rules for ttyUSB</h1>
                     
-                    <span class="meta">Posted by Vincius Prado da Fonseca on May 26, 2016</span>
+                    <span class="meta">Posted by Vincius Prado da Fonseca on June 1, 2016</span>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div align="right">
               <ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/&t=Chroot on Ubuntu 16.04 for ROS" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/ + '&t=' + Chroot on Ubuntu 16.04 for ROS); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/udev-rules-for-ttyusb/&t=UDEV rules for ttyUSB" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/udev-rules-for-ttyusb/ + '&t=' + UDEV rules for ttyUSB); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -145,24 +145,28 @@
 </ul>
 
               </div>
-    				<p>After install Ubuntu 16.04 on my laptop I found out that maybe would be challenging to have a nice ROS installation like in 14.04 but I could work almost in the same way before with a chroot of Ubuntu 14.04 in my 16.04 installation.</p>
+    				<p>Really useful stuff when developing using Arduino or other USB stuff that maybe have the same <code class="highlighter-rouge">[vendor]:[product]</code>. First you need to get the serial number:</p>
 
-<p>I followed <a href="http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot">this</a> tutorial but I got an error on libpan. But <a href="https://blog.tan-ce.com/chroot-ubuntu-14-04-on-android-nexus-10/">this</a> guy has a solution. Create a dummy <code class="highlighter-rouge">init.d</code> script at <code class="highlighter-rouge">/etc/init.d/systemd-logind</code> with 0755 permissions (executable by all). In this file, enter the following:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="nb">exit </span>0
+<div class="highlighter-rouge"><pre class="highlight"><code># udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
 </code></pre>
 </div>
 
-<p>Then, let apt complete the installation by running <code class="highlighter-rouge">apt-get upgrade -y</code>.</p>
+<p>You will get something like <code class="highlighter-rouge">ATTRS{serial}=="A6008isP"</code>. With this you can create new file called <code class="highlighter-rouge">99-usb-serial.rules</code> inside <code class="highlighter-rouge">/etc/udev/rules.d/</code>. In this file you can put one line for any devices you need changing only the serial in case of same vendor and product:</p>
 
-<p>After fixing this you can proceed and install Nvidia drivers. To enter your chroot <code class="highlighter-rouge">schroot -c indigo_trusty</code>.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A6008isP", SYMLINK+="ttyUSB.arduino"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A9234HMO", SYMLINK+="ttyUSB.other"
+</code></pre>
+</div>
+
+<p>In this way <code class="highlighter-rouge">/dev/ttyUSB.arduino</code> and <code class="highlighter-rouge">/dev/ttyUSB.other</code> will link to some <code class="highlighter-rouge">/dev/ttyUSB*</code> that Linux will create for your device.</p>
+
+<p><a href="http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/">Source</a></p>
 
 <p>All the best!</p>
 
             <center style="margin: -25px 0 20px;">=]</center>
             <center><ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/&t=Chroot on Ubuntu 16.04 for ROS" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/ + '&t=' + Chroot on Ubuntu 16.04 for ROS); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/udev-rules-for-ttyusb/&t=UDEV rules for ttyUSB" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/udev-rules-for-ttyusb/ + '&t=' + UDEV rules for ttyUSB); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -174,13 +178,9 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/installation-boot-error-or-dont-forget-grub/" data-toggle="tooltip" data-placement="top" title="Installation boot error (or don't forget GRUB)">&larr; Previous Post</a>
+                        <a href="/chroot-on-ubuntu-1604-for-ros/" data-toggle="tooltip" data-placement="top" title="Chroot on Ubuntu 16.04 for ROS">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/udev-rules-for-ttyusb/" data-toggle="tooltip" data-placement="top" title="UDEV rules for ttyUSB">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
             <div id="disqus_thread"></div>
