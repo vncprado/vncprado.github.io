@@ -9,14 +9,14 @@
     <meta name="description" content="Hey Kowalski, you out there?">
 
     <meta property="og:image" content="http://vncprado.github.io/img/large-vanishing-point-blu-ray6-1.jpg" />
-    <meta property="og:url" content="http://vncprado.github.io/udev-rules-for-ttyusb/" />
-    <meta property="og:title" content="UDEV rules for ttyUSB" />
-    <meta property="og:description" content="UDEV rules for ttyUSB" />
+    <meta property="og:url" content="http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/" />
+    <meta property="og:title" content="In case your MakerBot firmware update goes wrong" />
+    <meta property="og:description" content="In case your MakerBot firmware update goes wrong" />
     <meta property="fb:app_id" content="166534027083083" />
 
-    <title>UDEV rules for ttyUSB - Vanishing Point</title>
+    <title>In case your MakerBot firmware update goes wrong - Vanishing Point</title>
 
-    <link rel="canonical" href="http://vncprado.github.io/udev-rules-for-ttyusb/">
+    <link rel="canonical" href="http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -121,9 +121,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>UDEV rules for ttyUSB</h1>
+                    <h1>In case your MakerBot firmware update goes wrong</h1>
                     
-                    <span class="meta">Posted by Vincius Prado da Fonseca on June 1, 2016</span>
+                    <span class="meta">Posted by Vincius Prado da Fonseca on June 10, 2016</span>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div align="right">
               <ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/udev-rules-for-ttyusb/&t=UDEV rules for ttyUSB" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/udev-rules-for-ttyusb/ + '&t=' + UDEV rules for ttyUSB); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/&t=In case your MakerBot firmware update goes wrong" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/ + '&t=' + In case your MakerBot firmware update goes wrong); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -145,28 +145,21 @@
 </ul>
 
               </div>
-    				<p>Really useful stuff when developing using Arduino or other USB stuff that maybe have the same <code class="highlighter-rouge">[vendor]:[product]</code>. First you need to get the serial number:</p>
+    				<p>In my adventures trying to print with NinjaFlex I almost “bricked” our 3D printer. It is a Makerbot Replicator 2X and after some firmware update — through the software provided — it starts to think it was a Replicator 2. I don’t know the difference between them but it just didn’t seem right —  I know that Replicator 2 has a slightly larger plate.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
-</code></pre>
-</div>
+<p>How the official software allow you to update wrong firmware? As crazy as it sounds, the official support does know about this issue and say that I need to reinstall the correct firmware. But after searching really much I didn’t find any clear way to do this — in some of the tutorials they tell you to click a button that doesn’t exist in the software they provide.</p>
 
-<p>You will get something like <code class="highlighter-rouge">ATTRS{serial}=="A6008isP"</code>. With this you can create new file called <code class="highlighter-rouge">99-usb-serial.rules</code> inside <code class="highlighter-rouge">/etc/udev/rules.d/</code>. In this file you can put one line for any devices you need changing only the serial in case of same vendor and product:</p>
+<p>Searching online I found some Windows software that claims could update the firmware but most cases It didn’t and in one case our printer went off with only the stop buttons light on.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A6008isP", SYMLINK+="ttyUSB.arduino"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A9234HMO", SYMLINK+="ttyUSB.other"
-</code></pre>
-</div>
+<p>I finally found <a href="http://www.sailfishfirmware.com/doc/install.html">this</a> firmware where you can go directly to <a href="http://www.sailfishfirmware.com/doc/install-removing.html">removing</a> and follow their instructions after downloading the software.</p>
 
-<p>In this way <code class="highlighter-rouge">/dev/ttyUSB.arduino</code> and <code class="highlighter-rouge">/dev/ttyUSB.other</code> will link to some <code class="highlighter-rouge">/dev/ttyUSB*</code> that Linux will create for your device.</p>
-
-<p><a href="http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/">Source</a></p>
+<p>Keep in mind that they use a website provided by MakerBot company which seems to me that is keeping these old printers with a lot less support than its suppose.</p>
 
 <p>All the best!</p>
 
             <center style="margin: -25px 0 20px;">=]</center>
             <center><ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/udev-rules-for-ttyusb/&t=UDEV rules for ttyUSB" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/udev-rules-for-ttyusb/ + '&t=' + UDEV rules for ttyUSB); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/&t=In case your MakerBot firmware update goes wrong" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/ + '&t=' + In case your MakerBot firmware update goes wrong); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -178,13 +171,9 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{seria
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/chroot-on-ubuntu-1604-for-ros/" data-toggle="tooltip" data-placement="top" title="Chroot on Ubuntu 16.04 for ROS">&larr; Previous Post</a>
+                        <a href="/udev-rules-for-ttyusb/" data-toggle="tooltip" data-placement="top" title="UDEV rules for ttyUSB">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/in-case-your-makerbot-firmware-update-goes-wrong/" data-toggle="tooltip" data-placement="top" title="In case your MakerBot firmware update goes wrong">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
             <div id="disqus_thread"></div>
