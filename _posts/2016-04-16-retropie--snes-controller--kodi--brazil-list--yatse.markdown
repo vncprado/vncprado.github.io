@@ -4,6 +4,12 @@ title: "Retropie + SNES controller + Kodi + Brazil list + Yatse"
 date: "2016-04-16 21:52:18 -0400"
 ---
 
+UPDATE 14/06/16:
+
+I've noticed that some games were slow using my Raspberry Pi A+. I changed it for a Raspberry Pi Zero and it's better but I still notice that Kodi have some issues with synchronization. Maybe I will need to try with the RPi 3 but I'll left it for you.
+
+---
+
 UPDATE 21/05/16:
 
 I got everything working now and arrange all the stuff behind my TV with my Chromecast:

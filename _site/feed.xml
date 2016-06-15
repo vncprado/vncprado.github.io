@@ -5,8 +5,8 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 10 Jun 2016 09:19:23 -0400</pubDate>
-    <lastBuildDate>Fri, 10 Jun 2016 09:19:23 -0400</lastBuildDate>
+    <pubDate>Tue, 14 Jun 2016 22:37:55 -0400</pubDate>
+    <lastBuildDate>Tue, 14 Jun 2016 22:37:55 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -126,7 +126,13 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
     
       <item>
         <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
-        <description>&lt;p&gt;UPDATE 21/05/16:&lt;/p&gt;
+        <description>&lt;p&gt;UPDATE 14/06/16:&lt;/p&gt;
+
+&lt;p&gt;I’ve noticed that some games were slow using my Raspberry Pi A+. I changed it for a Raspberry Pi Zero and it’s better but I still notice that Kodi have some issues with synchronization. Maybe I will need to try with the RPi 3 but I’ll left it for you.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;UPDATE 21/05/16:&lt;/p&gt;
 
 &lt;p&gt;I got everything working now and arrange all the stuff behind my TV with my Chromecast:&lt;/p&gt;
 
