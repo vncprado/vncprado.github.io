@@ -1,0 +1,38 @@
+---
+layout: post
+title: "ROS usb_cam with calibration"
+date: "2016-07-12 14:55:00 -0400"
+---
+
+roscat usb_cam usb_cam-test.launch
+
+to get launch, change /dev/video.
+
+rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_camrosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
+
+Attention to --size
+
+Update your
+
+  <param name="camera_info_url" value="file:///$(find robot_vision)/calib.yaml" />
+  <param name="camera_name" value="hand_camera" />
+
+http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+
+To get rectificated images topics
+
+  $ ROS_NAMESPACE=PS_cam rosrun image_oc image_proc
+
+To check:
+
+  $ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/PS_cam image:=image_rect
+
+  <node name="image_proc" pkg="image_proc" type="image_proc" ns="usb_cam"/>
+  
+  http://wiki.ros.org/image_proc
+
+http://wiki.ros.org/usb_cam
+
+https://www.artoolworks.com/support/library/images/6/6a/Calibration_chessboard.pdf
+
+http://wiki.ros.org/camera_calibration
