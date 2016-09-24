@@ -4,11 +4,17 @@ title: "ROS usb_cam with calibration"
 date: "2016-07-12 14:55:00 -0400"
 ---
 
-roscat usb_cam usb_cam-test.launch
+I created a custom launch in robot_vision based on:
+
+  roscat usb_cam usb_cam-test.launch
+
+So I could use other usb camera /dev/video1 then:
+
+  roslaunch robot_vision init_camera.launch
 
 to get launch, change /dev/video.
 
-rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_camrosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
+rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
 
 Attention to --size
 
@@ -25,10 +31,10 @@ To get rectificated images topics
 
 To check:
 
-  $ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/PS_cam image:=image_rect
+  $ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/camera image:=image_rect
 
   <node name="image_proc" pkg="image_proc" type="image_proc" ns="usb_cam"/>
-  
+
   http://wiki.ros.org/image_proc
 
 http://wiki.ros.org/usb_cam
