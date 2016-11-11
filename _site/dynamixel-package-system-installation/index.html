@@ -9,14 +9,14 @@
     <meta name="description" content="Hey Kowalski, you out there?">
 
     <meta property="og:image" content="http://vncprado.github.io/img/large-vanishing-point-blu-ray6-1.jpg" />
-    <meta property="og:url" content="http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/" />
-    <meta property="og:title" content="In case your MakerBot firmware update goes wrong" />
-    <meta property="og:description" content="In case your MakerBot firmware update goes wrong" />
+    <meta property="og:url" content="http://vncprado.github.io/dynamixel-package-system-installation/" />
+    <meta property="og:title" content="Dynamixel package system installation" />
+    <meta property="og:description" content="Dynamixel package system installation" />
     <meta property="fb:app_id" content="166534027083083" />
 
-    <title>In case your MakerBot firmware update goes wrong - Vanishing Point</title>
+    <title>Dynamixel package system installation - Vanishing Point</title>
 
-    <link rel="canonical" href="http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/">
+    <link rel="canonical" href="http://vncprado.github.io/dynamixel-package-system-installation/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -121,9 +121,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>In case your MakerBot firmware update goes wrong</h1>
+                    <h1>Dynamixel package system installation</h1>
                     
-                    <span class="meta">Posted by Vincius Prado da Fonseca on June 10, 2016</span>
+                    <span class="meta">Posted by Vincius Prado da Fonseca on November 11, 2016</span>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div align="right">
               <ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/&t=In case your MakerBot firmware update goes wrong" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/ + '&t=' + In case your MakerBot firmware update goes wrong); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/dynamixel-package-system-installation/&t=Dynamixel package system installation" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/dynamixel-package-system-installation/ + '&t=' + Dynamixel package system installation); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -145,21 +145,46 @@
 </ul>
 
               </div>
-    				<p>In my adventures trying to print with NinjaFlex I almost “bricked” our 3D printer. It is a Makerbot Replicator 2X and after some firmware update — through the software provided — it starts to think it was a Replicator 2. I don’t know the difference between them but it just didn’t seem right —  I know that Replicator 2 has a slightly larger plate.</p>
+    				<p>For some reason the Dynamixel installation for ROS Indigo give me some (annoying) errors when I try to use the <code class="highlighter-rouge">joint_trajectory_action</code>, even when I get the trajectory working on the motors. So I performed an installation from <a href="https://github.com/arebgun/dynamixel_motor">this github repo</a>.</p>
 
-<p>How the official software allow you to update wrong firmware? As crazy as it sounds, the official support does know about this issue and say that I need to reinstall the correct firmware. But after searching really much I didn’t find any clear way to do this — in some of the tutorials they tell you to click a button that doesn’t exist in the software they provide.</p>
+<p>You can just clone the repo in your project’s workspace <code class="highlighter-rouge">src</code> folder as a package and compile, but I wanted to have a system installation (at <code class="highlighter-rouge">/opt/ros</code>) in order to have one solution for all future projects.</p>
 
-<p>Searching online I found some Windows software that claims could update the firmware but most cases It didn’t and in one case our printer went off with only the stop buttons light on.</p>
+<p>First you need to create a catkin workspace for Dynamixel, organize the folders to get it compiling with <code class="highlighter-rouge">catkin_make</code>.
+After that, go to the workspace:</p>
 
-<p>I finally found <a href="http://www.sailfishfirmware.com/doc/install.html">this</a> firmware where you can go directly to <a href="http://www.sailfishfirmware.com/doc/install-removing.html">removing</a> and follow their instructions after downloading the software.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd dynamixel_ws
+</code></pre>
+</div>
 
-<p>Keep in mind that they use a website provided by MakerBot company which seems to me that is keeping these old printers with a lot less support than its suppose.</p>
+<p>You need permissions to install it on <code class="highlighter-rouge">/opt/ros</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># sudo su
+</code></pre>
+</div>
+
+<p>And the environment variables:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># source devel/setup.bash
+</code></pre>
+</div>
+
+<p>So you can perform the installation:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo install
+</code></pre>
+</div>
+
+<p>After that you have a system installation for your dynamixel pkg.</p>
 
 <p>All the best!</p>
 
+<p>Source:</p>
+
+<p><a href="http://wiki.ros.org/catkin/commands/catkin_make">http://wiki.ros.org/catkin/commands/catkin_make</a></p>
+
             <center style="margin: -25px 0 20px;">=]</center>
             <center><ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/&t=In case your MakerBot firmware update goes wrong" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/ + '&t=' + In case your MakerBot firmware update goes wrong); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/dynamixel-package-system-installation/&t=Dynamixel package system installation" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/dynamixel-package-system-installation/ + '&t=' + Dynamixel package system installation); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -171,13 +196,9 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/udev-rules-for-ttyusb/" data-toggle="tooltip" data-placement="top" title="UDEV rules for ttyUSB">&larr; Previous Post</a>
+                        <a href="/in-case-your-makerbot-firmware-update-goes-wrong/" data-toggle="tooltip" data-placement="top" title="In case your MakerBot firmware update goes wrong">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/dynamixel-package-system-installation/" data-toggle="tooltip" data-placement="top" title="Dynamixel package system installation">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
             <div id="disqus_thread"></div>

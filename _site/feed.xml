@@ -5,9 +5,55 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 14 Jun 2016 22:37:55 -0400</pubDate>
-    <lastBuildDate>Tue, 14 Jun 2016 22:37:55 -0400</lastBuildDate>
+    <pubDate>Fri, 11 Nov 2016 12:58:50 -0500</pubDate>
+    <lastBuildDate>Fri, 11 Nov 2016 12:58:50 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Dynamixel package system installation</title>
+        <description>&lt;p&gt;For some reason the Dynamixel installation for ROS Indigo give me some (annoying) errors when I try to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;joint_trajectory_action&lt;/code&gt;, even when I get the trajectory working on the motors. So I performed an installation from &lt;a href=&quot;https://github.com/arebgun/dynamixel_motor&quot;&gt;this github repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can just clone the repo in your project’s workspace &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt; folder as a package and compile, but I wanted to have a system installation (at &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/ros&lt;/code&gt;) in order to have one solution for all future projects.&lt;/p&gt;
+
+&lt;p&gt;First you need to create a catkin workspace for Dynamixel, organize the folders to get it compiling with &lt;code class=&quot;highlighter-rouge&quot;&gt;catkin_make&lt;/code&gt;.
+After that, go to the workspace:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd dynamixel_ws
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You need permissions to install it on &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/ros&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# sudo su
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And the environment variables:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# source devel/setup.bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So you can perform the installation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After that you have a system installation for your dynamixel pkg.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+
+&lt;p&gt;Source:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://wiki.ros.org/catkin/commands/catkin_make&quot;&gt;http://wiki.ros.org/catkin/commands/catkin_make&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Nov 2016 12:53:09 -0500</pubDate>
+        <link>http://vncprado.github.io/dynamixel-package-system-installation/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/dynamixel-package-system-installation/</guid>
+        
+        
+      </item>
     
       <item>
         <title>In case your MakerBot firmware update goes wrong</title>
@@ -504,23 +550,6 @@ I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better
         <pubDate>Sun, 13 Dec 2015 00:00:00 -0500</pubDate>
         <link>http://vncprado.github.io/ubuntu-on-chuwi-vi-10/</link>
         <guid isPermaLink="true">http://vncprado.github.io/ubuntu-on-chuwi-vi-10/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Simple standalone computer solution for our robot</title>
-        <description>&lt;p&gt;In our lab there is a robot for demos in which we’ve been working a lot since the beginning of this year. I’ll explain a little bit about it and show our implementations in some post in the future.&lt;/p&gt;
-
-&lt;p&gt;Now I want to talk about our standalone computer solution for this robot: &lt;a href=&quot;https://www.raspberrypi.org/&quot;&gt;Raspberry Pi 2&lt;/a&gt; + &lt;a href=&quot;https://wiki.ubuntu.com/ARM/RaspberryPi&quot;&gt;Ubuntu-ARM&lt;/a&gt; + &lt;a href=&quot;http://wiki.ros.org/indigo/Installation/UbuntuARM&quot;&gt;ROS-ARM&lt;/a&gt;. Quite simple, right? At this point yes, but I first tried using Raspbian in a Raspberry Pi A+ but its small RAM and limitations, which alone deserves a post, was almost impossible.&lt;/p&gt;
-
-&lt;p&gt;I am sure need to try again but without an ROS-ARM repository for Debian things are hard. Using Raspberry 2 with Ubuntu installed, I had an initialization script set up for configuration and launch our robot code. In this way our solution provides a simple way to have the robot work with our code without any huge changes or portabilities. So It’s just put a battery and you have the robot running.&lt;/p&gt;
-
-&lt;p&gt;That’s All!&lt;/p&gt;
-</description>
-        <pubDate>Mon, 30 Nov 2015 00:00:00 -0500</pubDate>
-        <link>http://vncprado.github.io/not-so-simple-ros-solution/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/not-so-simple-ros-solution/</guid>
         
         
       </item>
