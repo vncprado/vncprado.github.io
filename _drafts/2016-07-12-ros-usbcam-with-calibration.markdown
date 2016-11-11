@@ -6,7 +6,7 @@ date: "2016-07-12 14:55:00 -0400"
 
 I created a custom launch in robot_vision based on:
 
-  roscat usb_cam usb_cam-test.launch
+    roscat usb_cam usb_cam-test.launch
 
 So I could use other usb camera /dev/video1 then:
 
