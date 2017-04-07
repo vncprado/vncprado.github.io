@@ -5,9 +5,361 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 11 Nov 2016 14:17:55 -0500</pubDate>
-    <lastBuildDate>Fri, 11 Nov 2016 14:17:55 -0500</lastBuildDate>
+    <pubDate>Fri, 07 Apr 2017 15:54:36 -0400</pubDate>
+    <lastBuildDate>Fri, 07 Apr 2017 15:54:36 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>installing indigo in chroot</title>
+        <description>&lt;p&gt;This is Google’s cache of http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot. It is a snapshot of the page as it appeared on Apr 5, 2017 20:04:05 GMT.
+The current page could have changed in the meantime. Learn more
+Full versionText-only versionView sourceTip: To quickly find your search term on this page, press Ctrl+F or ⌘-F (Mac) and use the find bar.
+ros.org	About | Support | Status | answers.ros.org
+Search:
+DocumentationBrowse SoftwareNewsDownload
+ROS
+Tutorials
+InstallingIndigoInChroot
+Wiki&lt;/p&gt;
+
+&lt;p&gt;Distributions
+ROS/Installation
+ROS/Tutorials
+RecentChanges
+InstallingIndigoInChroot
+Page&lt;/p&gt;
+
+&lt;p&gt;Immutable Page
+Info
+Attachments
+More Actions: Raw Text Print View Render as Docbook Delete Cache ———————— Check Spelling Like Pages Local Site Map ———————— Rename Page Copy Page Delete Page ———————— My Pages Subscribe User ———————— Remove Spam Revert to this revision Package Pages Sync Pages ———————— CreatePdfDocument Load RawFile Save SlideShow
+User&lt;/p&gt;
+
+&lt;p&gt;Login
+(!) Please ask about problems and questions regarding this tutorial on answers.ros.org. Don’t forget to include in your question the link to this page, the versions of your OS &amp;amp; ROS, and also add appropriate tags.
+Installing ROS Indigo in a chroot&lt;/p&gt;
+
+&lt;p&gt;Description: This tutorial walks you through installing ROS Indigo (and Ubuntu 14.04) in a chroot. This allows you to have a ROS Indigo installation even on Ubuntu versions that Indigo doesn’t build on.&lt;/p&gt;
+
+&lt;p&gt;Tutorial Level: INTERMEDIATE&lt;/p&gt;
+
+&lt;p&gt;Contents&lt;/p&gt;
+
+&lt;p&gt;Introduction
+Creating the Ubuntu 14.04 Chroot
+Setup ROS Indigo in the Chroot
+Compiling Source Packages
+Running Graphical Programs
+Accelerated OpenGL
+NVIDIA
+Testing
+Introduction&lt;/p&gt;
+
+&lt;p&gt;Because ROS Indigo is being released at the same time as a new Ubuntu long term support version (Trusty Tahr), Indigo and Hydro have no overlap in terms of Ubuntu distributions. For development, it is useful to be able to install both Indigo and Hydro on the same machine, and incrementally port your code over.&lt;/p&gt;
+
+&lt;p&gt;Chroot (change root) makes this possible. A chroot is an directory on your system which has an entire Ubuntu in it. When you are in the chroot, your root directory / actually points to some subdirectory on the overall system. In this tutorial, that subdirectory will be /srv/chroot/indigo_trusty. Since that will look like the root directory to programs inside the chroot, when the look for /etc for example, they’ll end up in /srv/chroot/indigo_trusty/etc.&lt;/p&gt;
+
+&lt;p&gt;The debootstrap tool is the second piece of this. It will create a whole new apt (the Debian package manager) configuration inside of the chroot. We’ll set this up to use the 14.04 Ubuntu repositories, so that when we install ROS it will get all the dependencies from 14.04, and install everything to /srv/chroot/indigo_trusty.&lt;/p&gt;
+
+&lt;p&gt;This tutorial has been tested on the following systems:&lt;/p&gt;
+
+&lt;p&gt;Ubuntu Xenial (16.04): 64 bit
+Ubuntu Precise (12.04): 32 and 64 bit
+Ubuntu Raring (13.04): 64 bit
+Creating the Ubuntu 14.04 Chroot&lt;/p&gt;
+
+&lt;p&gt;First install schroot and debootstrap:&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get install debootstrap schroot
+Next create a config file for the chroot we’re making:&lt;/p&gt;
+
+&lt;p&gt;sudo gedit /etc/schroot/chroot.d/indigo_trusty.conf
+Copy the following text into the config file:&lt;/p&gt;
+
+&lt;p&gt;[indigo_trusty]
+description=Ubuntu 14.04 for installing ROS Indigo
+directory=/srv/chroot/indigo_trusty
+root-groups=root
+type=directory
+users=USERNAME
+personality=linux
+preserve-environment=false
+Change USERNAME to your own user name.&lt;/p&gt;
+
+&lt;p&gt;Create the directory where we’ll put the chroot:&lt;/p&gt;
+
+&lt;p&gt;sudo mkdir -p /srv/chroot/indigo_trusty
+Run debootstrap to setup the new chroot (this assumes you are on a 64 bit system. If you are on a 32 bit system, change amd64 to i386):&lt;/p&gt;
+
+&lt;p&gt;sudo debootstrap –variant=buildd –arch=amd64 trusty /srv/chroot/indigo_trusty http://archive.ubuntu.com/ubuntu/
+List the chroots:&lt;/p&gt;
+
+&lt;p&gt;schroot -l
+If everything has worked so far, you should see indigo_trusty listed.&lt;/p&gt;
+
+&lt;p&gt;Switch to the new chroot. You may get some errors here if you have stuff in your .bashrc that uses programs not yet installed in the chroot, but you can (usually) ignore them. We use sudo here so that we’ll end up with a root shell inside of the chroot, and we’ll be able to install packages:&lt;/p&gt;
+
+&lt;p&gt;sudo schroot -c indigo_trusty
+You’re now inside of a chroot environment. If you run ls /, you’ll actually see the root directory of the chroot environment, which is /srv/chroot/indigo_trusty on the host machine.&lt;/p&gt;
+
+&lt;p&gt;Install some useful packages:&lt;/p&gt;
+
+&lt;p&gt;apt-get install sudo vim git
+Now that we’ve installed sudo in the chroot, we don’t need to run schroot -c with sudo anymore. Exit the chroot and re-enter it without using sudo:&lt;/p&gt;
+
+&lt;p&gt;exit
+schroot -c indigo_trusty
+Some programs need to know the locale:&lt;/p&gt;
+
+&lt;p&gt;sudo locale-gen en_US en_US.UTF-8
+sudo dpkg-reconfigure locales
+Setup ROS Indigo in the Chroot&lt;/p&gt;
+
+&lt;p&gt;ROS needs some dependencies from the Ubuntu universe repo:&lt;/p&gt;
+
+&lt;p&gt;sudo sh -c ‘echo “deb http://archive.ubuntu.com/ubuntu trusty universe” » /etc/apt/sources.list’
+Add the ROS repo:&lt;/p&gt;
+
+&lt;p&gt;This command will add the “shadow fixed” ROS repository, which contains brand new builds and is not as stable as the standard ROS repository. While Indigo is still brand new, we need ros-shadow-fixed in order to get packages that were just released. If you want a more stable system, however, you should replace “ros-shadow-fixed” with “ros”.&lt;/p&gt;
+
+&lt;p&gt;sudo sh -c ‘echo “deb http://packages.ros.org/ros-shadow-fixed/ubuntu trusty main” &amp;gt; /etc/apt/sources.list.d/ros-latest.list’
+Import the ROS package repository key:&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get install wget
+wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+Update the list of packages:&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get update
+Now if you run apt-cache search ros-indigo, you should see the packages that have already been released into Indigo.&lt;/p&gt;
+
+&lt;p&gt;Install rosdep; we’ll use this to install dependencies of source packages that we are working on:&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get install python-rosdep
+sudo rosdep init
+rosdep update
+Compiling Source Packages&lt;/p&gt;
+
+&lt;p&gt;We’ll compile the roscpp tutorials as an example.&lt;/p&gt;
+
+&lt;p&gt;Your home directory is shared between the main system and the chroot, so you can use editors outside the chroot to edit code if you want. For this tutorial, however we’ll assume that you’re doing all your editing inside the chroot.&lt;/p&gt;
+
+&lt;p&gt;Create a catkin workspace:&lt;/p&gt;
+
+&lt;p&gt;mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
+git clone https://github.com/ros/ros_tutorials.git
+cd ~/catkin_ws
+Use rosdep to install the dependencies:&lt;/p&gt;
+
+&lt;p&gt;rosdep install –from-path src –rosdistro indigo -i -y
+Build the catkin workspace:&lt;/p&gt;
+
+&lt;p&gt;source /opt/ros/indigo/setup.bash
+catkin_make
+Install rosbash (for things like rosrun):&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get install ros-indigo-rosbash
+Start a roscore:&lt;/p&gt;
+
+&lt;p&gt;schroot -c indigo_trusty
+source /opt/ros/indigo/setup.bash
+roscore
+If the roscore does not start up cleanly, make sure there is not one already running on your host computer. Then, verify that the ROS_MASTER_URI environment variable is set correctly. The usual setting should work:&lt;/p&gt;
+
+&lt;p&gt;export ROS_MASTER_URI=http://$HOSTNAME:11311/&lt;/p&gt;
+
+&lt;p&gt;In a separate terminal, enter the chroot, and run the talker node:&lt;/p&gt;
+
+&lt;p&gt;source devel/setup.bash
+rosrun roscpp_tutorials talker
+In a third terminal, enter the chroot, and run the listener node:&lt;/p&gt;
+
+&lt;p&gt;source devel/setup.bash
+rosrun roscpp_tutorials listener
+You should see output similar to this one:&lt;/p&gt;
+
+&lt;p&gt;[ INFO] [1396326497.204811314]: I heard: [hello world 135]
+[ INFO] [1396326497.303949602]: I heard: [hello world 136]
+Running Graphical Programs&lt;/p&gt;
+
+&lt;p&gt;In order to use graphical programs from the Indigo chroot you will need to set the DISPLAY environment variable and allow access to the host X server.&lt;/p&gt;
+
+&lt;p&gt;In the host environment:&lt;/p&gt;
+
+&lt;p&gt;xhost +local:
+This command allows non-network local connections access to your host environment’s X server, which should be ok. For more information, see the xhost man page.&lt;/p&gt;
+
+&lt;p&gt;Export the DISPLAY variable in the chroot:&lt;/p&gt;
+
+&lt;p&gt;schroot -c indigo_trusty
+export DISPLAY=:0
+In the same terminal, try opening turtlesim to test it:&lt;/p&gt;
+
+&lt;p&gt;source ~/catkin_ws/devel/setup.bash
+rosrun turtlesim turtlesim_node
+The turtlesim window should appear. You may run (in a separate terminal) the turtlesim turtle_teleop_key to move the turtle.&lt;/p&gt;
+
+&lt;p&gt;Accelerated OpenGL&lt;/p&gt;
+
+&lt;p&gt;In order to be able to run RViz (or any other program that needs accelerated OpenGL), the OpenGL client library files will need to be installed inside the chroot.&lt;/p&gt;
+
+&lt;p&gt;NVIDIA&lt;/p&gt;
+
+&lt;p&gt;It is important for the versions of the libraries installed in the chroot to be as close as possible (ideally: identical) to those installed in the host environment. To find the version of the NVIDIA driver installed:&lt;/p&gt;
+
+&lt;p&gt;dpkg -l | grep -i nvidia
+Now go to the NVIDIA site and download the binary drivers closest to the one installed on the host (be sure to download the appropriate drivers: x86_64 for 64 bit systems, x86 for 32 bit).&lt;/p&gt;
+
+&lt;p&gt;Copy them to the chroot (place them in /path/to/my/chroot/tmp or something similar).&lt;/p&gt;
+
+&lt;p&gt;As we only require the OpenGL libraries to be installed, the following command should suffice:&lt;/p&gt;
+
+&lt;p&gt;schroot -c indigo_trusty
+sudo sh /tmp/NVIDIA-Linux-x86_64-331.20.run –no-precompiled-interface –no-runlevel-check –no-kernel-module –no-x-check –no-kernel-module-source –no-distro-scripts –no-nvidia-modprobe –accept-license
+This example installs the 64 bit version of the 331.20 drivers. Change this to match the actual version you are installing.&lt;/p&gt;
+
+&lt;p&gt;The installer will probably display some errors (ERROR: Unable to create ‘(null)’ for copying (Bad address)): these can be ignored (press enter).&lt;/p&gt;
+
+&lt;p&gt;Testing&lt;/p&gt;
+
+&lt;p&gt;Use glx-gears to test the OpenGL setup:&lt;/p&gt;
+
+&lt;p&gt;schroot -c indigo_trusty
+sudo apt-get install mesa-utils
+glxgears -info
+You should see the spinning gears, and the console should show output similar to:&lt;/p&gt;
+
+&lt;p&gt;Running synchronized to the vertical refresh.  The framerate should be
+approximately the same as the monitor refresh rate.
+GL_RENDERER   = GeForce [..]
+GL_VERSION    = X.Y.Z NVIDIA 331.20
+GL_VENDOR     = NVIDIA Corporation
+GL_EXTENSIONS = GL_ARB_arrays_of_arrays [..]
+This output is obviously different for AMD/Intel/etc graphic cards, but it should still display the proper values for the reported variables.&lt;/p&gt;
+
+&lt;p&gt;Wiki: ROS/Tutorials/InstallingIndigoInChroot (last edited 2016-07-09 16:09:30 by JackOQuin)&lt;/p&gt;
+
+&lt;p&gt;Except where otherwise noted, the ROS wiki is licensed under the
+Creative Commons Attribution 3.0 | Find us on Google+&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Apr 2017 15:09:47 -0400</pubDate>
+        <link>http://vncprado.github.io/installing-indigo-in-chroot/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/installing-indigo-in-chroot/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>ROS usb_cam with calibration</title>
+        <description>&lt;p&gt;I’m using ROS &lt;code class=&quot;highlighter-rouge&quot;&gt;usb_cam&lt;/code&gt; package with small changes in my project. Then I created a &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_vision&lt;/code&gt; package in my workspace so I could make small changes and maybe get a generic package to use in other projects in the future.&lt;/p&gt;
+
+&lt;p&gt;I created a custom launch in &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_vision&lt;/code&gt; based on:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roscat usb_cam usb_cam-test.launch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So I could use other usb camera (&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/video1&lt;/code&gt; default is video0) device then change /dev/video:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roslaunch robot_vision init_camera.launch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After that I erformed a calibration&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Attention to &lt;code class=&quot;highlighter-rouge&quot;&gt;--size&lt;/code&gt;, count the chessboard intersections, not the squares. Follow the instructions.&lt;/p&gt;
+
+&lt;p&gt;Update your launch:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;param name=&quot;camera_info_url&quot; value=&quot;file:///$(find robot_vision)/calib.yaml&quot; /&amp;gt;
+&amp;lt;param name=&quot;camera_name&quot; value=&quot;camera&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get rectificated images topics:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ROS_NAMESPACE=PS_cam rosrun image_oc image_proc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To check:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/camera image:=image_rect
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;On roslaunch:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;node name=&quot;image_proc&quot; pkg=&quot;image_proc&quot; type=&quot;image_proc&quot; ns=&quot;usb_cam&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Sources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/image_proc&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/usb_cam&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;https://www.artoolworks.com/support/library/images/6/6a/Calibration_chessboard.pdf&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/camera_calibration&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Apr 2017 00:00:00 -0400</pubDate>
+        <link>http://vncprado.github.io/ros-usbcam-with-calibration/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/ros-usbcam-with-calibration/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Sequence images to mp4</title>
+        <description>&lt;p&gt;I got a sequence of images from my last snowboard trip and want to group them in a mp4 format. Problem is that they don’t start from 0 or 1 so I need a scrip line before feed them to ffmpeg.&lt;/p&gt;
+
+&lt;p&gt;To reduce size:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mogrify -resize 50% *jpg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To rename test:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rename &#39;s/.+/our $i; sprintf(&quot;Y%03d.jpg&quot;, 1+$i++)/e&#39; * -vn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To rename in fact remove ‘-vn’&lt;/p&gt;
+
+&lt;p&gt;Now use ffmpeg to generate the mp4 file.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ffmpeg -framerate 2 -i Y%03d.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p output-2-fps.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The files format was something like Y003.jpeg&lt;/p&gt;
+</description>
+        <pubDate>Sun, 02 Apr 2017 16:12:31 -0400</pubDate>
+        <link>http://vncprado.github.io/Image-sequence-to-mp4/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/Image-sequence-to-mp4/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Chuwi Vi 10 silead touch installation</title>
+        <description>
+</description>
+        <pubDate>Wed, 07 Dec 2016 14:48:12 -0500</pubDate>
+        <link>http://vncprado.github.io/chuwi-vi-10-silead-touch-installation/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/chuwi-vi-10-silead-touch-installation/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Dynamixel package system installation</title>
@@ -166,390 +518,6 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
         <pubDate>Mon, 02 May 2016 23:01:37 -0400</pubDate>
         <link>http://vncprado.github.io/updates-about-pebble-apps/</link>
         <guid isPermaLink="true">http://vncprado.github.io/updates-about-pebble-apps/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
-        <description>&lt;p&gt;UPDATE 14/06/16:&lt;/p&gt;
-
-&lt;p&gt;I’ve noticed that some games were slow using my Raspberry Pi A+. I changed it for a Raspberry Pi Zero and it’s better but I still notice that Kodi have some issues with synchronization. Maybe I will need to try with the RPi 3 but I’ll left it for you.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;UPDATE 21/05/16:&lt;/p&gt;
-
-&lt;p&gt;I got everything working now and arrange all the stuff behind my TV with my Chromecast:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://vncprado.github.io/assets/TV-back.jpg&quot; alt=&quot;TV back with Chromecast and Raspberry pi&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Pay attention on the &lt;a href=&quot;http://www.dx.com/p/cwxuan-usb-2-0-male-to-2-x-female-data-sync-charging-splitter-cable-black-32-5cm-409905#.V0Ceo3UrLQo&quot;&gt;USB power splitter&lt;/a&gt; and the &lt;a href=&quot;http://www.dx.com/p/hdmi-male-to-male-connection-cable-black-30cm-318400#.V0Ch3HUrLQo&quot;&gt;30 cm HDMI cable&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano /home/pi/.emulationstation/es_input.cfg
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;You need to keep these lines below in order to get config screen when starting emulationstation:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;inputAction type=&quot;onfinish&quot;&amp;gt;
-    &amp;lt;command&amp;gt;/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh&amp;lt;/command&amp;gt;
-&amp;lt;/inputAction&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.&lt;/p&gt;
-
-&lt;p&gt;PS: Sometimes need to restart controller always with &lt;code class=&quot;highlighter-rouge&quot;&gt;start + B&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;All the best!&lt;/p&gt;
-
-&lt;center&gt; =] &lt;/center&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;UPDATE 19/05/16:&lt;/p&gt;
-
-&lt;p&gt;I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
-The model is &lt;a href=&quot;https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1&quot;&gt;this&lt;/a&gt;. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.&lt;/p&gt;
-
-&lt;p&gt;To get WIFI you need to compile &lt;a href=&quot;https://github.com/lwfinger/rtl8723bu/&quot;&gt;this driver&lt;/a&gt;. To compile it on your Retropie you will need the help of &lt;a href=&quot;http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html&quot;&gt;this guy&lt;/a&gt;. But basically you will need to get and install linux-headers for Raspbian:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
-sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;There is also some changes in the Makefile:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifeq ($(CONFIG_RASPBIAN), y)
-EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
-EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211
-EXTRA_CFLAGS += -DRTW_USE_CFG80211_STA_EVENT # only enable when kernel &amp;gt;= 3.2
-EXTRA_CFLAGS += -DCONFIG_P2P_IPS
-ARCH := arm
-CROSS_COMPILE := arm-linux-gnueabihf-
-KVER := $(shell uname -r)
-KSRC ?= /lib/modules/$(KVER)/build
-MODULE_NAME := 8723bu
-MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
-endif
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;For Bluetooth you’ll use &lt;a href=&quot;https://github.com/lwfinger/rtl8723au_bt&quot;&gt;this one&lt;/a&gt;. The &lt;a href=&quot;https://www.amazon.ca/dp/B00MB6CNN8/ref=pe_386430_193739550_TE_dp_1&quot;&gt;controller&lt;/a&gt; that I bought works with the test branch today. Maybe this will change in the future. The driver documentation says that you should use kernel branch for most recent kernels.&lt;/p&gt;
-
-&lt;p&gt;Still need to test without USB 3.0 hub (using only the direct USB port in my raspberry pi).&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Some side project I’m working with my &lt;a href=&quot;https://www.raspberrypi.org/products/model-a-plus/&quot;&gt;Raspberry Pi A+&lt;/a&gt; is to transform it in a retro game with Bluetooth control and &lt;a href=&quot;http://kodi.wiki/view/Main_Page&quot;&gt;Kodi&lt;/a&gt; for IPTV. I’ve got &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/releases&quot;&gt;Retropie 3.5&lt;/a&gt; (for some reason 3.6 doesn’t update).&lt;/p&gt;
-
-&lt;p&gt;To install:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gzip -d retropie-v3.5-rpi1.img.gz
-$ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To get my &lt;a href=&quot;http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ&quot;&gt;USB hub&lt;/a&gt; working with WIFI dongle and keyboard I had to append &lt;code class=&quot;highlighter-rouge&quot;&gt;dwc_otg.speed=1&lt;/code&gt; in the file &lt;code class=&quot;highlighter-rouge&quot;&gt;/boot/cmdline.txt&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then configured WIFI from Raspberry’s menu.&lt;/p&gt;
-
-&lt;p&gt;After that I installed the experimental Kodi from menu. Basically follow &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/wiki/KODI&quot;&gt;this&lt;/a&gt;. It is important to follow the instructions to have Kodi on the main menu of Emulation Station.&lt;/p&gt;
-
-&lt;p&gt;To use my cellphone as a remote control I installed &lt;a href=&quot;http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp&quot;&gt;Yatse&lt;/a&gt;. In this way you have a Chromecast like equipment. Remember to follow Yatse help to change Kodi Web settings.&lt;/p&gt;
-
-&lt;p&gt;I have Brazil list of channels on PVR Simple client plug-in on Kodi.&lt;/p&gt;
-
-&lt;p&gt;I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.&lt;/p&gt;
-
-&lt;p&gt;That’s all.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
-        <link>http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Dynamixel Setup Using ROS</title>
-        <description>&lt;p&gt;The Dynamixel package that is provided by ROS is really useful to control multi-joint manipulators or mobile robots using Dynamixel motors. It’s possible to find a nice tutorial &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;One tutorial about the torque joint controller can be found &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials/Creating%20a%20joint%20torque%20controller&quot;&gt;here&lt;/a&gt;. The detail is that, in order to get this step-by-step working, you should setup the motor to wheel mode ON. For this, there is some scripts in the &lt;a href=&quot;https://github.com/arebgun/dynamixel_motor/tree/master/dynamixel_driver/scripts&quot;&gt;dynamixel package&lt;/a&gt;. Which you can install from &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; as usual.&lt;/p&gt;
-
-&lt;p&gt;Using the package you could run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To get some information about your motors, and:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set &lt;code class=&quot;highlighter-rouge&quot;&gt;--ccw-angle-limit=1023&lt;/code&gt; or the max value your motor supports.&lt;/p&gt;
-
-&lt;p&gt;That’s all.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 Apr 2016 00:00:00 -0400</pubDate>
-        <link>http://vncprado.github.io/dynamixel-setup-using-ros/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/dynamixel-setup-using-ros/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Using Fuzzylite in Ubuntu/ROS</title>
-        <description>&lt;p&gt;In my PhD work we maybe are going to use some Fuzzy controllers, I found out this &lt;a href=&quot;http://www.fuzzylite.com/&quot;&gt;Fuzzylite&lt;/a&gt; really light and simple to use. Following how I got it working on my environment.&lt;/p&gt;
-
-&lt;p&gt;I installed it following &lt;a href=&quot;http://praghuvamsi.blogspot.ca/2014/02/fuzzylite-installation-on-ubuntu.html&quot;&gt;this&lt;/a&gt; instructions. With a different version cloned from github &lt;a href=&quot;https://github.com/fuzzylite/fuzzylite.git&quot;&gt;repository&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;So I don’t need to extract, only &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; fuzzylite folder inside fuzzylite git repository:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fuzzylite/:~$ cd fuzzylite
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then CMake, make and make install:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fuzzylite/fuzzylite:~$ cmake .
-fuzzylite/fuzzylite:~$ make
-fuzzylite/fuzzylite:~$ sudo make install
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;After that you need to export the installation local&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In this way it is possible to link the fuzzylite dynamically, you can use their &lt;a href=&quot;/misc/example.cpp&quot;&gt;example&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ g++ example.cpp -lfuzzylite
-$ ./a.out
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;On ROS you can utilize the library updating your CMakelists.txt:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Specify libraries to link a library or executable target against
-target_link_libraries(fuzzy_tests_node
-  ${catkin_LIBRARIES}
-  fuzzylite
-)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Up to now I didn’t have any problems and I can use fuzzylite values to read from and update ROS topics.&lt;/p&gt;
-
-&lt;p&gt;That’s all.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 05 Apr 2016 00:00:00 -0400</pubDate>
-        <link>http://vncprado.github.io/using-fuzzylite-in-ubuntu-ros/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/using-fuzzylite-in-ubuntu-ros/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Ubuntu on Chuwi Vi 10</title>
-        <description>&lt;p&gt;UPDATE (26/04/16):&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Installation on a USB 3.0 drive&lt;/strong&gt;: It fails on grub normal installation. So I boot again with the first USB drive and type &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; at GRUB and use instructions listed below to boot the USB 3.0 recent installed Ubuntu. After that I got my WIFI dongle (my built-in WIFI card is still not working) and follow &lt;a href=&quot;http://www.jfwhome.com/2016/01/04/latest-steps-to-install-ubuntu-on-the-asus-t100ta/&quot;&gt;this&lt;/a&gt; GRUB instructions:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
-sudo apt-get install grub-efi-ia32
-sudo nano /etc/default/grub
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Find the line starting GRUB_CMDLINE_LINUX_DEFAULT and add intel_idle.max_cstate=0 before quiet splash”.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo update-grub
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now I just need the USB 3.0 to boot my system, without changing (for now) my Windows installation.&lt;/p&gt;
-
-&lt;p&gt;UPDATE (22-24/04/16):&lt;/p&gt;
-
-&lt;p&gt;I forgot to write how to boot on USB-EFI. With the device off, you need to press &lt;code class=&quot;highlighter-rouge&quot;&gt;POWER + VOLUME_UP + VOLUME_DOWN&lt;/code&gt; and keep both volume buttons after it turned on, until you see the screen with selection buttons.&lt;/p&gt;
-
-&lt;p&gt;Now that Ubuntu 16.04 was released I’ll try to make a stable version of it.&lt;/p&gt;
-
-&lt;p&gt;I got touch screen working with &lt;a href=&quot;https://github.com/onitake/gslx680-acpi&quot;&gt;this&lt;/a&gt; driver. I’m planning to submit a pull request with Chuwi Vi 10 driver extracted from my Windows 10 driver to their &lt;a href=&quot;https://github.com/onitake/gsl-firmware&quot;&gt;firmware&lt;/a&gt; repository.&lt;/p&gt;
-
-&lt;p&gt;UPDATE (19/12/15):&lt;/p&gt;
-
-&lt;p&gt;Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/lib/nux/unity_support_test -p
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;I’m writing this post to summarize all stuff I’ve been trying on my Chuwi Vi 10 tablet to work with Ubuntu.&lt;/p&gt;
-
-&lt;p&gt;Here is some aspects of it:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Component&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Specs&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;CPU&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Intel Z3736F&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Audio&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Realtek ALC 5642 (byt_rt5640)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;MIPI Panel&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Panasonic 19x12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;WIFI&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Realtek RGN RTL8723BS&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Rear camera&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lite-On 13P2BA829&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Front camera&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lite-On 13P2BA829&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Bluetooth&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Realtek RGN RTL8723BS&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Charger&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X-Powers integrated (AXP288)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Fuel Gauge&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X-Powers integrated (AXP288)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;ALS Sensor&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Capella CM32181&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Gyro Sensor&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bosch BMG 160&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Accel/Compass&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bosch BMC 150&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Touchscreen&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Silead touch&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;To boot I made an Ubuntu 14.04 (I tested 15.10 and it boot too) USB drive with &lt;a href=&quot;https://rufus.akeo.ie/&quot;&gt;Rufus&lt;/a&gt; on Windows. The boot need to be made with GPT but I didn’t have time to have an working USB drive created on Ubuntu yet. After created, I put &lt;a href=&quot;https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi&quot;&gt;bootia32.efi&lt;/a&gt; file at &lt;code class=&quot;highlighter-rouge&quot;&gt;/EFI/boot/&lt;/code&gt; Ubuntu USB drive directory.&lt;/p&gt;
-
-&lt;p&gt;If you have no graphics after grub, you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; in grub menu to edit the line starting on &lt;code class=&quot;highlighter-rouge&quot;&gt;linux	/casper/vmlinuz.efi...&lt;/code&gt;, remove &lt;code class=&quot;highlighter-rouge&quot;&gt;quite splash&lt;/code&gt; and add &lt;code class=&quot;highlighter-rouge&quot;&gt;nomodeset reboot=pci,force&lt;/code&gt; in the end.&lt;/p&gt;
-
-&lt;p&gt;Using the option &lt;code class=&quot;highlighter-rouge&quot;&gt;Try Ubuntu&lt;/code&gt; you would be able to install like in any other computer.&lt;/p&gt;
-
-&lt;p&gt;After installation, you need to boot from USB drive again and compile Grub inside your installation, to do so you need any USB dongle for WIFI connection. You can find this instructions &lt;a href=&quot;http://www.jfwhome.com/2014/03/07/perfect-ubuntu-or-other-linux-on-the-asus-transformer-book-t100/&quot;&gt;here&lt;/a&gt;. When Grub starts, type &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; to enter command line and type:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linux (hd2,gpt5)/boot/vmlinuz-3.13-xxxx root=/dev/mmcblk0p5 video=VGA-1:1368x768e reboot=pci,force
-initrd (hd2,gpt5)/boot/initrd-3.13-xxxx
-boot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;After booting you need to install some stuff, and clone Grub repository to compile it:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The package &lt;code class=&quot;highlighter-rouge&quot;&gt;ia32_libs&lt;/code&gt; maybe a problem because, apparently, it is not anymore on Ubuntu 14.04. To install it try:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo -i
-# cd /etc/apt/sources.list.d
-# echo &quot;deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse&quot; &amp;gt;ia32-libs-raring.list
-# apt-get update
-# apt-get install ia32-libs
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then get the Grub source:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone git://git.savannah.gnu.org/grub.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now build it:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd grub
-$ ./autogen.sh
-$ ./configure --with-platform=efi --target=i386 --program-prefix=&quot;&quot;
-$ make
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And install to efi:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd grub-core
-$ sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This will create a directory, ‘grub’, in your EFI partition.
-We want to copy the grubia32.efi from there to the location Ubuntu created during installation:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /boot/efi/EFI
-$ sudo cp grub/grubia32.efi ubuntu/grubx64.efi
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;After this command you should be able to boot directly to your new Ubuntu installation.&lt;/p&gt;
-
-&lt;p&gt;I’ll (hope to) continue to update this with improvements.
-I have a Dell Venue 8 Pro working with some Kernel 4.x which already have better support for Atom processors. So the idea is to have a newer Ubuntu (probably 15.10 which were already released, or a testing version) in order to get at least basic stuff working.&lt;/p&gt;
-
-&lt;p&gt;Some other sources:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://techtablets.com/chuwi-vi10/review/&quot;&gt;http://techtablets.com/chuwi-vi10/review/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://forum.xda-developers.com/windows-8-rt/general/chuwi-vi10-dual-boot-win-8-1-android-4-4-t3112954&quot;&gt;http://forum.xda-developers.com/windows-8-rt/general/chuwi-vi10-dual-boot-win-8-1-android-4-4-t3112954&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 13 Dec 2015 00:00:00 -0500</pubDate>
-        <link>http://vncprado.github.io/ubuntu-on-chuwi-vi-10/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/ubuntu-on-chuwi-vi-10/</guid>
         
         
       </item>

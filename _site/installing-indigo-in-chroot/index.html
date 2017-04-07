@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hey Kowalski, you out there?">
+
+    <meta property="og:image" content="http://vncprado.github.io/img/large-vanishing-point-blu-ray6-1.jpg" />
+    <meta property="og:url" content="http://vncprado.github.io/installing-indigo-in-chroot/" />
+    <meta property="og:title" content="installing indigo in chroot" />
+    <meta property="og:description" content="installing indigo in chroot" />
+    <meta property="fb:app_id" content="166534027083083" />
+
+    <title>installing indigo in chroot - Vanishing Point</title>
+
+    <link rel="canonical" href="http://vncprado.github.io/installing-indigo-in-chroot/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- SharePage CSS -->
+    <link rel="stylesheet" href="/css/share-page.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60695381-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '166534027083083',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Vanishing Point</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+                
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>installing indigo in chroot</h1>
+                    
+                    <span class="meta">Posted by Vincius Prado da Fonseca on April 7, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div align="right">
+              <ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/installing-indigo-in-chroot/&t=installing indigo in chroot" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/installing-indigo-in-chroot/ + '&t=' + installing indigo in chroot); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+  <li><a href="mailto:?subject=Vanishing%20Point&body=Hey%20Kowalski%2C%20you%20out%20there%3F:%20http%3A%2F%2Fvncprado.github.io" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+</ul>
+
+              </div>
+    				<p>This is Google’s cache of http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot. It is a snapshot of the page as it appeared on Apr 5, 2017 20:04:05 GMT.
+The current page could have changed in the meantime. Learn more
+Full versionText-only versionView sourceTip: To quickly find your search term on this page, press Ctrl+F or ⌘-F (Mac) and use the find bar.
+ros.org	About | Support | Status | answers.ros.org
+Search:
+DocumentationBrowse SoftwareNewsDownload
+ROS
+Tutorials
+InstallingIndigoInChroot
+Wiki</p>
+
+<p>Distributions
+ROS/Installation
+ROS/Tutorials
+RecentChanges
+InstallingIndigoInChroot
+Page</p>
+
+<p>Immutable Page
+Info
+Attachments
+More Actions: Raw Text Print View Render as Docbook Delete Cache ———————— Check Spelling Like Pages Local Site Map ———————— Rename Page Copy Page Delete Page ———————— My Pages Subscribe User ———————— Remove Spam Revert to this revision Package Pages Sync Pages ———————— CreatePdfDocument Load RawFile Save SlideShow
+User</p>
+
+<p>Login
+(!) Please ask about problems and questions regarding this tutorial on answers.ros.org. Don’t forget to include in your question the link to this page, the versions of your OS &amp; ROS, and also add appropriate tags.
+Installing ROS Indigo in a chroot</p>
+
+<p>Description: This tutorial walks you through installing ROS Indigo (and Ubuntu 14.04) in a chroot. This allows you to have a ROS Indigo installation even on Ubuntu versions that Indigo doesn’t build on.</p>
+
+<p>Tutorial Level: INTERMEDIATE</p>
+
+<p>Contents</p>
+
+<p>Introduction
+Creating the Ubuntu 14.04 Chroot
+Setup ROS Indigo in the Chroot
+Compiling Source Packages
+Running Graphical Programs
+Accelerated OpenGL
+NVIDIA
+Testing
+Introduction</p>
+
+<p>Because ROS Indigo is being released at the same time as a new Ubuntu long term support version (Trusty Tahr), Indigo and Hydro have no overlap in terms of Ubuntu distributions. For development, it is useful to be able to install both Indigo and Hydro on the same machine, and incrementally port your code over.</p>
+
+<p>Chroot (change root) makes this possible. A chroot is an directory on your system which has an entire Ubuntu in it. When you are in the chroot, your root directory / actually points to some subdirectory on the overall system. In this tutorial, that subdirectory will be /srv/chroot/indigo_trusty. Since that will look like the root directory to programs inside the chroot, when the look for /etc for example, they’ll end up in /srv/chroot/indigo_trusty/etc.</p>
+
+<p>The debootstrap tool is the second piece of this. It will create a whole new apt (the Debian package manager) configuration inside of the chroot. We’ll set this up to use the 14.04 Ubuntu repositories, so that when we install ROS it will get all the dependencies from 14.04, and install everything to /srv/chroot/indigo_trusty.</p>
+
+<p>This tutorial has been tested on the following systems:</p>
+
+<p>Ubuntu Xenial (16.04): 64 bit
+Ubuntu Precise (12.04): 32 and 64 bit
+Ubuntu Raring (13.04): 64 bit
+Creating the Ubuntu 14.04 Chroot</p>
+
+<p>First install schroot and debootstrap:</p>
+
+<p>sudo apt-get install debootstrap schroot
+Next create a config file for the chroot we’re making:</p>
+
+<p>sudo gedit /etc/schroot/chroot.d/indigo_trusty.conf
+Copy the following text into the config file:</p>
+
+<p>[indigo_trusty]
+description=Ubuntu 14.04 for installing ROS Indigo
+directory=/srv/chroot/indigo_trusty
+root-groups=root
+type=directory
+users=USERNAME
+personality=linux
+preserve-environment=false
+Change USERNAME to your own user name.</p>
+
+<p>Create the directory where we’ll put the chroot:</p>
+
+<p>sudo mkdir -p /srv/chroot/indigo_trusty
+Run debootstrap to setup the new chroot (this assumes you are on a 64 bit system. If you are on a 32 bit system, change amd64 to i386):</p>
+
+<p>sudo debootstrap –variant=buildd –arch=amd64 trusty /srv/chroot/indigo_trusty http://archive.ubuntu.com/ubuntu/
+List the chroots:</p>
+
+<p>schroot -l
+If everything has worked so far, you should see indigo_trusty listed.</p>
+
+<p>Switch to the new chroot. You may get some errors here if you have stuff in your .bashrc that uses programs not yet installed in the chroot, but you can (usually) ignore them. We use sudo here so that we’ll end up with a root shell inside of the chroot, and we’ll be able to install packages:</p>
+
+<p>sudo schroot -c indigo_trusty
+You’re now inside of a chroot environment. If you run ls /, you’ll actually see the root directory of the chroot environment, which is /srv/chroot/indigo_trusty on the host machine.</p>
+
+<p>Install some useful packages:</p>
+
+<p>apt-get install sudo vim git
+Now that we’ve installed sudo in the chroot, we don’t need to run schroot -c with sudo anymore. Exit the chroot and re-enter it without using sudo:</p>
+
+<p>exit
+schroot -c indigo_trusty
+Some programs need to know the locale:</p>
+
+<p>sudo locale-gen en_US en_US.UTF-8
+sudo dpkg-reconfigure locales
+Setup ROS Indigo in the Chroot</p>
+
+<p>ROS needs some dependencies from the Ubuntu universe repo:</p>
+
+<p>sudo sh -c ‘echo “deb http://archive.ubuntu.com/ubuntu trusty universe” » /etc/apt/sources.list’
+Add the ROS repo:</p>
+
+<p>This command will add the “shadow fixed” ROS repository, which contains brand new builds and is not as stable as the standard ROS repository. While Indigo is still brand new, we need ros-shadow-fixed in order to get packages that were just released. If you want a more stable system, however, you should replace “ros-shadow-fixed” with “ros”.</p>
+
+<p>sudo sh -c ‘echo “deb http://packages.ros.org/ros-shadow-fixed/ubuntu trusty main” &gt; /etc/apt/sources.list.d/ros-latest.list’
+Import the ROS package repository key:</p>
+
+<p>sudo apt-get install wget
+wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+Update the list of packages:</p>
+
+<p>sudo apt-get update
+Now if you run apt-cache search ros-indigo, you should see the packages that have already been released into Indigo.</p>
+
+<p>Install rosdep; we’ll use this to install dependencies of source packages that we are working on:</p>
+
+<p>sudo apt-get install python-rosdep
+sudo rosdep init
+rosdep update
+Compiling Source Packages</p>
+
+<p>We’ll compile the roscpp tutorials as an example.</p>
+
+<p>Your home directory is shared between the main system and the chroot, so you can use editors outside the chroot to edit code if you want. For this tutorial, however we’ll assume that you’re doing all your editing inside the chroot.</p>
+
+<p>Create a catkin workspace:</p>
+
+<p>mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
+git clone https://github.com/ros/ros_tutorials.git
+cd ~/catkin_ws
+Use rosdep to install the dependencies:</p>
+
+<p>rosdep install –from-path src –rosdistro indigo -i -y
+Build the catkin workspace:</p>
+
+<p>source /opt/ros/indigo/setup.bash
+catkin_make
+Install rosbash (for things like rosrun):</p>
+
+<p>sudo apt-get install ros-indigo-rosbash
+Start a roscore:</p>
+
+<p>schroot -c indigo_trusty
+source /opt/ros/indigo/setup.bash
+roscore
+If the roscore does not start up cleanly, make sure there is not one already running on your host computer. Then, verify that the ROS_MASTER_URI environment variable is set correctly. The usual setting should work:</p>
+
+<p>export ROS_MASTER_URI=http://$HOSTNAME:11311/</p>
+
+<p>In a separate terminal, enter the chroot, and run the talker node:</p>
+
+<p>source devel/setup.bash
+rosrun roscpp_tutorials talker
+In a third terminal, enter the chroot, and run the listener node:</p>
+
+<p>source devel/setup.bash
+rosrun roscpp_tutorials listener
+You should see output similar to this one:</p>
+
+<p>[ INFO] [1396326497.204811314]: I heard: [hello world 135]
+[ INFO] [1396326497.303949602]: I heard: [hello world 136]
+Running Graphical Programs</p>
+
+<p>In order to use graphical programs from the Indigo chroot you will need to set the DISPLAY environment variable and allow access to the host X server.</p>
+
+<p>In the host environment:</p>
+
+<p>xhost +local:
+This command allows non-network local connections access to your host environment’s X server, which should be ok. For more information, see the xhost man page.</p>
+
+<p>Export the DISPLAY variable in the chroot:</p>
+
+<p>schroot -c indigo_trusty
+export DISPLAY=:0
+In the same terminal, try opening turtlesim to test it:</p>
+
+<p>source ~/catkin_ws/devel/setup.bash
+rosrun turtlesim turtlesim_node
+The turtlesim window should appear. You may run (in a separate terminal) the turtlesim turtle_teleop_key to move the turtle.</p>
+
+<p>Accelerated OpenGL</p>
+
+<p>In order to be able to run RViz (or any other program that needs accelerated OpenGL), the OpenGL client library files will need to be installed inside the chroot.</p>
+
+<p>NVIDIA</p>
+
+<p>It is important for the versions of the libraries installed in the chroot to be as close as possible (ideally: identical) to those installed in the host environment. To find the version of the NVIDIA driver installed:</p>
+
+<p>dpkg -l | grep -i nvidia
+Now go to the NVIDIA site and download the binary drivers closest to the one installed on the host (be sure to download the appropriate drivers: x86_64 for 64 bit systems, x86 for 32 bit).</p>
+
+<p>Copy them to the chroot (place them in /path/to/my/chroot/tmp or something similar).</p>
+
+<p>As we only require the OpenGL libraries to be installed, the following command should suffice:</p>
+
+<p>schroot -c indigo_trusty
+sudo sh /tmp/NVIDIA-Linux-x86_64-331.20.run –no-precompiled-interface –no-runlevel-check –no-kernel-module –no-x-check –no-kernel-module-source –no-distro-scripts –no-nvidia-modprobe –accept-license
+This example installs the 64 bit version of the 331.20 drivers. Change this to match the actual version you are installing.</p>
+
+<p>The installer will probably display some errors (ERROR: Unable to create ‘(null)’ for copying (Bad address)): these can be ignored (press enter).</p>
+
+<p>Testing</p>
+
+<p>Use glx-gears to test the OpenGL setup:</p>
+
+<p>schroot -c indigo_trusty
+sudo apt-get install mesa-utils
+glxgears -info
+You should see the spinning gears, and the console should show output similar to:</p>
+
+<p>Running synchronized to the vertical refresh.  The framerate should be
+approximately the same as the monitor refresh rate.
+GL_RENDERER   = GeForce [..]
+GL_VERSION    = X.Y.Z NVIDIA 331.20
+GL_VENDOR     = NVIDIA Corporation
+GL_EXTENSIONS = GL_ARB_arrays_of_arrays [..]
+This output is obviously different for AMD/Intel/etc graphic cards, but it should still display the proper values for the reported variables.</p>
+
+<p>Wiki: ROS/Tutorials/InstallingIndigoInChroot (last edited 2016-07-09 16:09:30 by JackOQuin)</p>
+
+<p>Except where otherwise noted, the ROS wiki is licensed under the
+Creative Commons Attribution 3.0 | Find us on Google+</p>
+
+            <center style="margin: -25px 0 20px;">=]</center>
+            <center><ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/installing-indigo-in-chroot/&t=installing indigo in chroot" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/installing-indigo-in-chroot/ + '&t=' + installing indigo in chroot); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+  <li><a href="mailto:?subject=Vanishing%20Point&body=Hey%20Kowalski%2C%20you%20out%20there%3F:%20http%3A%2F%2Fvncprado.github.io" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+</ul>
+</center>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/ros-usbcam-with-calibration/" data-toggle="tooltip" data-placement="top" title="ROS usb_cam with calibration">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+            <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//vanishingpointgithub.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://www.facebook.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>
