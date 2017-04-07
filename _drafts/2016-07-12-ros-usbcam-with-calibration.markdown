@@ -4,13 +4,13 @@ title: "ROS usb_cam with calibration"
 date: "2016-07-12 14:55:00 -0400"
 ---
 
-I'm using ROS `usb_cam` package with small changes in my project. So I created a robot_vision package in my workspace so I could make the small changes and maybe get a generic package to use in other projects in the future.
+I'm using ROS `usb_cam` package with small changes in my project. Then I created a `robot_vision` package in my workspace so I could make small changes and maybe get a generic package to use in other projects in the future.
 
-I created a custom launch in robot_vision based on:
+I created a custom launch in `robot_vision` based on:
 
     $ roscat usb_cam usb_cam-test.launch
 
-So I could use other usb camera (`/dev/video1`) device then:
+So I could use other usb camera (`/dev/video1` default is video0) device then:
 
     $ roslaunch robot_vision init_camera.launch
 
