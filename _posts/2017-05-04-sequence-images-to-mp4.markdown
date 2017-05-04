@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sequence images to mp4"
+title: "Images sequence to mp4"
 date: "2017-05-04 14:55:00 -0400"
 ---
 

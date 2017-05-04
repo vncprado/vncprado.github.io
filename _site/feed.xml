@@ -5,12 +5,12 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 04 May 2017 14:55:00 -0400</pubDate>
-    <lastBuildDate>Thu, 04 May 2017 14:55:00 -0400</lastBuildDate>
+    <pubDate>Thu, 04 May 2017 15:01:03 -0400</pubDate>
+    <lastBuildDate>Thu, 04 May 2017 15:01:03 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>Sequence images to mp4</title>
+        <title>Images sequence to mp4</title>
         <description>&lt;p&gt;I’d got a sequence of images from my last snowboard trip and want to group them in a mp4 format. Problem is that they don’t start from 0 or 1 so I need a script line before feeding them to FFmpeg and create a video.&lt;/p&gt;
 
 &lt;p&gt;To reduce size:&lt;/p&gt;
@@ -34,7 +34,7 @@ Now use ffmpeg to generate the mp4 file.&lt;/p&gt;
 
 &lt;p&gt;Now you should have a &lt;code class=&quot;highlighter-rouge&quot;&gt;output.mp4&lt;/code&gt; file on your folder.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 04 May 2017 00:00:00 -0400</pubDate>
+        <pubDate>Thu, 04 May 2017 14:55:00 -0400</pubDate>
         <link>http://vncprado.github.io/sequence-images-to-mp4/</link>
         <guid isPermaLink="true">http://vncprado.github.io/sequence-images-to-mp4/</guid>
         
@@ -105,257 +105,6 @@ Now use ffmpeg to generate the mp4 file.&lt;/p&gt;
         <pubDate>Fri, 07 Apr 2017 15:54:36 -0400</pubDate>
         <link>http://vncprado.github.io/ros-usbcam-with-calibration/</link>
         <guid isPermaLink="true">http://vncprado.github.io/ros-usbcam-with-calibration/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>installing indigo in chroot</title>
-        <description>&lt;p&gt;This is Google’s cache of http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot. It is a snapshot of the page as it appeared on Apr 5, 2017 20:04:05 GMT.
-The current page could have changed in the meantime. Learn more
-Full versionText-only versionView sourceTip: To quickly find your search term on this page, press Ctrl+F or ⌘-F (Mac) and use the find bar.
-ros.org	About | Support | Status | answers.ros.org
-Search:
-DocumentationBrowse SoftwareNewsDownload
-ROS
-Tutorials
-InstallingIndigoInChroot
-Wiki&lt;/p&gt;
-
-&lt;p&gt;Distributions
-ROS/Installation
-ROS/Tutorials
-RecentChanges
-InstallingIndigoInChroot
-Page&lt;/p&gt;
-
-&lt;p&gt;Immutable Page
-Info
-Attachments
-More Actions: Raw Text Print View Render as Docbook Delete Cache ———————— Check Spelling Like Pages Local Site Map ———————— Rename Page Copy Page Delete Page ———————— My Pages Subscribe User ———————— Remove Spam Revert to this revision Package Pages Sync Pages ———————— CreatePdfDocument Load RawFile Save SlideShow
-User&lt;/p&gt;
-
-&lt;p&gt;Login
-(!) Please ask about problems and questions regarding this tutorial on answers.ros.org. Don’t forget to include in your question the link to this page, the versions of your OS &amp;amp; ROS, and also add appropriate tags.
-Installing ROS Indigo in a chroot&lt;/p&gt;
-
-&lt;p&gt;Description: This tutorial walks you through installing ROS Indigo (and Ubuntu 14.04) in a chroot. This allows you to have a ROS Indigo installation even on Ubuntu versions that Indigo doesn’t build on.&lt;/p&gt;
-
-&lt;p&gt;Tutorial Level: INTERMEDIATE&lt;/p&gt;
-
-&lt;p&gt;Contents&lt;/p&gt;
-
-&lt;p&gt;Introduction
-Creating the Ubuntu 14.04 Chroot
-Setup ROS Indigo in the Chroot
-Compiling Source Packages
-Running Graphical Programs
-Accelerated OpenGL
-NVIDIA
-Testing
-Introduction&lt;/p&gt;
-
-&lt;p&gt;Because ROS Indigo is being released at the same time as a new Ubuntu long term support version (Trusty Tahr), Indigo and Hydro have no overlap in terms of Ubuntu distributions. For development, it is useful to be able to install both Indigo and Hydro on the same machine, and incrementally port your code over.&lt;/p&gt;
-
-&lt;p&gt;Chroot (change root) makes this possible. A chroot is an directory on your system which has an entire Ubuntu in it. When you are in the chroot, your root directory / actually points to some subdirectory on the overall system. In this tutorial, that subdirectory will be /srv/chroot/indigo_trusty. Since that will look like the root directory to programs inside the chroot, when the look for /etc for example, they’ll end up in /srv/chroot/indigo_trusty/etc.&lt;/p&gt;
-
-&lt;p&gt;The debootstrap tool is the second piece of this. It will create a whole new apt (the Debian package manager) configuration inside of the chroot. We’ll set this up to use the 14.04 Ubuntu repositories, so that when we install ROS it will get all the dependencies from 14.04, and install everything to /srv/chroot/indigo_trusty.&lt;/p&gt;
-
-&lt;p&gt;This tutorial has been tested on the following systems:&lt;/p&gt;
-
-&lt;p&gt;Ubuntu Xenial (16.04): 64 bit
-Ubuntu Precise (12.04): 32 and 64 bit
-Ubuntu Raring (13.04): 64 bit
-Creating the Ubuntu 14.04 Chroot&lt;/p&gt;
-
-&lt;p&gt;First install schroot and debootstrap:&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get install debootstrap schroot
-Next create a config file for the chroot we’re making:&lt;/p&gt;
-
-&lt;p&gt;sudo gedit /etc/schroot/chroot.d/indigo_trusty.conf
-Copy the following text into the config file:&lt;/p&gt;
-
-&lt;p&gt;[indigo_trusty]
-description=Ubuntu 14.04 for installing ROS Indigo
-directory=/srv/chroot/indigo_trusty
-root-groups=root
-type=directory
-users=USERNAME
-personality=linux
-preserve-environment=false
-Change USERNAME to your own user name.&lt;/p&gt;
-
-&lt;p&gt;Create the directory where we’ll put the chroot:&lt;/p&gt;
-
-&lt;p&gt;sudo mkdir -p /srv/chroot/indigo_trusty
-Run debootstrap to setup the new chroot (this assumes you are on a 64 bit system. If you are on a 32 bit system, change amd64 to i386):&lt;/p&gt;
-
-&lt;p&gt;sudo debootstrap –variant=buildd –arch=amd64 trusty /srv/chroot/indigo_trusty http://archive.ubuntu.com/ubuntu/
-List the chroots:&lt;/p&gt;
-
-&lt;p&gt;schroot -l
-If everything has worked so far, you should see indigo_trusty listed.&lt;/p&gt;
-
-&lt;p&gt;Switch to the new chroot. You may get some errors here if you have stuff in your .bashrc that uses programs not yet installed in the chroot, but you can (usually) ignore them. We use sudo here so that we’ll end up with a root shell inside of the chroot, and we’ll be able to install packages:&lt;/p&gt;
-
-&lt;p&gt;sudo schroot -c indigo_trusty
-You’re now inside of a chroot environment. If you run ls /, you’ll actually see the root directory of the chroot environment, which is /srv/chroot/indigo_trusty on the host machine.&lt;/p&gt;
-
-&lt;p&gt;Install some useful packages:&lt;/p&gt;
-
-&lt;p&gt;apt-get install sudo vim git
-Now that we’ve installed sudo in the chroot, we don’t need to run schroot -c with sudo anymore. Exit the chroot and re-enter it without using sudo:&lt;/p&gt;
-
-&lt;p&gt;exit
-schroot -c indigo_trusty
-Some programs need to know the locale:&lt;/p&gt;
-
-&lt;p&gt;sudo locale-gen en_US en_US.UTF-8
-sudo dpkg-reconfigure locales
-Setup ROS Indigo in the Chroot&lt;/p&gt;
-
-&lt;p&gt;ROS needs some dependencies from the Ubuntu universe repo:&lt;/p&gt;
-
-&lt;p&gt;sudo sh -c ‘echo “deb http://archive.ubuntu.com/ubuntu trusty universe” » /etc/apt/sources.list’
-Add the ROS repo:&lt;/p&gt;
-
-&lt;p&gt;This command will add the “shadow fixed” ROS repository, which contains brand new builds and is not as stable as the standard ROS repository. While Indigo is still brand new, we need ros-shadow-fixed in order to get packages that were just released. If you want a more stable system, however, you should replace “ros-shadow-fixed” with “ros”.&lt;/p&gt;
-
-&lt;p&gt;sudo sh -c ‘echo “deb http://packages.ros.org/ros-shadow-fixed/ubuntu trusty main” &amp;gt; /etc/apt/sources.list.d/ros-latest.list’
-Import the ROS package repository key:&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get install wget
-wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
-Update the list of packages:&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get update
-Now if you run apt-cache search ros-indigo, you should see the packages that have already been released into Indigo.&lt;/p&gt;
-
-&lt;p&gt;Install rosdep; we’ll use this to install dependencies of source packages that we are working on:&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get install python-rosdep
-sudo rosdep init
-rosdep update
-Compiling Source Packages&lt;/p&gt;
-
-&lt;p&gt;We’ll compile the roscpp tutorials as an example.&lt;/p&gt;
-
-&lt;p&gt;Your home directory is shared between the main system and the chroot, so you can use editors outside the chroot to edit code if you want. For this tutorial, however we’ll assume that you’re doing all your editing inside the chroot.&lt;/p&gt;
-
-&lt;p&gt;Create a catkin workspace:&lt;/p&gt;
-
-&lt;p&gt;mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/src
-git clone https://github.com/ros/ros_tutorials.git
-cd ~/catkin_ws
-Use rosdep to install the dependencies:&lt;/p&gt;
-
-&lt;p&gt;rosdep install –from-path src –rosdistro indigo -i -y
-Build the catkin workspace:&lt;/p&gt;
-
-&lt;p&gt;source /opt/ros/indigo/setup.bash
-catkin_make
-Install rosbash (for things like rosrun):&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get install ros-indigo-rosbash
-Start a roscore:&lt;/p&gt;
-
-&lt;p&gt;schroot -c indigo_trusty
-source /opt/ros/indigo/setup.bash
-roscore
-If the roscore does not start up cleanly, make sure there is not one already running on your host computer. Then, verify that the ROS_MASTER_URI environment variable is set correctly. The usual setting should work:&lt;/p&gt;
-
-&lt;p&gt;export ROS_MASTER_URI=http://$HOSTNAME:11311/&lt;/p&gt;
-
-&lt;p&gt;In a separate terminal, enter the chroot, and run the talker node:&lt;/p&gt;
-
-&lt;p&gt;source devel/setup.bash
-rosrun roscpp_tutorials talker
-In a third terminal, enter the chroot, and run the listener node:&lt;/p&gt;
-
-&lt;p&gt;source devel/setup.bash
-rosrun roscpp_tutorials listener
-You should see output similar to this one:&lt;/p&gt;
-
-&lt;p&gt;[ INFO] [1396326497.204811314]: I heard: [hello world 135]
-[ INFO] [1396326497.303949602]: I heard: [hello world 136]
-Running Graphical Programs&lt;/p&gt;
-
-&lt;p&gt;In order to use graphical programs from the Indigo chroot you will need to set the DISPLAY environment variable and allow access to the host X server.&lt;/p&gt;
-
-&lt;p&gt;In the host environment:&lt;/p&gt;
-
-&lt;p&gt;xhost +local:
-This command allows non-network local connections access to your host environment’s X server, which should be ok. For more information, see the xhost man page.&lt;/p&gt;
-
-&lt;p&gt;Export the DISPLAY variable in the chroot:&lt;/p&gt;
-
-&lt;p&gt;schroot -c indigo_trusty
-export DISPLAY=:0
-In the same terminal, try opening turtlesim to test it:&lt;/p&gt;
-
-&lt;p&gt;source ~/catkin_ws/devel/setup.bash
-rosrun turtlesim turtlesim_node
-The turtlesim window should appear. You may run (in a separate terminal) the turtlesim turtle_teleop_key to move the turtle.&lt;/p&gt;
-
-&lt;p&gt;Accelerated OpenGL&lt;/p&gt;
-
-&lt;p&gt;In order to be able to run RViz (or any other program that needs accelerated OpenGL), the OpenGL client library files will need to be installed inside the chroot.&lt;/p&gt;
-
-&lt;p&gt;NVIDIA&lt;/p&gt;
-
-&lt;p&gt;It is important for the versions of the libraries installed in the chroot to be as close as possible (ideally: identical) to those installed in the host environment. To find the version of the NVIDIA driver installed:&lt;/p&gt;
-
-&lt;p&gt;dpkg -l | grep -i nvidia
-Now go to the NVIDIA site and download the binary drivers closest to the one installed on the host (be sure to download the appropriate drivers: x86_64 for 64 bit systems, x86 for 32 bit).&lt;/p&gt;
-
-&lt;p&gt;Copy them to the chroot (place them in /path/to/my/chroot/tmp or something similar).&lt;/p&gt;
-
-&lt;p&gt;As we only require the OpenGL libraries to be installed, the following command should suffice:&lt;/p&gt;
-
-&lt;p&gt;schroot -c indigo_trusty
-sudo sh /tmp/NVIDIA-Linux-x86_64-331.20.run –no-precompiled-interface –no-runlevel-check –no-kernel-module –no-x-check –no-kernel-module-source –no-distro-scripts –no-nvidia-modprobe –accept-license
-This example installs the 64 bit version of the 331.20 drivers. Change this to match the actual version you are installing.&lt;/p&gt;
-
-&lt;p&gt;The installer will probably display some errors (ERROR: Unable to create ‘(null)’ for copying (Bad address)): these can be ignored (press enter).&lt;/p&gt;
-
-&lt;p&gt;Testing&lt;/p&gt;
-
-&lt;p&gt;Use glx-gears to test the OpenGL setup:&lt;/p&gt;
-
-&lt;p&gt;schroot -c indigo_trusty
-sudo apt-get install mesa-utils
-glxgears -info
-You should see the spinning gears, and the console should show output similar to:&lt;/p&gt;
-
-&lt;p&gt;Running synchronized to the vertical refresh.  The framerate should be
-approximately the same as the monitor refresh rate.
-GL_RENDERER   = GeForce [..]
-GL_VERSION    = X.Y.Z NVIDIA 331.20
-GL_VENDOR     = NVIDIA Corporation
-GL_EXTENSIONS = GL_ARB_arrays_of_arrays [..]
-This output is obviously different for AMD/Intel/etc graphic cards, but it should still display the proper values for the reported variables.&lt;/p&gt;
-
-&lt;p&gt;Wiki: ROS/Tutorials/InstallingIndigoInChroot (last edited 2016-07-09 16:09:30 by JackOQuin)&lt;/p&gt;
-
-&lt;p&gt;Except where otherwise noted, the ROS wiki is licensed under the
-Creative Commons Attribution 3.0 | Find us on Google+&lt;/p&gt;
-</description>
-        <pubDate>Fri, 07 Apr 2017 15:09:47 -0400</pubDate>
-        <link>http://vncprado.github.io/installing-indigo-in-chroot/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/installing-indigo-in-chroot/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Chuwi Vi 10 silead touch installation</title>
-        <description>
-</description>
-        <pubDate>Wed, 07 Dec 2016 14:48:12 -0500</pubDate>
-        <link>http://vncprado.github.io/chuwi-vi-10-silead-touch-installation/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/chuwi-vi-10-silead-touch-installation/</guid>
         
         
       </item>
@@ -517,6 +266,148 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
         <pubDate>Mon, 02 May 2016 23:01:37 -0400</pubDate>
         <link>http://vncprado.github.io/updates-about-pebble-apps/</link>
         <guid isPermaLink="true">http://vncprado.github.io/updates-about-pebble-apps/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
+        <description>&lt;p&gt;UPDATE 14/06/16:&lt;/p&gt;
+
+&lt;p&gt;I’ve noticed that some games were slow using my Raspberry Pi A+. I changed it for a Raspberry Pi Zero and it’s better but I still notice that Kodi have some issues with synchronization. Maybe I will need to try with the RPi 3 but I’ll left it for you.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;UPDATE 21/05/16:&lt;/p&gt;
+
+&lt;p&gt;I got everything working now and arrange all the stuff behind my TV with my Chromecast:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://vncprado.github.io/assets/TV-back.jpg&quot; alt=&quot;TV back with Chromecast and Raspberry pi&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pay attention on the &lt;a href=&quot;http://www.dx.com/p/cwxuan-usb-2-0-male-to-2-x-female-data-sync-charging-splitter-cable-black-32-5cm-409905#.V0Ceo3UrLQo&quot;&gt;USB power splitter&lt;/a&gt; and the &lt;a href=&quot;http://www.dx.com/p/hdmi-male-to-male-connection-cable-black-30cm-318400#.V0Ch3HUrLQo&quot;&gt;30 cm HDMI cable&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano /home/pi/.emulationstation/es_input.cfg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You need to keep these lines below in order to get config screen when starting emulationstation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;inputAction type=&quot;onfinish&quot;&amp;gt;
+    &amp;lt;command&amp;gt;/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh&amp;lt;/command&amp;gt;
+&amp;lt;/inputAction&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.&lt;/p&gt;
+
+&lt;p&gt;PS: Sometimes need to restart controller always with &lt;code class=&quot;highlighter-rouge&quot;&gt;start + B&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;UPDATE 19/05/16:&lt;/p&gt;
+
+&lt;p&gt;I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
+The model is &lt;a href=&quot;https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1&quot;&gt;this&lt;/a&gt;. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.&lt;/p&gt;
+
+&lt;p&gt;To get WIFI you need to compile &lt;a href=&quot;https://github.com/lwfinger/rtl8723bu/&quot;&gt;this driver&lt;/a&gt;. To compile it on your Retropie you will need the help of &lt;a href=&quot;http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html&quot;&gt;this guy&lt;/a&gt;. But basically you will need to get and install linux-headers for Raspbian:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
+sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There is also some changes in the Makefile:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifeq ($(CONFIG_RASPBIAN), y)
+EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
+EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211
+EXTRA_CFLAGS += -DRTW_USE_CFG80211_STA_EVENT # only enable when kernel &amp;gt;= 3.2
+EXTRA_CFLAGS += -DCONFIG_P2P_IPS
+ARCH := arm
+CROSS_COMPILE := arm-linux-gnueabihf-
+KVER := $(shell uname -r)
+KSRC ?= /lib/modules/$(KVER)/build
+MODULE_NAME := 8723bu
+MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Bluetooth you’ll use &lt;a href=&quot;https://github.com/lwfinger/rtl8723au_bt&quot;&gt;this one&lt;/a&gt;. The &lt;a href=&quot;https://www.amazon.ca/dp/B00MB6CNN8/ref=pe_386430_193739550_TE_dp_1&quot;&gt;controller&lt;/a&gt; that I bought works with the test branch today. Maybe this will change in the future. The driver documentation says that you should use kernel branch for most recent kernels.&lt;/p&gt;
+
+&lt;p&gt;Still need to test without USB 3.0 hub (using only the direct USB port in my raspberry pi).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Some side project I’m working with my &lt;a href=&quot;https://www.raspberrypi.org/products/model-a-plus/&quot;&gt;Raspberry Pi A+&lt;/a&gt; is to transform it in a retro game with Bluetooth control and &lt;a href=&quot;http://kodi.wiki/view/Main_Page&quot;&gt;Kodi&lt;/a&gt; for IPTV. I’ve got &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/releases&quot;&gt;Retropie 3.5&lt;/a&gt; (for some reason 3.6 doesn’t update).&lt;/p&gt;
+
+&lt;p&gt;To install:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gzip -d retropie-v3.5-rpi1.img.gz
+$ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get my &lt;a href=&quot;http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ&quot;&gt;USB hub&lt;/a&gt; working with WIFI dongle and keyboard I had to append &lt;code class=&quot;highlighter-rouge&quot;&gt;dwc_otg.speed=1&lt;/code&gt; in the file &lt;code class=&quot;highlighter-rouge&quot;&gt;/boot/cmdline.txt&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then configured WIFI from Raspberry’s menu.&lt;/p&gt;
+
+&lt;p&gt;After that I installed the experimental Kodi from menu. Basically follow &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/wiki/KODI&quot;&gt;this&lt;/a&gt;. It is important to follow the instructions to have Kodi on the main menu of Emulation Station.&lt;/p&gt;
+
+&lt;p&gt;To use my cellphone as a remote control I installed &lt;a href=&quot;http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp&quot;&gt;Yatse&lt;/a&gt;. In this way you have a Chromecast like equipment. Remember to follow Yatse help to change Kodi Web settings.&lt;/p&gt;
+
+&lt;p&gt;I have Brazil list of channels on PVR Simple client plug-in on Kodi.&lt;/p&gt;
+
+&lt;p&gt;I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.&lt;/p&gt;
+
+&lt;p&gt;That’s all.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
+        <link>http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Dynamixel Setup Using ROS</title>
+        <description>&lt;p&gt;The Dynamixel package that is provided by ROS is really useful to control multi-joint manipulators or mobile robots using Dynamixel motors. It’s possible to find a nice tutorial &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;One tutorial about the torque joint controller can be found &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials/Creating%20a%20joint%20torque%20controller&quot;&gt;here&lt;/a&gt;. The detail is that, in order to get this step-by-step working, you should setup the motor to wheel mode ON. For this, there is some scripts in the &lt;a href=&quot;https://github.com/arebgun/dynamixel_motor/tree/master/dynamixel_driver/scripts&quot;&gt;dynamixel package&lt;/a&gt;. Which you can install from &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; as usual.&lt;/p&gt;
+
+&lt;p&gt;Using the package you could run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get some information about your motors, and:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set &lt;code class=&quot;highlighter-rouge&quot;&gt;--ccw-angle-limit=1023&lt;/code&gt; or the max value your motor supports.&lt;/p&gt;
+
+&lt;p&gt;That’s all.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 06 Apr 2016 00:00:00 -0400</pubDate>
+        <link>http://vncprado.github.io/dynamixel-setup-using-ros/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/dynamixel-setup-using-ros/</guid>
         
         
       </item>
