@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hey Kowalski, you out there?">
+
+    <meta property="og:image" content="http://vncprado.github.io/img/large-vanishing-point-blu-ray6-1.jpg" />
+    <meta property="og:url" content="http://vncprado.github.io/how-to-install-and-configure-cloud9-in-your-own-server/" />
+    <meta property="og:title" content="How To Install and Configure Cloud9 in Your Own Server" />
+    <meta property="og:description" content="How To Install and Configure Cloud9 in Your Own Server" />
+    <meta property="fb:app_id" content="166534027083083" />
+
+    <title>How To Install and Configure Cloud9 in Your Own Server - Vanishing Point</title>
+
+    <link rel="canonical" href="http://vncprado.github.io/how-to-install-and-configure-cloud9-in-your-own-server/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- SharePage CSS -->
+    <link rel="stylesheet" href="/css/share-page.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60695381-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '166534027083083',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Vanishing Point</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+                
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/large-vanishing-point-blu-ray6-1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>How To Install and Configure Cloud9 in Your Own Server</h1>
+                    
+                    <span class="meta">Posted by Vincius Prado da Fonseca on February 15, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div align="right">
+              <ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/how-to-install-and-configure-cloud9-in-your-own-server/&t=How To Install and Configure Cloud9 in Your Own Server" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/how-to-install-and-configure-cloud9-in-your-own-server/ + '&t=' + How To Install and Configure Cloud9 in Your Own Server); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+  <li><a href="mailto:?subject=Vanishing%20Point&body=Hey%20Kowalski%2C%20you%20out%20there%3F:%20http%3A%2F%2Fvncprado.github.io" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+</ul>
+
+              </div>
+    				<p>I’ve been watching <a href="http://c9.io">Cloud 9</a> for a while for this project. I like their online IDE. Even in localhost would be nice to have something for development really working in the browser for many reasons.</p>
+
+<p>But the version they had available in github was really poor comparing to the running version online. Which is really understandable, because they work with paid plans.</p>
+
+<p>But I recently they released the <a href="https://github.com/c9/core/">Cloud9 3.0 SDK</a> version.
+I don’t know how much this version is similar to online version but for my purposes is already good enough.</p>
+
+<p>So less talk and more action.</p>
+
+<h6 id="installation">Installation</h6>
+
+<p>In my setup I have an <code class="highlighter-rouge">Apache2</code>, <code class="highlighter-rouge">Node.js</code> and <code class="highlighter-rouge">forever</code> installed previously. You will need to google how to install these things first. I use a dev subdomain for Cloud9 but other Apache configurations would be quite similar. Besides that I have one user (not root) for development. In this user’s home folder we have the Cloud9 code and the workspace.</p>
+
+<p>Login with your developer user (I used ssh). Clone the Cloud9 project in its home folder:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd ~/
+git clone https://github.com/c9/core.git c9sdk
+</code></pre>
+</div>
+
+<p>Then go to the project and install it</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd c9sdk/
+scripts/install-sdk.sh
+</code></pre>
+</div>
+
+<p>Now, still in the cloud9 folder, use <code class="highlighter-rouge">forever</code> to start the server with the following parameters:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>forever start server.js -p 8181 -w ~/workspace/ -l 0.0.0.0 --auth username:passswd
+</code></pre>
+</div>
+
+<p>Select an username and password to login in addition a workspace folder.</p>
+
+<p>In apache, create a dev.conf file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo nano /etc/apache2/sites-avaible/dev.conf
+</code></pre>
+</div>
+
+<p>Paste the following lines inside the file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
+    ServerName dev.yourdomain.org
+    ProxyPass / http://0.0.0.0:8181/
+    ProxyPassReverse / http://0.0.0.0:8181/
+    ProxyPreserveHost On
+&lt;/VirtualHost&gt;
+</code></pre>
+</div>
+
+<p>Enable the site:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo a2ensite dev
+</code></pre>
+</div>
+
+<p>Finally restart Apache:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo service apache2 restart
+</code></pre>
+</div>
+
+<p>In a comparison with Codiad, I think that Cloud9 is far more robust and stable. Besides having a better terminal, which permits a large range of development.</p>
+
+            <center style="margin: -25px 0 20px;">=]</center>
+            <center><ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/how-to-install-and-configure-cloud9-in-your-own-server/&t=How To Install and Configure Cloud9 in Your Own Server" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/how-to-install-and-configure-cloud9-in-your-own-server/ + '&t=' + How To Install and Configure Cloud9 in Your Own Server); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+  <li><a href="mailto:?subject=Vanishing%20Point&body=Hey%20Kowalski%2C%20you%20out%20there%3F:%20http%3A%2F%2Fvncprado.github.io" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+</ul>
+</center>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/how-to-install-and-configure-codiad-in-your-own-server/" data-toggle="tooltip" data-placement="top" title="How To Install and Configure Codiad in Your Own Server">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/c-plus-plus-snippets/" data-toggle="tooltip" data-placement="top" title="C++ snippets">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+            <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//vanishingpointgithub.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://www.facebook.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/vncprado">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>

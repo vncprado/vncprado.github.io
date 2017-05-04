@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vanishing Point</title>
+    <description>Hey Kowalski, you out there?</description>
+    <link>http://vncprado.github.io/</link>
+    <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 04 May 2017 14:42:28 -0400</pubDate>
+    <lastBuildDate>Thu, 04 May 2017 14:42:28 -0400</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>ROS usb_cam with calibration</title>
+        <description>&lt;p&gt;I’m using ROS &lt;code class=&quot;highlighter-rouge&quot;&gt;usb_cam&lt;/code&gt; package with small changes in my project. Then I created a &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_vision&lt;/code&gt; package in my workspace so I could make small changes and maybe get a generic package to use in other projects in the future.&lt;/p&gt;
+
+&lt;p&gt;I created a custom launch in &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_vision&lt;/code&gt; based on:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roscat usb_cam usb_cam-test.launch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So I could use other usb camera (&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/video1&lt;/code&gt; default is video0) device then change /dev/video:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roslaunch robot_vision init_camera.launch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After that I erformed a calibration&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Attention to &lt;code class=&quot;highlighter-rouge&quot;&gt;--size&lt;/code&gt;, count the chessboard intersections, not the squares. Follow the instructions.&lt;/p&gt;
+
+&lt;p&gt;Update your launch:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;param name=&quot;camera_info_url&quot; value=&quot;file:///$(find robot_vision)/calib.yaml&quot; /&amp;gt;
+&amp;lt;param name=&quot;camera_name&quot; value=&quot;camera&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get rectificated images topics:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ROS_NAMESPACE=PS_cam rosrun image_oc image_proc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To check:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/camera image:=image_rect
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;On roslaunch:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;node name=&quot;image_proc&quot; pkg=&quot;image_proc&quot; type=&quot;image_proc&quot; ns=&quot;usb_cam&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Sources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/image_proc&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/usb_cam&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;https://www.artoolworks.com/support/library/images/6/6a/Calibration_chessboard.pdf&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://wiki.ros.org/camera_calibration&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Apr 2017 15:54:36 -0400</pubDate>
+        <link>http://vncprado.github.io/ros-usbcam-with-calibration/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/ros-usbcam-with-calibration/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Dynamixel package system installation</title>
+        <description>&lt;p&gt;For some reason the Dynamixel installation for ROS Indigo give me some (annoying) errors when I try to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;joint_trajectory_action&lt;/code&gt;, even when I get the trajectory working on the motors. So I performed an installation from &lt;a href=&quot;https://github.com/arebgun/dynamixel_motor&quot;&gt;this github repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can just clone the repo in your project’s workspace &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt; folder as a package and compile, but I wanted to have a system installation (at &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/ros&lt;/code&gt;) in order to have one solution for all future projects.&lt;/p&gt;
+
+&lt;p&gt;First you need to create a catkin workspace for Dynamixel, organize the folders to get it compiling with &lt;code class=&quot;highlighter-rouge&quot;&gt;catkin_make&lt;/code&gt;.
+After that, go to the workspace:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd dynamixel_ws
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You need permissions to install it on &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/ros&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# sudo su
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And the environment variables:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# source devel/setup.bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So you can perform the installation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After that you have a system installation for your dynamixel pkg.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+
+&lt;p&gt;Source:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://wiki.ros.org/catkin/commands/catkin_make&quot;&gt;http://wiki.ros.org/catkin/commands/catkin_make&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Nov 2016 12:53:09 -0500</pubDate>
+        <link>http://vncprado.github.io/dynamixel-package-system-installation/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/dynamixel-package-system-installation/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>In case your MakerBot firmware update goes wrong</title>
+        <description>&lt;p&gt;In my adventures trying to print with NinjaFlex I almost “bricked” our 3D printer. It is a Makerbot Replicator 2X and after some firmware update — through the software provided — it starts to think it was a Replicator 2. I don’t know the difference between them but it just didn’t seem right —  I know that Replicator 2 has a slightly larger plate.&lt;/p&gt;
+
+&lt;p&gt;How the official software allow you to update wrong firmware? As crazy as it sounds, the official support does know about this issue and say that I need to reinstall the correct firmware. But after searching really much I didn’t find any clear way to do this — in some of the tutorials they tell you to click a button that doesn’t exist in the software they provide.&lt;/p&gt;
+
+&lt;p&gt;Searching online I found some Windows software that claims could update the firmware but most cases It didn’t and in one case our printer went off with only the stop buttons light on.&lt;/p&gt;
+
+&lt;p&gt;I finally found &lt;a href=&quot;http://www.sailfishfirmware.com/doc/install.html&quot;&gt;this&lt;/a&gt; firmware where you can go directly to &lt;a href=&quot;http://www.sailfishfirmware.com/doc/install-removing.html&quot;&gt;removing&lt;/a&gt; and follow their instructions after downloading the software.&lt;/p&gt;
+
+&lt;p&gt;Keep in mind that they use a website provided by MakerBot company which seems to me that is keeping these old printers with a lot less support than its suppose.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 10 Jun 2016 09:16:28 -0400</pubDate>
+        <link>http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/in-case-your-makerbot-firmware-update-goes-wrong/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>UDEV rules for ttyUSB</title>
+        <description>&lt;p&gt;Really useful stuff when developing using Arduino or other USB stuff that maybe have the same &lt;code class=&quot;highlighter-rouge&quot;&gt;[vendor]:[product]&lt;/code&gt;. First you need to get the serial number:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# udevadm info -a -n /dev/ttyUSB1 | grep &#39;{serial}&#39; | head -n1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You will get something like &lt;code class=&quot;highlighter-rouge&quot;&gt;ATTRS{serial}==&quot;A6008isP&quot;&lt;/code&gt;. With this you can create new file called &lt;code class=&quot;highlighter-rouge&quot;&gt;99-usb-serial.rules&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/udev/rules.d/&lt;/code&gt;. In this file you can put one line for any devices you need changing only the serial in case of same vendor and product:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SUBSYSTEM==&quot;tty&quot;, ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}==&quot;6001&quot;, ATTRS{serial}==&quot;A6008isP&quot;, SYMLINK+=&quot;ttyUSB.arduino&quot;
+SUBSYSTEM==&quot;tty&quot;, ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}==&quot;6001&quot;, ATTRS{serial}==&quot;A9234HMO&quot;, SYMLINK+=&quot;ttyUSB.other&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this way &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/ttyUSB.arduino&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/ttyUSB.other&lt;/code&gt; will link to some &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/ttyUSB*&lt;/code&gt; that Linux will create for your device.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Jun 2016 21:34:23 -0400</pubDate>
+        <link>http://vncprado.github.io/udev-rules-for-ttyusb/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/udev-rules-for-ttyusb/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Chroot on Ubuntu 16.04 for ROS</title>
+        <description>&lt;p&gt;After install Ubuntu 16.04 on my laptop I found out that maybe would be challenging to have a nice ROS installation like in 14.04 but I could work almost in the same way before with a chroot of Ubuntu 14.04 in my 16.04 installation.&lt;/p&gt;
+
+&lt;p&gt;I followed &lt;a href=&quot;http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot&quot;&gt;this&lt;/a&gt; tutorial but I got an error on libpan. But &lt;a href=&quot;https://blog.tan-ce.com/chroot-ubuntu-14-04-on-android-nexus-10/&quot;&gt;this&lt;/a&gt; guy has a solution. Create a dummy &lt;code class=&quot;highlighter-rouge&quot;&gt;init.d&lt;/code&gt; script at &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d/systemd-logind&lt;/code&gt; with 0755 permissions (executable by all). In this file, enter the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then, let apt complete the installation by running &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get upgrade -y&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;After fixing this you can proceed and install Nvidia drivers. To enter your chroot &lt;code class=&quot;highlighter-rouge&quot;&gt;schroot -c indigo_trusty&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 26 May 2016 22:12:27 -0400</pubDate>
+        <link>http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/chroot-on-ubuntu-1604-for-ros/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Installation boot error (or don&#39;t forget GRUB)</title>
+        <description>&lt;p&gt;Last week I updated my lab laptop to Ubuntu 16.04 even with lots of problems reported up to now I have no problems, with one simple exception.
+I choose to do a fresh install. To make a dist-upgrade I would need to wait the 16.04.1 release. There’s some workarounds but laziness dominates.
+During the installation I got an Grub error, a fatal error that crashes the install wizard. But I had the feeling that everything was fine but the grub.
+During the reboot in USB drive Grub you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; to get a terminal. So you just need to type:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linux (hd0,msdos)/boot/grub/vmlinuz&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt; root=/dev/sda1
+initrd (hd0,msdos)/boot/initrd.gz
+boot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The auto-complete works so just &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt;&lt;/code&gt; and you get list of partitions and files to complete. You just need to be sure about your root partition.
+After boot the installed Ubuntu, you can run boot-repair to fix your boot installation.&lt;/p&gt;
+
+&lt;p&gt;That’s all!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 14 May 2016 20:31:32 -0400</pubDate>
+        <link>http://vncprado.github.io/installation-boot-error-or-dont-forget-grub/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/installation-boot-error-or-dont-forget-grub/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Updates about Pebble apps</title>
+        <description>&lt;p&gt;I’ve been using my Pebble again after some time. I wrote about my expectations and applications &lt;a href=&quot;http://vncprado.github.io/best-pebble-apps-up-to-now-for-me/&quot;&gt;before&lt;/a&gt;. For my total surprise, they updated the firmware with something really good, closer to Pebble time. Basically, they redesigned the whole interface and learn which are the basic apps and made their own. Apps to get weather, calendar and notifications are built-in and really good.&lt;/p&gt;
+
+&lt;p&gt;I’m in a huge dilemma about Music Boss. Its single advantage now is to launch the music apps. The built-in music app is really good. So I keep both but probably I’m going to remove Music Boss in the short term. I always can start the apps directly.&lt;/p&gt;
+
+&lt;p&gt;For navigation, I’m using Directions by Thibaut Rey but I need to test it. I keep Nav Me because I thing that I paid for it but definitely lost its position. I like Runkeeper and it stays the best and simplest. Endomondo didn’t have any updates since 2014 so I’m not going to test it again.&lt;/p&gt;
+
+&lt;p&gt;That’s all!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 May 2016 23:01:37 -0400</pubDate>
+        <link>http://vncprado.github.io/updates-about-pebble-apps/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/updates-about-pebble-apps/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Retropie + SNES controller + Kodi + Brazil list + Yatse</title>
+        <description>&lt;p&gt;UPDATE 14/06/16:&lt;/p&gt;
+
+&lt;p&gt;I’ve noticed that some games were slow using my Raspberry Pi A+. I changed it for a Raspberry Pi Zero and it’s better but I still notice that Kodi have some issues with synchronization. Maybe I will need to try with the RPi 3 but I’ll left it for you.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;UPDATE 21/05/16:&lt;/p&gt;
+
+&lt;p&gt;I got everything working now and arrange all the stuff behind my TV with my Chromecast:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://vncprado.github.io/assets/TV-back.jpg&quot; alt=&quot;TV back with Chromecast and Raspberry pi&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pay attention on the &lt;a href=&quot;http://www.dx.com/p/cwxuan-usb-2-0-male-to-2-x-female-data-sync-charging-splitter-cable-black-32-5cm-409905#.V0Ceo3UrLQo&quot;&gt;USB power splitter&lt;/a&gt; and the &lt;a href=&quot;http://www.dx.com/p/hdmi-male-to-male-connection-cable-black-30cm-318400#.V0Ch3HUrLQo&quot;&gt;30 cm HDMI cable&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano /home/pi/.emulationstation/es_input.cfg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You need to keep these lines below in order to get config screen when starting emulationstation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;inputAction type=&quot;onfinish&quot;&amp;gt;
+    &amp;lt;command&amp;gt;/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh&amp;lt;/command&amp;gt;
+&amp;lt;/inputAction&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.&lt;/p&gt;
+
+&lt;p&gt;PS: Sometimes need to restart controller always with &lt;code class=&quot;highlighter-rouge&quot;&gt;start + B&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;All the best!&lt;/p&gt;
+
+&lt;center&gt; =] &lt;/center&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;UPDATE 19/05/16:&lt;/p&gt;
+
+&lt;p&gt;I bought an USB dongle WIFI+Bluetooth so I could have internet and bluetooth controllers on my Retropie.
+The model is &lt;a href=&quot;https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_193739550_TE_dp_1&quot;&gt;this&lt;/a&gt;. The fantasy name is Dragon 150Mbps WIFI with Bluetooth 4.0 USB adapter but its a Realtek chipset.&lt;/p&gt;
+
+&lt;p&gt;To get WIFI you need to compile &lt;a href=&quot;https://github.com/lwfinger/rtl8723bu/&quot;&gt;this driver&lt;/a&gt;. To compile it on your Retropie you will need the help of &lt;a href=&quot;http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html&quot;&gt;this guy&lt;/a&gt;. But basically you will need to get and install linux-headers for Raspbian:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
+sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There is also some changes in the Makefile:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifeq ($(CONFIG_RASPBIAN), y)
+EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
+EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211
+EXTRA_CFLAGS += -DRTW_USE_CFG80211_STA_EVENT # only enable when kernel &amp;gt;= 3.2
+EXTRA_CFLAGS += -DCONFIG_P2P_IPS
+ARCH := arm
+CROSS_COMPILE := arm-linux-gnueabihf-
+KVER := $(shell uname -r)
+KSRC ?= /lib/modules/$(KVER)/build
+MODULE_NAME := 8723bu
+MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Bluetooth you’ll use &lt;a href=&quot;https://github.com/lwfinger/rtl8723au_bt&quot;&gt;this one&lt;/a&gt;. The &lt;a href=&quot;https://www.amazon.ca/dp/B00MB6CNN8/ref=pe_386430_193739550_TE_dp_1&quot;&gt;controller&lt;/a&gt; that I bought works with the test branch today. Maybe this will change in the future. The driver documentation says that you should use kernel branch for most recent kernels.&lt;/p&gt;
+
+&lt;p&gt;Still need to test without USB 3.0 hub (using only the direct USB port in my raspberry pi).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Some side project I’m working with my &lt;a href=&quot;https://www.raspberrypi.org/products/model-a-plus/&quot;&gt;Raspberry Pi A+&lt;/a&gt; is to transform it in a retro game with Bluetooth control and &lt;a href=&quot;http://kodi.wiki/view/Main_Page&quot;&gt;Kodi&lt;/a&gt; for IPTV. I’ve got &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/releases&quot;&gt;Retropie 3.5&lt;/a&gt; (for some reason 3.6 doesn’t update).&lt;/p&gt;
+
+&lt;p&gt;To install:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gzip -d retropie-v3.5-rpi1.img.gz
+$ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get my &lt;a href=&quot;http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ&quot;&gt;USB hub&lt;/a&gt; working with WIFI dongle and keyboard I had to append &lt;code class=&quot;highlighter-rouge&quot;&gt;dwc_otg.speed=1&lt;/code&gt; in the file &lt;code class=&quot;highlighter-rouge&quot;&gt;/boot/cmdline.txt&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then configured WIFI from Raspberry’s menu.&lt;/p&gt;
+
+&lt;p&gt;After that I installed the experimental Kodi from menu. Basically follow &lt;a href=&quot;https://github.com/RetroPie/RetroPie-Setup/wiki/KODI&quot;&gt;this&lt;/a&gt;. It is important to follow the instructions to have Kodi on the main menu of Emulation Station.&lt;/p&gt;
+
+&lt;p&gt;To use my cellphone as a remote control I installed &lt;a href=&quot;http://yatse.tv/redmine/projects/yatse/wiki/XbmcConfig?utm_source=YatseApp&quot;&gt;Yatse&lt;/a&gt;. In this way you have a Chromecast like equipment. Remember to follow Yatse help to change Kodi Web settings.&lt;/p&gt;
+
+&lt;p&gt;I have Brazil list of channels on PVR Simple client plug-in on Kodi.&lt;/p&gt;
+
+&lt;p&gt;I also bought a Bluetooth and WIFI dongle that I will need to test with the SNES Bluetooth control as well to get my solution working. But up to now using my keyboard and USB hub everything is working fine.&lt;/p&gt;
+
+&lt;p&gt;That’s all.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
+        <link>http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Dynamixel Setup Using ROS</title>
+        <description>&lt;p&gt;The Dynamixel package that is provided by ROS is really useful to control multi-joint manipulators or mobile robots using Dynamixel motors. It’s possible to find a nice tutorial &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;One tutorial about the torque joint controller can be found &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials/Creating%20a%20joint%20torque%20controller&quot;&gt;here&lt;/a&gt;. The detail is that, in order to get this step-by-step working, you should setup the motor to wheel mode ON. For this, there is some scripts in the &lt;a href=&quot;https://github.com/arebgun/dynamixel_motor/tree/master/dynamixel_driver/scripts&quot;&gt;dynamixel package&lt;/a&gt;. Which you can install from &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; as usual.&lt;/p&gt;
+
+&lt;p&gt;Using the package you could run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get some information about your motors, and:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set &lt;code class=&quot;highlighter-rouge&quot;&gt;--ccw-angle-limit=1023&lt;/code&gt; or the max value your motor supports.&lt;/p&gt;
+
+&lt;p&gt;That’s all.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 06 Apr 2016 00:00:00 -0400</pubDate>
+        <link>http://vncprado.github.io/dynamixel-setup-using-ros/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/dynamixel-setup-using-ros/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Using Fuzzylite in Ubuntu/ROS</title>
+        <description>&lt;p&gt;In my PhD work we maybe are going to use some Fuzzy controllers, I found out this &lt;a href=&quot;http://www.fuzzylite.com/&quot;&gt;Fuzzylite&lt;/a&gt; really light and simple to use. Following how I got it working on my environment.&lt;/p&gt;
+
+&lt;p&gt;I installed it following &lt;a href=&quot;http://praghuvamsi.blogspot.ca/2014/02/fuzzylite-installation-on-ubuntu.html&quot;&gt;this&lt;/a&gt; instructions. With a different version cloned from github &lt;a href=&quot;https://github.com/fuzzylite/fuzzylite.git&quot;&gt;repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So I don’t need to extract, only &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; fuzzylite folder inside fuzzylite git repository:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fuzzylite/:~$ cd fuzzylite
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then CMake, make and make install:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fuzzylite/fuzzylite:~$ cmake .
+fuzzylite/fuzzylite:~$ make
+fuzzylite/fuzzylite:~$ sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After that you need to export the installation local&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this way it is possible to link the fuzzylite dynamically, you can use their &lt;a href=&quot;/misc/example.cpp&quot;&gt;example&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ g++ example.cpp -lfuzzylite
+$ ./a.out
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;On ROS you can utilize the library updating your CMakelists.txt:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Specify libraries to link a library or executable target against
+target_link_libraries(fuzzy_tests_node
+  ${catkin_LIBRARIES}
+  fuzzylite
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Up to now I didn’t have any problems and I can use fuzzylite values to read from and update ROS topics.&lt;/p&gt;
+
+&lt;p&gt;That’s all.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Apr 2016 00:00:00 -0400</pubDate>
+        <link>http://vncprado.github.io/using-fuzzylite-in-ubuntu-ros/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/using-fuzzylite-in-ubuntu-ros/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
