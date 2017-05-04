@@ -4,6 +4,9 @@ title: "installing indigo in chroot"
 date: "2017-04-07 15:09:47 -0400"
 ---
 
+I'm reposting this here because last time I had to use Google's cache of the page to retrieve the information about how to get the graphics card working.
+
+TODO: Organizing following cahed page in form of post
 
 This is Google's cache of http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot. It is a snapshot of the page as it appeared on Apr 5, 2017 20:04:05 GMT.
 The current page could have changed in the meantime. Learn more
