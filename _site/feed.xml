@@ -5,9 +5,58 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 04 May 2017 15:06:48 -0400</pubDate>
-    <lastBuildDate>Thu, 04 May 2017 15:06:48 -0400</lastBuildDate>
+    <pubDate>Wed, 11 Oct 2017 20:58:17 -0400</pubDate>
+    <lastBuildDate>Wed, 11 Oct 2017 20:58:17 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>UDEV rules for devices without serial number</title>
+        <description>&lt;p&gt;I have and update about how to create UDEV rules for devices that doesn’t have serial number. I bought this serial to USB adapters from a company called prolific and tried to create UDEV rules for it like &lt;a href=&quot;http://viniciusprado.org/udev-rules-for-ttyusb/&quot;&gt;this&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SUBSYSTEM==&quot;usb-serial&quot;, ATTRS{idVendor}==&quot;067b&quot;, ATTRS{idProduct}==&quot;2303&quot;, ATTRS{serial}==&quot;0000:00:1d.0&quot;, SYMLINK+=&quot;cyberglove.right&quot;
+SUBSYSTEM==&quot;usb-serial&quot;, ATTRS{idVendor}==&quot;067b&quot;, ATTRS{idProduct}==&quot;2303&quot;, ATTRS{serial}==&quot;0000:00:1a.0&quot;, SYMLINK+=&quot;cyberglove.left&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;But I couldn’t, because that &lt;code class=&quot;highlighter-rouge&quot;&gt;ATTRS{serial}==&quot;0000:00:1a.0&quot;&lt;/code&gt; is not the correct serial to be used in UDEV rules.&lt;/p&gt;
+
+&lt;p&gt;There is a solution &lt;a href=&quot;https://gist.github.com/cbrake/4337154&quot;&gt;here&lt;/a&gt; if you’re using only one device:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# single blue USB serial adapter, prolific devices don&#39;t seem to have a serial number that I can find
+SUBSYSTEM==&quot;tty&quot;, DRIVERS==&quot;pl2303&quot;, SYMLINK+=&quot;ttyUSB_panda&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;But in my case there is two serial to USB adapters, one for each glove.
+There is one workaround for it too. &lt;a href=&quot;https://askubuntu.com/questions/49910/how-to-distinguish-between-identical-usb-to-serial-adapters&quot;&gt;Here&lt;/a&gt;, they use the position on the USB hub to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;NAME&lt;/code&gt; tag:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-8.1.5&quot;, NAME=&quot;ttyUSB0&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I only change &lt;code class=&quot;highlighter-rouge&quot;&gt;NAME&lt;/code&gt; and use &lt;code class=&quot;highlighter-rouge&quot;&gt;SYMLINK&lt;/code&gt; instead:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-1.3&quot;, SYMLINK+=&quot;ttyUSB.cyberglove.left&quot;
+KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-1.4&quot;, SYMLINK+=&quot;ttyUSB.cyberglove.right&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this way you can use both adapters at the same time defining &lt;code class=&quot;highlighter-rouge&quot;&gt;tty&lt;/code&gt; links to it. You only have to keep the device always at the same USB port or change the rule.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BONUS:&lt;/strong&gt; How to reload UDEV rules without reboot:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo udevadm control --reload-rules &amp;amp;&amp;amp; udevadm trigger
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Plug and unplug the device.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 11 Oct 2017 20:57:09 -0400</pubDate>
+        <link>http://vncprado.github.io/udev-rules-for-devices-without-serial-number/</link>
+        <guid isPermaLink="true">http://vncprado.github.io/udev-rules-for-devices-without-serial-number/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Images sequence to mp4</title>
@@ -379,35 +428,6 @@ $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
         <pubDate>Sat, 16 Apr 2016 21:52:18 -0400</pubDate>
         <link>http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</link>
         <guid isPermaLink="true">http://vncprado.github.io/retropie-snes-controller-kodi-brazil-list-yatse/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Dynamixel Setup Using ROS</title>
-        <description>&lt;p&gt;The Dynamixel package that is provided by ROS is really useful to control multi-joint manipulators or mobile robots using Dynamixel motors. It’s possible to find a nice tutorial &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;One tutorial about the torque joint controller can be found &lt;a href=&quot;http://wiki.ros.org/dynamixel_controllers/Tutorials/Creating%20a%20joint%20torque%20controller&quot;&gt;here&lt;/a&gt;. The detail is that, in order to get this step-by-step working, you should setup the motor to wheel mode ON. For this, there is some scripts in the &lt;a href=&quot;https://github.com/arebgun/dynamixel_motor/tree/master/dynamixel_driver/scripts&quot;&gt;dynamixel package&lt;/a&gt;. Which you can install from &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; as usual.&lt;/p&gt;
-
-&lt;p&gt;Using the package you could run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To get some information about your motors, and:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set &lt;code class=&quot;highlighter-rouge&quot;&gt;--ccw-angle-limit=1023&lt;/code&gt; or the max value your motor supports.&lt;/p&gt;
-
-&lt;p&gt;That’s all.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 Apr 2016 00:00:00 -0400</pubDate>
-        <link>http://vncprado.github.io/dynamixel-setup-using-ros/</link>
-        <guid isPermaLink="true">http://vncprado.github.io/dynamixel-setup-using-ros/</guid>
         
         
       </item>

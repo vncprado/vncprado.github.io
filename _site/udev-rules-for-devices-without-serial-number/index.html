@@ -9,14 +9,14 @@
     <meta name="description" content="Hey Kowalski, you out there?">
 
     <meta property="og:image" content="http://vncprado.github.io/img/large-vanishing-point-blu-ray6-1.jpg" />
-    <meta property="og:url" content="http://vncprado.github.io/sequence-images-to-mp4/" />
-    <meta property="og:title" content="Images sequence to mp4" />
-    <meta property="og:description" content="Images sequence to mp4" />
+    <meta property="og:url" content="http://vncprado.github.io/udev-rules-for-devices-without-serial-number/" />
+    <meta property="og:title" content="UDEV rules for devices without serial number" />
+    <meta property="og:description" content="UDEV rules for devices without serial number" />
     <meta property="fb:app_id" content="166534027083083" />
 
-    <title>Images sequence to mp4 - Vanishing Point</title>
+    <title>UDEV rules for devices without serial number - Vanishing Point</title>
 
-    <link rel="canonical" href="http://vncprado.github.io/sequence-images-to-mp4/">
+    <link rel="canonical" href="http://vncprado.github.io/udev-rules-for-devices-without-serial-number/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -121,9 +121,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Images sequence to mp4</h1>
+                    <h1>UDEV rules for devices without serial number</h1>
                     
-                    <span class="meta">Posted by Vincius Prado da Fonseca on May 4, 2017</span>
+                    <span class="meta">Posted by Vincius Prado da Fonseca on October 11, 2017</span>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div align="right">
               <ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/sequence-images-to-mp4/&t=Images sequence to mp4" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/sequence-images-to-mp4/ + '&t=' + Images sequence to mp4); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/udev-rules-for-devices-without-serial-number/&t=UDEV rules for devices without serial number" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/udev-rules-for-devices-without-serial-number/ + '&t=' + UDEV rules for devices without serial number); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -145,32 +145,49 @@
 </ul>
 
               </div>
-    				<p>I’d got a sequence of images from my last snowboard trip and want to group them in a mp4 format. Problem is that they don’t start from 0 or 1 so I need a script line before feeding them to FFmpeg and create a video.</p>
+    				<p>I have and update about how to create UDEV rules for devices that doesn’t have serial number. I bought this serial to USB adapters from a company called prolific and tried to create UDEV rules for it like <a href="http://viniciusprado.org/udev-rules-for-ttyusb/">this</a>:</p>
 
-<p>To reduce size:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mogrify -resize 50% *jpg
+<div class="highlighter-rouge"><pre class="highlight"><code>SUBSYSTEM=="usb-serial", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{serial}=="0000:00:1d.0", SYMLINK+="cyberglove.right"
+SUBSYSTEM=="usb-serial", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{serial}=="0000:00:1a.0", SYMLINK+="cyberglove.left"
 </code></pre>
 </div>
 
-<p>The files pattern was something like <code class="highlighter-rouge">Y003.jpeg</code>. To test renaming:</p>
+<p>But I couldn’t, because that <code class="highlighter-rouge">ATTRS{serial}=="0000:00:1a.0"</code> is not the correct serial to be used in UDEV rules.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ rename 's/.+/our $i; sprintf("Y%03d.jpg", 1+$i++)/e' * -vn
+<p>There is a solution <a href="https://gist.github.com/cbrake/4337154">here</a> if you’re using only one device:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># single blue USB serial adapter, prolific devices don't seem to have a serial number that I can find
+SUBSYSTEM=="tty", DRIVERS=="pl2303", SYMLINK+="ttyUSB_panda"
 </code></pre>
 </div>
 
-<p>To rename in fact, just remove the <code class="highlighter-rouge">-vn</code> option.
-Now use ffmpeg to generate the mp4 file.</p>
+<p>But in my case there is two serial to USB adapters, one for each glove.
+There is one workaround for it too. <a href="https://askubuntu.com/questions/49910/how-to-distinguish-between-identical-usb-to-serial-adapters">Here</a>, they use the position on the USB hub to create a <code class="highlighter-rouge">NAME</code> tag:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ffmpeg -framerate 2 -i Y%03d.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p output.mp4
+<div class="highlighter-rouge"><pre class="highlight"><code>KERNEL=="ttyUSB*", KERNELS=="1-8.1.5", NAME="ttyUSB0"
 </code></pre>
 </div>
 
-<p>Now you should have a <code class="highlighter-rouge">output.mp4</code> file on your folder.</p>
+<p>I only change <code class="highlighter-rouge">NAME</code> and use <code class="highlighter-rouge">SYMLINK</code> instead:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>KERNEL=="ttyUSB*", KERNELS=="1-1.3", SYMLINK+="ttyUSB.cyberglove.left"
+KERNEL=="ttyUSB*", KERNELS=="1-1.4", SYMLINK+="ttyUSB.cyberglove.right"
+</code></pre>
+</div>
+
+<p>In this way you can use both adapters at the same time defining <code class="highlighter-rouge">tty</code> links to it. You only have to keep the device always at the same USB port or change the rule.</p>
+
+<p><strong>BONUS:</strong> How to reload UDEV rules without reboot:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo udevadm control --reload-rules &amp;&amp; udevadm trigger
+</code></pre>
+</div>
+
+<p>Plug and unplug the device.</p>
 
             <center style="margin: -25px 0 20px;">=]</center>
             <center><ul class="share-buttons">
-  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/sequence-images-to-mp4/&t=Images sequence to mp4" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/sequence-images-to-mp4/ + '&t=' + Images sequence to mp4); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://vncprado.github.io/udev-rules-for-devices-without-serial-number/&t=UDEV rules for devices without serial number" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + http://vncprado.github.io/udev-rules-for-devices-without-serial-number/ + '&t=' + UDEV rules for devices without serial number); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
   <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fvncprado.github.io&text=Vanishing%20Point:%20http%3A%2F%2Fvncprado.github.io&via=vncprado" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?via=vncprado&text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-twitter-square fa-2x"></i></a></li>
   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fvncprado.github.io&title=Vanishing%20Point&summary=Hey%20Kowalski%2C%20you%20out%20there%3F&source=http%3A%2F%2Fvncprado.github.io" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
@@ -182,13 +199,9 @@ Now use ffmpeg to generate the mp4 file.</p>
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/ros-usbcam-with-calibration/" data-toggle="tooltip" data-placement="top" title="ROS usb_cam with calibration">&larr; Previous Post</a>
+                        <a href="/sequence-images-to-mp4/" data-toggle="tooltip" data-placement="top" title="Images sequence to mp4">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/udev-rules-for-devices-without-serial-number/" data-toggle="tooltip" data-placement="top" title="UDEV rules for devices without serial number">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
             <div id="disqus_thread"></div>
