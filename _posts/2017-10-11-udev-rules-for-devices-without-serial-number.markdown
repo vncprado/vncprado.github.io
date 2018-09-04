@@ -4,7 +4,7 @@ title: "UDEV rules for devices without serial number"
 date: "2017-10-11 20:57:09 -0400"
 ---
 
-I have and update about how to create UDEV rules for devices that doesn't have serial number. I bought this serial to USB adapters from a company called prolific and tried to create UDEV rules for it like [this](http://viniciusprado.org/udev-rules-for-ttyusb/):
+I have and update about how to create UDEV rules for devices that doesn't have serial number. I bought this serial to USB adapters from a company called prolific and tried to create UDEV rules for it like [this](http://vncprado.github.io/udev-rules-for-ttyusb/):
 
     SUBSYSTEM=="usb-serial", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{serial}=="0000:00:1d.0", SYMLINK+="cyberglove.right"
     SUBSYSTEM=="usb-serial", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{serial}=="0000:00:1a.0", SYMLINK+="cyberglove.left"
