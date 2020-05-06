@@ -27,6 +27,7 @@
 
     $.get("/assets/pebas_confirmados.csv", function(data) {
 	    var chart = new CanvasJS.Chart("ContainerConfirmados", {
+        animationEnabled: true,
 		    title: {
 		         text: "Casos Confirmados Parauapebas",
 		    },
@@ -39,13 +40,16 @@
 	      chart.render();
 
 	});
+
   $.get("/assets/pebas_novos.csv", function(data) {
     var chart = new CanvasJS.Chart("ContainerNovos", {
+      animationEnabled: true,
       title: {
            text: "Casos Novos Parauapebas",
       },
       data: [{
-           type: "line",
+           type: "column",
+           color: "#014D65",
            dataPoints: getDataPointsFromCSV(data)
         }]
      });
@@ -60,6 +64,7 @@
 	<div id="ContainerConfirmados" style="width:40%; height:300px;"></div>
   <div id="ContainerNovos" style="width:40%; height:300px;"></div>
   <hr/>
-  Página criada para gerar algumas vizualizações do número de casos de COVID-19 em Parauapebas.
+  Página criada para gerar algumas vizualizações do número de casos de COVID-19 em Parauapebas.<br/>
+  Os dados apresentados aqui são retirados de <a href="https://data.brasil.io/dataset/covid19/_meta/list.html">Basil.io</a>
 </body>
 </html>
