@@ -151,40 +151,35 @@
 
 <p>So I don’t need to extract, only <code class="highlighter-rouge">cd</code> fuzzylite folder inside fuzzylite git repository:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fuzzylite/:~$ cd fuzzylite
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fuzzylite/:~$ cd fuzzylite
+</code></pre></div></div>
 
 <p>Then CMake, make and make install:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fuzzylite/fuzzylite:~$ cmake .
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fuzzylite/fuzzylite:~$ cmake .
 fuzzylite/fuzzylite:~$ make
 fuzzylite/fuzzylite:~$ sudo make install
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After that you need to export the installation local</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+</code></pre></div></div>
 
 <p>In this way it is possible to link the fuzzylite dynamically, you can use their <a href="/misc/example.cpp">example</a>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ g++ example.cpp -lfuzzylite
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ g++ example.cpp -lfuzzylite
 $ ./a.out
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>On ROS you can utilize the library updating your CMakelists.txt:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>## Specify libraries to link a library or executable target against
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Specify libraries to link a library or executable target against
 target_link_libraries(fuzzy_tests_node
   ${catkin_LIBRARIES}
   fuzzylite
 )
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Up to now I didn’t have any problems and I can use fuzzylite values to read from and update ROS topics.</p>
 
@@ -289,7 +284,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

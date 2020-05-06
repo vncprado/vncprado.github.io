@@ -149,18 +149,16 @@
 Following examples use version jre1.7.0_60. Java binaries or <code class="highlighter-rouge">libnpjp2.so</code> location may differ.
 Basically is install and configure:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jre1.7.0_60/bin/java" 1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jre1.7.0_60/bin/java" 1
 ~$ sudo update-alternatives --config java
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This trailing number in the end is some kind of priority, I always set it to 1.
 In following config screen that show all installed versions, you need to select the newest version and press enter.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ sudo update-alternatives --install "/usr/lib/mozilla/plugins/mozilla-javaplugin.so" mozilla-javaplugin.so "/opt/java/jre1.7.0_60/lib/amd64/libnpjp2.so" 1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ sudo update-alternatives --install "/usr/lib/mozilla/plugins/mozilla-javaplugin.so" mozilla-javaplugin.so "/opt/java/jre1.7.0_60/lib/amd64/libnpjp2.so" 1
 ~$ sudo update-alternatives  --config mozilla-javaplugin.so
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In the same way the following config screen will show all installed versions, select the newest version and press enter.</p>
 
@@ -263,7 +261,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

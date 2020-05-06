@@ -150,11 +150,10 @@ I choose to do a fresh install. To make a dist-upgrade I would need to wait the 
 During the installation I got an Grub error, a fatal error that crashes the install wizard. But I had the feeling that everything was fine but the grub.
 During the reboot in USB drive Grub you can type <code class="highlighter-rouge">c</code> to get a terminal. So you just need to type:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>linux (hd0,msdos)/boot/grub/vmlinuz&lt;TAB&gt;&lt;TAB&gt; root=/dev/sda1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linux (hd0,msdos)/boot/grub/vmlinuz&lt;TAB&gt;&lt;TAB&gt; root=/dev/sda1
 initrd (hd0,msdos)/boot/initrd.gz
 boot
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The auto-complete works so just <code class="highlighter-rouge">&lt;TAB&gt;&lt;TAB&gt;</code> and you get list of partitions and files to complete. You just need to be sure about your root partition.
 After boot the installed Ubuntu, you can run boot-repair to fix your boot installation.</p>
@@ -260,7 +259,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

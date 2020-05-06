@@ -5,49 +5,44 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 05 Nov 2017 15:32:30 -0500</pubDate>
-    <lastBuildDate>Sun, 05 Nov 2017 15:32:30 -0500</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <pubDate>Wed, 06 May 2020 00:19:26 -0400</pubDate>
+    <lastBuildDate>Wed, 06 May 2020 00:19:26 -0400</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>UDEV rules for devices without serial number</title>
         <description>&lt;p&gt;I have and update about how to create UDEV rules for devices that doesn’t have serial number. I bought this serial to USB adapters from a company called prolific and tried to create UDEV rules for it like &lt;a href=&quot;http://vncprado.github.io/udev-rules-for-ttyusb/&quot;&gt;this&lt;/a&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SUBSYSTEM==&quot;usb-serial&quot;, ATTRS{idVendor}==&quot;067b&quot;, ATTRS{idProduct}==&quot;2303&quot;, ATTRS{serial}==&quot;0000:00:1d.0&quot;, SYMLINK+=&quot;cyberglove.right&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SUBSYSTEM==&quot;usb-serial&quot;, ATTRS{idVendor}==&quot;067b&quot;, ATTRS{idProduct}==&quot;2303&quot;, ATTRS{serial}==&quot;0000:00:1d.0&quot;, SYMLINK+=&quot;cyberglove.right&quot;
 SUBSYSTEM==&quot;usb-serial&quot;, ATTRS{idVendor}==&quot;067b&quot;, ATTRS{idProduct}==&quot;2303&quot;, ATTRS{serial}==&quot;0000:00:1a.0&quot;, SYMLINK+=&quot;cyberglove.left&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;But I couldn’t, because that &lt;code class=&quot;highlighter-rouge&quot;&gt;ATTRS{serial}==&quot;0000:00:1a.0&quot;&lt;/code&gt; is not the correct serial to be used in UDEV rules.&lt;/p&gt;
 
 &lt;p&gt;There is a solution &lt;a href=&quot;https://gist.github.com/cbrake/4337154&quot;&gt;here&lt;/a&gt; if you’re using only one device:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# single blue USB serial adapter, prolific devices don&#39;t seem to have a serial number that I can find
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# single blue USB serial adapter, prolific devices don&#39;t seem to have a serial number that I can find
 SUBSYSTEM==&quot;tty&quot;, DRIVERS==&quot;pl2303&quot;, SYMLINK+=&quot;ttyUSB_panda&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;But in my case there is two serial to USB adapters, one for each glove.
 There is one workaround for it too. &lt;a href=&quot;https://askubuntu.com/questions/49910/how-to-distinguish-between-identical-usb-to-serial-adapters&quot;&gt;Here&lt;/a&gt;, they use the position on the USB hub to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;NAME&lt;/code&gt; tag:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-8.1.5&quot;, NAME=&quot;ttyUSB0&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-8.1.5&quot;, NAME=&quot;ttyUSB0&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;I only change &lt;code class=&quot;highlighter-rouge&quot;&gt;NAME&lt;/code&gt; and use &lt;code class=&quot;highlighter-rouge&quot;&gt;SYMLINK&lt;/code&gt; instead:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-1.3&quot;, SYMLINK+=&quot;ttyUSB.cyberglove.left&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-1.3&quot;, SYMLINK+=&quot;ttyUSB.cyberglove.left&quot;
 KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-1.4&quot;, SYMLINK+=&quot;ttyUSB.cyberglove.right&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;In this way you can use both adapters at the same time defining &lt;code class=&quot;highlighter-rouge&quot;&gt;tty&lt;/code&gt; links to it. You only have to keep the device always at the same USB port or change the rule.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;BONUS:&lt;/strong&gt; How to reload UDEV rules without reboot:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo udevadm control --reload-rules &amp;amp;&amp;amp; udevadm trigger
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo udevadm control --reload-rules &amp;amp;&amp;amp; udevadm trigger
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Plug and unplug the device.&lt;/p&gt;
 </description>
@@ -64,22 +59,19 @@ KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-1.4&quot;, SYMLINK+=&quot;ttyUSB.c
 
 &lt;p&gt;To reduce size:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mogrify -resize 50% *jpg
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mogrify -resize 50% *jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The files pattern was something like &lt;code class=&quot;highlighter-rouge&quot;&gt;Y003.jpeg&lt;/code&gt;. To test renaming:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rename &#39;s/.+/our $i; sprintf(&quot;Y%03d.jpg&quot;, 1+$i++)/e&#39; * -vn
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rename &#39;s/.+/our $i; sprintf(&quot;Y%03d.jpg&quot;, 1+$i++)/e&#39; * -vn
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To rename in fact, just remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;-vn&lt;/code&gt; option.
 Now use ffmpeg to generate the mp4 file.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ffmpeg -framerate 2 -i Y%03d.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p output.mp4
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ffmpeg -framerate 2 -i Y%03d.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p output.mp4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Now you should have a &lt;code class=&quot;highlighter-rouge&quot;&gt;output.mp4&lt;/code&gt; file on your folder.&lt;/p&gt;
 </description>
@@ -96,48 +88,41 @@ Now use ffmpeg to generate the mp4 file.&lt;/p&gt;
 
 &lt;p&gt;I created a custom launch in &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_vision&lt;/code&gt; based on:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roscat usb_cam usb_cam-test.launch
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roscat usb_cam usb_cam-test.launch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So I could use other usb camera (&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/video1&lt;/code&gt; default is video0) device then change /dev/video:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roslaunch robot_vision init_camera.launch
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ roslaunch robot_vision init_camera.launch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;After that I erformed a calibration&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Attention to &lt;code class=&quot;highlighter-rouge&quot;&gt;--size&lt;/code&gt;, count the chessboard intersections, not the squares. Follow the instructions.&lt;/p&gt;
 
 &lt;p&gt;Update your launch:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;param name=&quot;camera_info_url&quot; value=&quot;file:///$(find robot_vision)/calib.yaml&quot; /&amp;gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;param name=&quot;camera_info_url&quot; value=&quot;file:///$(find robot_vision)/calib.yaml&quot; /&amp;gt;
 &amp;lt;param name=&quot;camera_name&quot; value=&quot;camera&quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To get rectificated images topics:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ROS_NAMESPACE=PS_cam rosrun image_oc image_proc
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ROS_NAMESPACE=PS_cam rosrun image_oc image_proc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To check:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/camera image:=image_rect
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/camera image:=image_rect
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;On roslaunch:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;node name=&quot;image_proc&quot; pkg=&quot;image_proc&quot; type=&quot;image_proc&quot; ns=&quot;usb_cam&quot;/&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;node name=&quot;image_proc&quot; pkg=&quot;image_proc&quot; type=&quot;image_proc&quot; ns=&quot;usb_cam&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Sources:&lt;/p&gt;
 
@@ -167,27 +152,23 @@ Now use ffmpeg to generate the mp4 file.&lt;/p&gt;
 &lt;p&gt;First you need to create a catkin workspace for Dynamixel, organize the folders to get it compiling with &lt;code class=&quot;highlighter-rouge&quot;&gt;catkin_make&lt;/code&gt;.
 After that, go to the workspace:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd dynamixel_ws
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd dynamixel_ws
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;You need permissions to install it on &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/ros&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# sudo su
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# sudo su
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;And the environment variables:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# source devel/setup.bash
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# source devel/setup.bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So you can perform the installation:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo install
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;After that you have a system installation for your dynamixel pkg.&lt;/p&gt;
 
@@ -229,16 +210,14 @@ After that, go to the workspace:&lt;/p&gt;
         <title>UDEV rules for ttyUSB</title>
         <description>&lt;p&gt;Really useful stuff when developing using Arduino or other USB stuff that maybe have the same &lt;code class=&quot;highlighter-rouge&quot;&gt;[vendor]:[product]&lt;/code&gt;. First you need to get the serial number:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# udevadm info -a -n /dev/ttyUSB1 | grep &#39;{serial}&#39; | head -n1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# udevadm info -a -n /dev/ttyUSB1 | grep &#39;{serial}&#39; | head -n1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;You will get something like &lt;code class=&quot;highlighter-rouge&quot;&gt;ATTRS{serial}==&quot;A6008isP&quot;&lt;/code&gt;. With this you can create new file called &lt;code class=&quot;highlighter-rouge&quot;&gt;99-usb-serial.rules&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/udev/rules.d/&lt;/code&gt;. In this file you can put one line for any devices you need changing only the serial in case of same vendor and product:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SUBSYSTEM==&quot;tty&quot;, ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}==&quot;6001&quot;, ATTRS{serial}==&quot;A6008isP&quot;, SYMLINK+=&quot;ttyUSB.arduino&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SUBSYSTEM==&quot;tty&quot;, ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}==&quot;6001&quot;, ATTRS{serial}==&quot;A6008isP&quot;, SYMLINK+=&quot;ttyUSB.arduino&quot;
 SUBSYSTEM==&quot;tty&quot;, ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}==&quot;6001&quot;, ATTRS{serial}==&quot;A9234HMO&quot;, SYMLINK+=&quot;ttyUSB.other&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;In this way &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/ttyUSB.arduino&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/ttyUSB.other&lt;/code&gt; will link to some &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/ttyUSB*&lt;/code&gt; that Linux will create for your device.&lt;/p&gt;
 
@@ -259,10 +238,9 @@ SUBSYSTEM==&quot;tty&quot;, ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}=
 
 &lt;p&gt;I followed &lt;a href=&quot;http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot&quot;&gt;this&lt;/a&gt; tutorial but I got an error on libpan. But &lt;a href=&quot;https://blog.tan-ce.com/chroot-ubuntu-14-04-on-android-nexus-10/&quot;&gt;this&lt;/a&gt; guy has a solution. Create a dummy &lt;code class=&quot;highlighter-rouge&quot;&gt;init.d&lt;/code&gt; script at &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d/systemd-logind&lt;/code&gt; with 0755 permissions (executable by all). In this file, enter the following:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Then, let apt complete the installation by running &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get upgrade -y&lt;/code&gt;.&lt;/p&gt;
 
@@ -284,11 +262,10 @@ I choose to do a fresh install. To make a dist-upgrade I would need to wait the 
 During the installation I got an Grub error, a fatal error that crashes the install wizard. But I had the feeling that everything was fine but the grub.
 During the reboot in USB drive Grub you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; to get a terminal. So you just need to type:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linux (hd0,msdos)/boot/grub/vmlinuz&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt; root=/dev/sda1
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linux (hd0,msdos)/boot/grub/vmlinuz&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt; root=/dev/sda1
 initrd (hd0,msdos)/boot/initrd.gz
 boot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The auto-complete works so just &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt;&lt;/code&gt; and you get list of partitions and files to complete. You just need to be sure about your root partition.
 After boot the installed Ubuntu, you can run boot-repair to fix your boot installation.&lt;/p&gt;
@@ -337,17 +314,15 @@ After boot the installed Ubuntu, you can run boot-repair to fix your boot instal
 
 &lt;p&gt;So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano /home/pi/.emulationstation/es_input.cfg
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano /home/pi/.emulationstation/es_input.cfg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;You need to keep these lines below in order to get config screen when starting emulationstation:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;inputAction type=&quot;onfinish&quot;&amp;gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;inputAction type=&quot;onfinish&quot;&amp;gt;
     &amp;lt;command&amp;gt;/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh&amp;lt;/command&amp;gt;
 &amp;lt;/inputAction&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.&lt;/p&gt;
 
@@ -366,10 +341,9 @@ The model is &lt;a href=&quot;https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_
 
 &lt;p&gt;To get WIFI you need to compile &lt;a href=&quot;https://github.com/lwfinger/rtl8723bu/&quot;&gt;this driver&lt;/a&gt;. To compile it on your Retropie you will need the help of &lt;a href=&quot;http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html&quot;&gt;this guy&lt;/a&gt;. But basically you will need to get and install linux-headers for Raspbian:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
 sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;There is also some changes in the Makefile:&lt;/p&gt;
 
@@ -377,7 +351,7 @@ sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
   &lt;p&gt;Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifeq ($(CONFIG_RASPBIAN), y)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifeq ($(CONFIG_RASPBIAN), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
 EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211
 EXTRA_CFLAGS += -DRTW_USE_CFG80211_STA_EVENT # only enable when kernel &amp;gt;= 3.2
@@ -389,8 +363,7 @@ KSRC ?= /lib/modules/$(KVER)/build
 MODULE_NAME := 8723bu
 MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
 endif
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;For Bluetooth you’ll use &lt;a href=&quot;https://github.com/lwfinger/rtl8723au_bt&quot;&gt;this one&lt;/a&gt;. The &lt;a href=&quot;https://www.amazon.ca/dp/B00MB6CNN8/ref=pe_386430_193739550_TE_dp_1&quot;&gt;controller&lt;/a&gt; that I bought works with the test branch today. Maybe this will change in the future. The driver documentation says that you should use kernel branch for most recent kernels.&lt;/p&gt;
 
@@ -402,16 +375,14 @@ endif
 
 &lt;p&gt;To install:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gzip -d retropie-v3.5-rpi1.img.gz
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gzip -d retropie-v3.5-rpi1.img.gz
 $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To get my &lt;a href=&quot;http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ&quot;&gt;USB hub&lt;/a&gt; working with WIFI dongle and keyboard I had to append &lt;code class=&quot;highlighter-rouge&quot;&gt;dwc_otg.speed=1&lt;/code&gt; in the file &lt;code class=&quot;highlighter-rouge&quot;&gt;/boot/cmdline.txt&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Then configured WIFI from Raspberry’s menu.&lt;/p&gt;
 

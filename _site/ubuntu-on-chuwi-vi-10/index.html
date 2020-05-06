@@ -149,17 +149,15 @@
 
 <p><strong>Installation on a USB 3.0 drive</strong>: It fails on grub normal installation. So I boot again with the first USB drive and type <code class="highlighter-rouge">c</code> at GRUB and use instructions listed below to boot the USB 3.0 recent installed Ubuntu. After that I got my WIFI dongle (my built-in WIFI card is still not working) and follow <a href="http://www.jfwhome.com/2016/01/04/latest-steps-to-install-ubuntu-on-the-asus-t100ta/">this</a> GRUB instructions:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get update
 sudo apt-get install grub-efi-ia32
 sudo nano /etc/default/grub
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Find the line starting GRUB_CMDLINE_LINUX_DEFAULT and add intel_idle.max_cstate=0 before quiet splash”.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo update-grub
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo update-grub
+</code></pre></div></div>
 
 <p>Now I just need the USB 3.0 to boot my system, without changing (for now) my Windows installation.</p>
 
@@ -175,9 +173,8 @@ sudo nano /etc/default/grub
 
 <p>Intel video acceleration on Ubuntu 15.10 USB drive works out of the box. To test it:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/lib/nux/unity_support_test -p
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ /usr/lib/nux/unity_support_test -p
+</code></pre></div></div>
 
 <p>In Ubuntu 16.04 (which is in testing now but will be LTS) video acceleration do not work all times.</p>
 
@@ -260,57 +257,50 @@ sudo nano /etc/default/grub
 
 <p>After installation, you need to boot from USB drive again and compile Grub inside your installation, to do so you need any USB dongle for WIFI connection. You can find this instructions <a href="http://www.jfwhome.com/2014/03/07/perfect-ubuntu-or-other-linux-on-the-asus-transformer-book-t100/">here</a>. When Grub starts, type <code class="highlighter-rouge">c</code> to enter command line and type:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>linux (hd2,gpt5)/boot/vmlinuz-3.13-xxxx root=/dev/mmcblk0p5 video=VGA-1:1368x768e reboot=pci,force
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linux (hd2,gpt5)/boot/vmlinuz-3.13-xxxx root=/dev/mmcblk0p5 video=VGA-1:1368x768e reboot=pci,force
 initrd (hd2,gpt5)/boot/initrd-3.13-xxxx
 boot
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After booting you need to install some stuff, and clone Grub repository to compile it:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get update &amp;&amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update &amp;&amp; sudo apt-get install git bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo ia32_libs build_essential
+</code></pre></div></div>
 
 <p>The package <code class="highlighter-rouge">ia32_libs</code> maybe a problem because, apparently, it is not anymore on Ubuntu 14.04. To install it try:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo -i
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -i
 # cd /etc/apt/sources.list.d
 # echo "deb http://old-releases.ubuntu.com/ubuntu/ raring main restricted universe multiverse" &gt;ia32-libs-raring.list
 # apt-get update
 # apt-get install ia32-libs
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then get the Grub source:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ git clone git://git.savannah.gnu.org/grub.git
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone git://git.savannah.gnu.org/grub.git
+</code></pre></div></div>
 
 <p>Now build it:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd grub
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd grub
 $ ./autogen.sh
 $ ./configure --with-platform=efi --target=i386 --program-prefix=""
 $ make
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And install to efi:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd grub-core
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd grub-core
 $ sudo ../grub-install -d . --efi-directory /boot/efi/ --target=i386
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This will create a directory, ‘grub’, in your EFI partition.
 We want to copy the grubia32.efi from there to the location Ubuntu created during installation:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /boot/efi/EFI
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /boot/efi/EFI
 $ sudo cp grub/grubia32.efi ubuntu/grubx64.efi
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After this command you should be able to boot directly to your new Ubuntu installation.</p>
 
@@ -423,7 +413,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

@@ -156,55 +156,47 @@ The actual folder location and links are:</p>
 
 <p>This way I can change the version simply doing:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ ln -s /var/ghost-data/versions/ghost-&lt;version&gt;/ /var/www/ghost
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ ln -s /var/ghost-data/versions/ghost-&lt;version&gt;/ /var/www/ghost
+</code></pre></div></div>
 
 <p>And setting the configuration file:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ ln -s /var/ghost-data/config.js /var/ghost-data/versions/ghost-&lt;version&gt;/config.js
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ ln -s /var/ghost-data/config.js /var/ghost-data/versions/ghost-&lt;version&gt;/config.js
+</code></pre></div></div>
 
 <p>In order to matain only one content folder. The content folder is in the same base folder as config.js and versions folder:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/var/www/ghost-data/content
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/www/ghost-data/content
+</code></pre></div></div>
 
 <p>but a small configuration in config.js is needed to make ghost see the content folder outside ghost installation folder:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>paths: {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paths: {
 	contentPath: path.join(__dirname, '/path/to/content/dir/')
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>One can see that the config file have their symbolic link to the real file and content folder is located outside the folder of ghost’s new version.</p>
 
 <p>By the documentation, with a new version you have to run in its folder:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ npm install --production
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ npm install --production
+</code></pre></div></div>
 
 <p>All soft links and folders must be owned by ghost user and group, so:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ chown ghost:ghost /var/www/ghost/*
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ chown ghost:ghost /var/www/ghost/*
+</code></pre></div></div>
 
 <p>Restart ghost:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ service ghost restart
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ service ghost restart
+</code></pre></div></div>
 
 <p>I used to restart apache too:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ service apache2 restart
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ service apache2 restart
+</code></pre></div></div>
 
 <p>It was hard to solve (mainly because I dont know about the path config option and for a week I tryed to use soft links in the content folder too) but so far I’ve had no problems. And I believe it will be easier to update that way, just a metter of copy files, and make two soft links =)</p>
 
@@ -309,7 +301,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

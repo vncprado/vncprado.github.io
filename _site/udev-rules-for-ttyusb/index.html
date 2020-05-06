@@ -147,16 +147,14 @@
               </div>
     				<p>Really useful stuff when developing using Arduino or other USB stuff that maybe have the same <code class="highlighter-rouge">[vendor]:[product]</code>. First you need to get the serial number:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
+</code></pre></div></div>
 
 <p>You will get something like <code class="highlighter-rouge">ATTRS{serial}=="A6008isP"</code>. With this you can create new file called <code class="highlighter-rouge">99-usb-serial.rules</code> inside <code class="highlighter-rouge">/etc/udev/rules.d/</code>. In this file you can put one line for any devices you need changing only the serial in case of same vendor and product:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A6008isP", SYMLINK+="ttyUSB.arduino"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A6008isP", SYMLINK+="ttyUSB.arduino"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A9234HMO", SYMLINK+="ttyUSB.other"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In this way <code class="highlighter-rouge">/dev/ttyUSB.arduino</code> and <code class="highlighter-rouge">/dev/ttyUSB.other</code> will link to some <code class="highlighter-rouge">/dev/ttyUSB*</code> that Linux will create for your device.</p>
 
@@ -263,7 +261,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

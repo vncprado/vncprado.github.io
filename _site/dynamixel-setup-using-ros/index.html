@@ -151,15 +151,13 @@
 
 <p>Using the package you could run:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rosrun dynamixel_driver info_dump.py -p /dev/ttyUSB0 10
+</code></pre></div></div>
 
 <p>To get some information about your motors, and:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$rosrun dynamixel_driver set_servo_config.py --ccw-angle-limit=0 -p /dev/ttyUSB0 10
+</code></pre></div></div>
 
 <p>To change your motor (in this case id = 10), to wheel mode on. To change it back make sure you set <code class="highlighter-rouge">--ccw-angle-limit=1023</code> or the max value your motor supports.</p>
 
@@ -264,7 +262,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

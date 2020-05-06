@@ -152,45 +152,40 @@
 
 <p>Verify presence of grub modules, special attention to (hd0,1):</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; ls (hd0,1)/boot/grub/
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grub&gt; ls (hd0,1)/boot/grub/
 grub&gt; ls (hd0,1)/usr/lib/grub/i386-pc/
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Setting prefix for modules:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; set prefix=(hd0,1)/boot/grub/
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grub&gt; set prefix=(hd0,1)/boot/grub/
 grub&gt; set prefix=(hd0,1)/usr/lib/grub/i386-pc/
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Inserting modules:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; insmod linux
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grub&gt; insmod linux
 grub&gt; insmod loopback
 grub&gt; insmod iso9660
 grub&gt; insmod fat
 grub&gt; insmod ntfs
 grub&gt; insmod ntfscomp
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Verifying installed disks:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; ls
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grub&gt; ls
     (hd0) (hd0,msdos1) ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Setting loopback file, root path and linux boot options:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grub&gt; loopback loop (hd0,msdos3)/path/to/iso/ubuntu-14.04-desktop-amd64.iso
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grub&gt; loopback loop (hd0,msdos3)/path/to/iso/ubuntu-14.04-desktop-amd64.iso
 grub&gt; set root=(loop)
 grub&gt; linux /casper/vmlinuz.eti boot=casper iso-scan/filename=/path/to/iso/ubuntu-14.04-desktop-amd64.iso noprompt noeject
 grub&gt; initrd /casper/initrd.lz
 grub&gt; boot
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>So here you are! A running version of ubuntu iso.</p>
 
@@ -198,9 +193,8 @@ grub&gt; boot
 
 <p>Before installing you need to unmount <code class="highlighter-rouge">/isodevice</code>. So open a terminal and type:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo unmount -l -r -f /isodevice
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo unmount -l -r -f /isodevice
+</code></pre></div></div>
 
 <p>Follow installation instructions as usual.</p>
 
@@ -305,7 +299,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

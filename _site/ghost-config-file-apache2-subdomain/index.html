@@ -149,7 +149,7 @@
 
 <p>First I unzipped ghost data at <code class="highlighter-rouge">/var/www/ghost/</code> and followed default install instructions to have it running. Ghost production <code class="highlighter-rouge">IP</code> and <code class="highlighter-rouge">URL</code> in the config file have to be setted to <code class="highlighter-rouge">0.0.0.0</code> and <code class="highlighter-rouge">http://subdomain.example.com</code>, respectively.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>// # Ghost Configuration
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// # Ghost Configuration
 // Setup your Ghost install for various environments
 var path = require('path'),
 	config;
@@ -176,12 +176,11 @@ config = {
 
 // Export config
 module.exports = config;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Second I configured a subdomain called <code class="highlighter-rouge">blog</code> that uses apache-proxy to foward ghost port. So the apache config files for the blog are under <code class="highlighter-rouge">/etc/apache2/sites-available/blog</code> and follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
    		ServerName subdomain.example.com
    		ProxyPass / http://0.0.0.0:2368/
    		ProxyPassReverse / http://0.0.0.0:2368/
@@ -191,14 +190,12 @@ module.exports = config;
    		Deny from all
    		&lt;/DirectoryMatch&gt;
 &lt;/VirtualHost&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>So finally I would enable the blog:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>user@machine:/etc/apache2/sites-available/# a2ensite blog
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@machine:/etc/apache2/sites-available/# a2ensite blog
+</code></pre></div></div>
 
 <p>I think that’s all.</p>
 
@@ -302,7 +299,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

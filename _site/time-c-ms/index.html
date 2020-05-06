@@ -147,7 +147,7 @@
               </div>
     				<p>A simple example on how to get the time in milliseconds using <code class="highlighter-rouge">clock</code> from <code class="highlighter-rouge">time.h</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#include &lt;time.h&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;time.h&gt;
 #include &lt;iostream&gt;
 
 int main() {
@@ -157,11 +157,12 @@ int main() {
 	time_end = clock();
 	cout &lt;&lt; (((float)time_end - (float)time_begin) / (double)CLOCKS_PER_SEC ) * 1000 &lt;&lt; endl;
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<p>Some explanation from documentation:
-&gt;it merely measures the total CPU time devoted so far to the current process.</p>
+<p>Some explanation from documentation:</p>
+<blockquote>
+  <p>it merely measures the total CPU time devoted so far to the current process.</p>
+</blockquote>
 
             <center style="margin: -25px 0 20px;">=]</center>
             <center><ul class="share-buttons">
@@ -262,7 +263,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

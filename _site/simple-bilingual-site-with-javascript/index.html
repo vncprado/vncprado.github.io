@@ -153,18 +153,17 @@
 
 <p>One small function to load English as default language if user browser is not in Portuguese:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>function set_initial_lang() {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function set_initial_lang() {
   	var userLang = navigator.language || navigator.userLanguage;
   	var userLang_lower = userLang.toLowerCase();
 
   	set_lang(userLang_lower);
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>One function that gets user language and hides/shows every object that belong to that class.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>function set_lang(userLang) {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function set_lang(userLang) {
 	var en_p = document.getElementsByClassName('en');
     var pt_p = document.getElementsByClassName('pt');
 
@@ -180,8 +179,7 @@
       	}
   	}
 	}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Still in time, for this template, I used some <code class="highlighter-rouge">&lt;span&gt;</code> to get it working inside <code class="highlighter-rouge">&lt;li&gt;</code> tags.</p>
 
@@ -288,7 +286,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

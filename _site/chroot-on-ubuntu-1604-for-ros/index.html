@@ -149,10 +149,9 @@
 
 <p>I followed <a href="http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot">this</a> tutorial but I got an error on libpan. But <a href="https://blog.tan-ce.com/chroot-ubuntu-14-04-on-android-nexus-10/">this</a> guy has a solution. Create a dummy <code class="highlighter-rouge">init.d</code> script at <code class="highlighter-rouge">/etc/init.d/systemd-logind</code> with 0755 permissions (executable by all). In this file, enter the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
 <span class="nb">exit </span>0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then, let apt complete the installation by running <code class="highlighter-rouge">apt-get upgrade -y</code>.</p>
 
@@ -259,7 +258,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

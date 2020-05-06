@@ -161,17 +161,15 @@
 
 <p>So far no problems. Sometimes I need to update the emulationstation settings. To do so I SSH the raspberry from my PC and remove all configuration with:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano /home/pi/.emulationstation/es_input.cfg
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano /home/pi/.emulationstation/es_input.cfg
+</code></pre></div></div>
 
 <p>You need to keep these lines below in order to get config screen when starting emulationstation:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;inputAction type="onfinish"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;inputAction type="onfinish"&gt;
     &lt;command&gt;/opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh&lt;/command&gt;
 &lt;/inputAction&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>I’m really happy with the result. I highly recommend this project for anyone interesting in Retropie. After having everything you can finish all the stuff really fast.</p>
 
@@ -190,10 +188,9 @@ The model is <a href="https://www.amazon.ca/dp/B015IJ4P58/ref=pe_386430_19373955
 
 <p>To get WIFI you need to compile <a href="https://github.com/lwfinger/rtl8723bu/">this driver</a>. To compile it on your Retropie you will need the help of <a href="http://matthewdippel.blogspot.ca/2016/02/howto-build-rtl8723bu-for-raspbian.html">this guy</a>. But basically you will need to get and install linux-headers for Raspbian:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://www.niksula.hut.fi/~mhiienka/Rpi/linux-headers-rpi/linux-headers-4.1.13%2B_4.1.13%2B-2_armhf.deb
 sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>There is also some changes in the Makefile:</p>
 
@@ -201,7 +198,7 @@ sudo dpkg –i ./linux-headers-4.1.13+-2_armhf.deb
   <p>Hit CTRL+W and type “CONFIG_PLATFORM_I386_PC =” and hit Enter.  Set it to “n”. Add a line below it and type “CONFIG_RASPBIAN = y”.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ifeq ($(CONFIG_RASPBIAN), y)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ifeq ($(CONFIG_RASPBIAN), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
 EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211
 EXTRA_CFLAGS += -DRTW_USE_CFG80211_STA_EVENT # only enable when kernel &gt;= 3.2
@@ -213,8 +210,7 @@ KSRC ?= /lib/modules/$(KVER)/build
 MODULE_NAME := 8723bu
 MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
 endif
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>For Bluetooth you’ll use <a href="https://github.com/lwfinger/rtl8723au_bt">this one</a>. The <a href="https://www.amazon.ca/dp/B00MB6CNN8/ref=pe_386430_193739550_TE_dp_1">controller</a> that I bought works with the test branch today. Maybe this will change in the future. The driver documentation says that you should use kernel branch for most recent kernels.</p>
 
@@ -226,16 +222,14 @@ endif
 
 <p>To install:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ gzip -d retropie-v3.5-rpi1.img.gz
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gzip -d retropie-v3.5-rpi1.img.gz
 $ sudo dd bs=4M if=retropie-v3.6-rpi1_zero.img of=/dev/mmcblk0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>To get my <a href="http://www.dx.com/p/orico-a3h4-4-port-usb-3-0-high-speed-hub-aluminum-alloy-hub-w-us-plug-power-adapter-black-328849#.VxLodHUrLeQ">USB hub</a> working with WIFI dongle and keyboard I had to append <code class="highlighter-rouge">dwc_otg.speed=1</code> in the file <code class="highlighter-rouge">/boot/cmdline.txt</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet loglevel=3 consoleblank=0 **dwc_otg.speed=1**
+</code></pre></div></div>
 
 <p>Then configured WIFI from Raspberry’s menu.</p>
 
@@ -348,7 +342,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

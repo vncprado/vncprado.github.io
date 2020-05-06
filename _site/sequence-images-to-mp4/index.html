@@ -149,22 +149,19 @@
 
 <p>To reduce size:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mogrify -resize 50% *jpg
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mogrify -resize 50% *jpg
+</code></pre></div></div>
 
 <p>The files pattern was something like <code class="highlighter-rouge">Y003.jpeg</code>. To test renaming:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ rename 's/.+/our $i; sprintf("Y%03d.jpg", 1+$i++)/e' * -vn
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rename 's/.+/our $i; sprintf("Y%03d.jpg", 1+$i++)/e' * -vn
+</code></pre></div></div>
 
 <p>To rename in fact, just remove the <code class="highlighter-rouge">-vn</code> option.
 Now use ffmpeg to generate the mp4 file.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ffmpeg -framerate 2 -i Y%03d.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p output.mp4
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ffmpeg -framerate 2 -i Y%03d.jpg -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p output.mp4
+</code></pre></div></div>
 
 <p>Now you should have a <code class="highlighter-rouge">output.mp4</code> file on your folder.</p>
 
@@ -267,7 +264,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

@@ -154,28 +154,26 @@
 <p>Having this in mind is expected that configure Codiad in your server should be really easy and it is.
 As a solution for coding in a Chromebook, Codiad is almost perfect. For what I want to use, I found two major issues as I will describe along with the text.</p>
 
-<h6 id="installation">Installation</h6>
-<p>I followed <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-codiad-a-web-based-ide-on-an-ubuntu-vps">this</a> tutorial and it works really well. Besides the installation It shows how to configure htaccess for a better authentication. Although Codiad asks for login too what is a little bit annoying. I dont figure out how to disable this second login but probably there is a way to do this.</p>
+<p>######Installation
+I followed <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-codiad-a-web-based-ide-on-an-ubuntu-vps">this</a> tutorial and it works really well. Besides the installation It shows how to configure htaccess for a better authentication. Although Codiad asks for login too what is a little bit annoying. I dont figure out how to disable this second login but probably there is a way to do this.</p>
 
-<h6 id="plugins">Plugins</h6>
+<p>######Plugins</p>
 
 <p>Codiad has a plugin system that works simply copying (or cloning) plugins to its plugin folder. And they have a selection of plugins in their <a href="http://market.codiad.com/">market</a>.</p>
 
 <p>So all you need to do is:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd ~/Codiad/plugins/
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ~/Codiad/plugins/
 $ git clone https://github.com/Fluidbyte/Codiad-Terminal.git 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>and you can use a terminal emulator inside your IDE.
 To use the terminal you need to put a password (“terminal” by default). The main drawbacks is that it is a really simple terminal (e.g. there is no autocompletion).</p>
 
 <p>I installed the git plugin too:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/Andr3as/Codiad-CodeGit.git
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Andr3as/Codiad-CodeGit.git
+</code></pre></div></div>
 
 <p>but I didn’t try it a lot (I had some issues with my github ssh accounts that time).</p>
 
@@ -283,7 +281,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

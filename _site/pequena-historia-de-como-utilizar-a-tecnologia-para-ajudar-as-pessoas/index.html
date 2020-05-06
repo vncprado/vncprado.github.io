@@ -158,9 +158,8 @@ lembrei desse gráfico: <img src="http://www.globalnerdy.com/wordpress/wp-conten
 <p>A <em>URL</em> tinha uma opçãozinha <em>GET</em> charmosa: <code class="highlighter-rouge">&amp;pAcIniNavprocessonomeadvselNav=1</code>, então pensei: <em>“dá pra fazer um script juntando wget e grep passando por todos os ‘pAcIniNavprocessonomeadvselNav’ pra achar essa parada”</em>.
 Na internet achei rapidamente a resposta:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ wget -q -O- "http://exemple.com" | grep -c palavra
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ wget -q -O- "http://exemple.com" | grep -c palavra
+</code></pre></div></div>
 
 <p>Antes de fazer um loop qualquer fiz uns testes pra ver se era possível encontrar alguma coisa nessa página com essa técnica. Ainda apanhei um pouco antes de colocar as aspas pois em endereços simples não são necessárias.</p>
 
@@ -173,9 +172,8 @@ Na internet achei rapidamente a resposta:</p>
 <p>Quando eu adicionei a primeira vez, o <em>DownThemAll</em> me perguntou se eu realmente queria baixar 3600 páginas. Lembrei que tinha paginação da tabela, a cada 20 itens. O <em>DownThemAll</em> de forma inteligente aceita intervalos de iteração. Depois foi só colocar <strong>[1:3600:20]</strong> no local certo da <em>URL</em> para ele gerar os endereços e baixar as páginas <em>HTML</em>.
 Depois foi só rodar o grep na pasta:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~$ grep -r "Nome" .
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~$ grep -r "Nome" .
+</code></pre></div></div>
 
 <p>para encontrar em qual arquivo existia o nome procurado.</p>
 
@@ -286,7 +284,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>

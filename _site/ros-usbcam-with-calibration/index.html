@@ -149,48 +149,41 @@
 
 <p>I created a custom launch in <code class="highlighter-rouge">robot_vision</code> based on:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ roscat usb_cam usb_cam-test.launch
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ roscat usb_cam usb_cam-test.launch
+</code></pre></div></div>
 
 <p>So I could use other usb camera (<code class="highlighter-rouge">/dev/video1</code> default is video0) device then change /dev/video:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ roslaunch robot_vision init_camera.launch
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ roslaunch robot_vision init_camera.launch
+</code></pre></div></div>
 
 <p>After that I erformed a calibration</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rosrun camera_calibration cameracalibrator.py --size 7x5 --square 0.028 image:=/usb_cam/image_raw camera:=/usb_cam
+</code></pre></div></div>
 
 <p>Attention to <code class="highlighter-rouge">--size</code>, count the chessboard intersections, not the squares. Follow the instructions.</p>
 
 <p>Update your launch:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;param name="camera_info_url" value="file:///$(find robot_vision)/calib.yaml" /&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;param name="camera_info_url" value="file:///$(find robot_vision)/calib.yaml" /&gt;
 &lt;param name="camera_name" value="camera" /&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>To get rectificated images topics:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ROS_NAMESPACE=PS_cam rosrun image_oc image_proc
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ROS_NAMESPACE=PS_cam rosrun image_oc image_proc
+</code></pre></div></div>
 
 <p>To check:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/camera image:=image_rect
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rosrun camera_calibration cameracheck.py --size 7x5 monocular:=/camera image:=image_rect
+</code></pre></div></div>
 
 <p>On roslaunch:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;node name="image_proc" pkg="image_proc" type="image_proc" ns="usb_cam"/&gt;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;node name="image_proc" pkg="image_proc" type="image_proc" ns="usb_cam"/&gt;
+</code></pre></div></div>
 
 <p>Sources:</p>
 
@@ -303,7 +296,7 @@ s.setAttribute('data-timestamp', +new Date());
                     </li>
                     
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2017</p>
+                <p class="copyright text-muted">Copyright &copy; Vanishing Point 2020</p>
             </div>
         </div>
     </div>
