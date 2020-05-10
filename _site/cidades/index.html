@@ -101,22 +101,22 @@ window.onload = function() {
     var confr_ok = false;
     confr_ok = recursively_ajax(first_address_confr, dataset_confr);
 
-    var loadingOverlay = document.querySelector('.loading');
-    if(novos_ok == true && confr_ok == true) {
-      if (loadingOverlay.classList.contains('hidden')){
-        loadingOverlay.classList.remove('hidden');
-      } else {
-        loadingOverlay.classList.add('hidden');
-      }
-    }
-    else {
-      if (loadingOverlay.classList.contains('hidden')){
-        loadingOverlay.classList.remove('hidden');
-      } else {
-        loadingOverlay.classList.add('hidden');
-      }
-      alert("Dataset load fail, reload the page!");
-    }
+    // var loadingOverlay = document.querySelector('.loading');
+    // if(novos_ok == true && confr_ok == true) {
+    //   if (loadingOverlay.classList.contains('hidden')){
+    //     loadingOverlay.classList.remove('hidden');
+    //   } else {
+    //     loadingOverlay.classList.add('hidden');
+    //   }
+    // }
+    // else {
+    //   if (loadingOverlay.classList.contains('hidden')){
+    //     loadingOverlay.classList.remove('hidden');
+    //   } else {
+    //     loadingOverlay.classList.add('hidden');
+    //   }
+    //   alert("Dataset load fail, reload the page!");
+    // }
     const goButton = document.querySelector('#go');
     function collectData() {
       selectCities.addEventListener('change', () => {
