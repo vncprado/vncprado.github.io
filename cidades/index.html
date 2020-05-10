@@ -18,6 +18,31 @@ div.loading{
 }
 </style>
 -->
+<style>
+#overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+</style>
 <link rel="stylesheet" href="cidades.css">
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -96,27 +121,18 @@ window.onload = function() {
       }});
       return true;
     }
-    var novos_ok = false
-    novos_ok = recursively_ajax(first_address_novos, dataset_novos);
-    var confr_ok = false;
-    confr_ok = recursively_ajax(first_address_confr, dataset_confr);
 
-    // var loadingOverlay = document.querySelector('.loading');
-    // if(novos_ok == true && confr_ok == true) {
-    //   if (loadingOverlay.classList.contains('hidden')){
-    //     loadingOverlay.classList.remove('hidden');
-    //   } else {
-    //     loadingOverlay.classList.add('hidden');
-    //   }
-    // }
-    // else {
-    //   if (loadingOverlay.classList.contains('hidden')){
-    //     loadingOverlay.classList.remove('hidden');
-    //   } else {
-    //     loadingOverlay.classList.add('hidden');
-    //   }
-    //   alert("Dataset load fail, reload the page!");
-    // }
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    };
+    on();
+    novos_ok = recursively_ajax(first_address_novos, dataset_novos);
+    confr_ok = recursively_ajax(first_address_confr, dataset_confr);
+    off();
+
     const goButton = document.querySelector('#go');
     function collectData() {
       selectCities.addEventListener('change', () => {
@@ -253,24 +269,22 @@ window.onload = function() {
 </script>
 </head>
 <body>
-  <!-- <div class="loading">
-    <div class='uil-ring-css' style='transform:scale(0.79);'>
-      <div></div>
-    </div>
-  </div> -->
+  <div id="overlay"><!-- onclick="off()"> -->
+    <div id="text">Carregando</div>
+  </div>
 
   <div id="formContainer" style="width:100%; text-align: center;">
     <label>Estado:</label>
-  <select class="select-css" id="states" disabled>
-    <option value="">Selecione um estado</option>
-  </select>
+    <select class="select-css" id="states" disabled>
+      <option value="">Selecione um estado</option>
+    </select>
 
-  <label>Cidade:</label>
-  <select class="select-css" id="cities" disabled>
-    <option value="">Por favor, selecione um estado</option>
-  </select>
-  <button class="button" type="button" id="go" disabled>Gerar Gráfico</button>
-</div>
+    <label>Cidade:</label>
+    <select class="select-css" id="cities" disabled>
+      <option value="">Por favor, selecione um estado</option>
+    </select>
+    <button class="button" type="button" id="go" disabled>Gerar Gráfico</button>
+  </div>
 
   <div id="chartContainerCasos" style="width:100%; height:300px; margin-top: 50px;"></div>
 	<div id="chartContainerDeaths" style="width:100%; height:300px; margin-top: 50px;"></div>
