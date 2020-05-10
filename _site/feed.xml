@@ -5,8 +5,13 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
+<<<<<<< HEAD
     <pubDate>Sun, 10 May 2020 09:25:52 -0400</pubDate>
     <lastBuildDate>Sun, 10 May 2020 09:25:52 -0400</lastBuildDate>
+=======
+    <pubDate>Sun, 10 May 2020 08:37:47 -0400</pubDate>
+    <lastBuildDate>Sun, 10 May 2020 08:37:47 -0400</lastBuildDate>
+>>>>>>> 0eee76a3468cd495316a784c8837403d3b8bab02
     <generator>Jekyll v3.8.6</generator>
     
       <item>
