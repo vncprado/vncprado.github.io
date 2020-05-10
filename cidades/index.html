@@ -346,24 +346,17 @@ window.onload = function() {
         }
 
         var dataPoints_novos = [];
+        var dataPoints_newdeaths = [];
         for(i=0; i<city_samples_novos.length; i++) {
+          dataPoints_newdeaths.push({
+            x: new Date(city_samples_novos[i].date),
+            y: parseFloat(city_samples_novos[i].new_deaths)
+          })
           dataPoints_novos.push({
               x: new Date(city_samples_novos[i].date),
               y: parseFloat(city_samples_novos[i].new_confirmed)
           });
         }
-
-        var chart_novos = new CanvasJS.Chart("chartContainerNovos", {
-          animationEnabled: true,
-  		    title: {
-  		         text: "Novos Casos " + city,
-  		    },
-  		    data: [{
-               type: "column",
-               color: "#014D65",
-  		         dataPoints: dataPoints_novos
-  		      }]
-  	     });
 
         // Retrieving data confirmados from a city
         var city_samples_confr = [];
@@ -379,27 +372,86 @@ window.onload = function() {
         }
 
         var dataPoints_confr = [];
+        var dataPoints_deaths = [];
         for(i=0; i<city_samples_confr.length; i++) {
+          dataPoints_deaths.push({
+            x: new Date(city_samples_confr[i].date),
+            y: parseFloat(city_samples_confr[i].deaths)
+          })
           dataPoints_confr.push({
               x: new Date(city_samples_confr[i].date),
               y: parseFloat(city_samples_confr[i].confirmed)
           });
         }
 
-         var chart_confr = new CanvasJS.Chart("chartContainerConfirmados", {
+         var chart_novos_confr = new CanvasJS.Chart("chartContainerCasos", {
            animationEnabled: true,
    		    title: {
-   		         text: "Casos Confirmados " + city,
+   		         text: "Casos Novos e Confirmados " + city,
    		    },
+          axisY:[
+            {
+              title: "Casos Confirmados",
+            }],
+          axisY2:[
+            {
+              title: "Novos Casos",
+            }],
    		    data: [{
                 type: "line",
-   		         dataPoints: dataPoints_confr
-   		      }]
+                showInLegend: true,
+                name: "Casos Confirmados",
+                axisYIndex: 0, //defaults to 0
+   		          dataPoints: dataPoints_confr
+   		      },
+              {
+                type: "column",
+                showInLegend: true,
+                name: "Novos Casos",
+                axisYType: "secondary",
+                // axisY2Index: 0,
+                dataPoints: dataPoints_novos
+
+              }
+          ]
    	     });
 
-  	     chart_novos.render();
-   	     chart_confr.render();
-  })
+         var chart_deaths = new CanvasJS.Chart("chartContainerDeaths", {
+           animationEnabled: true,
+   		    title: {
+   		         text: "Mortes Novas e Confirmadas " + city,
+   		    },
+          axisY:[
+            {
+              title: "Mortes Confirmados",
+            }],
+          axisY2:[
+            {
+              title: "Novas Mortes",
+            }],
+   		    data: [{
+                type: "line",
+                showInLegend: true,
+                name: "Mortes Confirmadas",
+                axisYIndex: 0, //defaults to 0
+   		          dataPoints: dataPoints_deaths
+   		      },
+              {
+                type: "column",
+                showInLegend: true,
+                name: "Novas Mortes",
+                axisYType: "secondary",
+                // axisY2Index: 0,
+                dataPoints: dataPoints_newdeaths
+
+              }
+          ]
+   	     });
+  	     // chart_novos.render();
+   	     // chart_confr.render();
+         chart_novos_confr.render();
+         chart_deaths.render();
+      })
   }
   collectData();
 }
@@ -423,8 +475,8 @@ window.onload = function() {
   <button class="button" type="button" id="go" disabled>Gerar Gráfico</button>
 </div>
 
-  <div id="chartContainerConfirmados" style="width:100%; height:300px;"></div>
-	<div id="chartContainerNovos" style="width:100%; height:300px;"></div>
+  <div id="chartContainerCasos" style="width:100%; height:300px;"></div>
+	<div id="chartContainerDeaths" style="width:100%; height:300px;"></div>
   <hr/>
   Página criada para gerar algumas vizualizações do número de casos de COVID-19 em cidade brasileiras.<br/>
   Os dados apresentados aqui são retirados de <a href="https://data.brasil.io/dataset/covid19/_meta/list.html">Brasil.io</a>

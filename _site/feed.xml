@@ -5,9 +5,9 @@
     <description>Hey Kowalski, you out there?</description>
     <link>http://vncprado.github.io/</link>
     <atom:link href="http://vncprado.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 07 May 2020 13:38:07 -0400</pubDate>
-    <lastBuildDate>Thu, 07 May 2020 13:38:07 -0400</lastBuildDate>
-    <generator>Jekyll v3.1.6</generator>
+    <pubDate>Sun, 10 May 2020 08:37:47 -0400</pubDate>
+    <lastBuildDate>Sun, 10 May 2020 08:37:47 -0400</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>UDEV rules for devices without serial number</title>
@@ -21,7 +21,7 @@ SUBSYSTEM==&quot;usb-serial&quot;, ATTRS{idVendor}==&quot;067b&quot;, ATTRS{idPr
 
 &lt;p&gt;There is a solution &lt;a href=&quot;https://gist.github.com/cbrake/4337154&quot;&gt;here&lt;/a&gt; if you’re using only one device:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# single blue USB serial adapter, prolific devices don&#39;t seem to have a serial number that I can find
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# single blue USB serial adapter, prolific devices don't seem to have a serial number that I can find
 SUBSYSTEM==&quot;tty&quot;, DRIVERS==&quot;pl2303&quot;, SYMLINK+=&quot;ttyUSB_panda&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -64,7 +64,7 @@ KERNEL==&quot;ttyUSB*&quot;, KERNELS==&quot;1-1.4&quot;, SYMLINK+=&quot;ttyUSB.c
 
 &lt;p&gt;The files pattern was something like &lt;code class=&quot;highlighter-rouge&quot;&gt;Y003.jpeg&lt;/code&gt;. To test renaming:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rename &#39;s/.+/our $i; sprintf(&quot;Y%03d.jpg&quot;, 1+$i++)/e&#39; * -vn
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rename 's/.+/our $i; sprintf(&quot;Y%03d.jpg&quot;, 1+$i++)/e' * -vn
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To rename in fact, just remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;-vn&lt;/code&gt; option.
@@ -210,7 +210,7 @@ After that, go to the workspace:&lt;/p&gt;
         <title>UDEV rules for ttyUSB</title>
         <description>&lt;p&gt;Really useful stuff when developing using Arduino or other USB stuff that maybe have the same &lt;code class=&quot;highlighter-rouge&quot;&gt;[vendor]:[product]&lt;/code&gt;. First you need to get the serial number:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# udevadm info -a -n /dev/ttyUSB1 | grep &#39;{serial}&#39; | head -n1
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;You will get something like &lt;code class=&quot;highlighter-rouge&quot;&gt;ATTRS{serial}==&quot;A6008isP&quot;&lt;/code&gt;. With this you can create new file called &lt;code class=&quot;highlighter-rouge&quot;&gt;99-usb-serial.rules&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/udev/rules.d/&lt;/code&gt;. In this file you can put one line for any devices you need changing only the serial in case of same vendor and product:&lt;/p&gt;
@@ -256,7 +256,7 @@ SUBSYSTEM==&quot;tty&quot;, ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}=
       </item>
     
       <item>
-        <title>Installation boot error (or don&#39;t forget GRUB)</title>
+        <title>Installation boot error (or don't forget GRUB)</title>
         <description>&lt;p&gt;Last week I updated my lab laptop to Ubuntu 16.04 even with lots of problems reported up to now I have no problems, with one simple exception.
 I choose to do a fresh install. To make a dist-upgrade I would need to wait the 16.04.1 release. There’s some workarounds but laziness dominates.
 During the installation I got an Grub error, a fatal error that crashes the install wizard. But I had the feeling that everything was fine but the grub.
