@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="#" />
 <title>Casos de COVID-19 por cidade no Brasil</title>
 <!-- <style>
 *.hidden {
@@ -128,7 +129,7 @@ window.onload = function() {
     function off() {
       document.getElementById("overlay").style.display = "none";
     };
-    on();
+    // on();
     novos_ok = recursively_ajax(first_address_novos, dataset_novos);
     confr_ok = recursively_ajax(first_address_confr, dataset_confr);
     off();
@@ -195,7 +196,7 @@ window.onload = function() {
           });
         }
 
-         var chart_novos_confr = new CanvasJS.Chart("chartContainerCasos", {
+         var chart_casos = new CanvasJS.Chart("chartContainerCasos", {
            animationEnabled: true,
    		    title: {
    		         text: "Casos Novos e Confirmados " + city,
@@ -260,7 +261,7 @@ window.onload = function() {
    	     });
   	     // chart_novos.render();
    	     // chart_confr.render();
-         chart_novos_confr.render();
+         chart_casos.render();
          chart_deaths.render();
       })
   }
