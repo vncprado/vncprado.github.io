@@ -97,13 +97,19 @@ window.onload = function() {
   populateStateSelect();
   populateCitySelect();
 
-
-
-
     var dataset_novos = [];
     var dataset_confr = [];
     var first_address_novos = "https://brasil.io/api/dataset/covid19/caso_full/data/?format=json&page=1";
     var first_address_confr = "https://brasil.io/api/dataset/covid19/caso/data/?format=json&page=1";
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    };
+
+    on();
 
     function recursively_ajax(next, dataset) {
       $.ajax({
@@ -123,16 +129,11 @@ window.onload = function() {
       return true;
     }
 
-    function on() {
-      document.getElementById("overlay").style.display = "block";
-    }
-    function off() {
-      document.getElementById("overlay").style.display = "none";
-    };
-    // on();
     novos_ok = recursively_ajax(first_address_novos, dataset_novos);
     confr_ok = recursively_ajax(first_address_confr, dataset_confr);
-    off();
+    if (novos_ok==true && confr_ok==true) {
+      off();
+    }
 
     const goButton = document.querySelector('#go');
     function collectData() {
@@ -203,28 +204,31 @@ window.onload = function() {
    		    },
           axisY:[
             {
-              title: "Casos Confirmados",
+              title: "Novos Casos",
             }],
           axisY2:[
             {
-              title: "Novos Casos",
+              title: "Casos Confirmados",
             }],
-   		    data: [{
-                type: "line",
-                showInLegend: true,
-                name: "Casos Confirmados",
-                axisYIndex: 0, //defaults to 0
-   		          dataPoints: dataPoints_confr
-   		      },
+   		    data: [
               {
                 type: "column",
                 showInLegend: true,
                 name: "Novos Casos",
-                axisYType: "secondary",
+                // axisYType: "secondary",
                 // axisY2Index: 0,
+                axisYIndex: 0, //defaults to 0
                 dataPoints: dataPoints_novos
 
-              }
+              },
+              {
+                    type: "line",
+                    showInLegend: true,
+                    name: "Casos Confirmados",
+                    axisYType: "secondary",
+                    // axisYIndex: 0, //defaults to 0
+       		          dataPoints: dataPoints_confr
+       		      }
           ]
    	     });
 
@@ -235,28 +239,29 @@ window.onload = function() {
    		    },
           axisY:[
             {
-              title: "Mortes Confirmados",
+              title: "Novas Mortes",
             }],
           axisY2:[
             {
-              title: "Novas Mortes",
+              title: "Mortes Confirmados",
             }],
-   		    data: [{
-                type: "line",
-                showInLegend: true,
-                name: "Mortes Confirmadas",
-                axisYIndex: 0, //defaults to 0
-   		          dataPoints: dataPoints_deaths
-   		      },
+   		    data: [
               {
                 type: "column",
                 showInLegend: true,
                 name: "Novas Mortes",
-                axisYType: "secondary",
+                axisYIndex: 0, //defaults to 0
                 // axisY2Index: 0,
                 dataPoints: dataPoints_newdeaths
 
-              }
+              },
+              {
+                type: "line",
+                showInLegend: true,
+                name: "Mortes Confirmadas",
+                axisYType: "secondary",
+   		          dataPoints: dataPoints_deaths
+       		      }
           ]
    	     });
   	     // chart_novos.render();
